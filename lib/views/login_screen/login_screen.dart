@@ -1,5 +1,11 @@
-// import 'package:bloc_example/modules/authenticate/login/login_bloc/login_bloc.dart';
-// import 'package:bloc_example/modules/todo/screen/signed_screen.dart';
+import 'dart:developer';
+
+import 'package:book_net/configs/color_configs.dart';
+import 'package:book_net/configs/text_configs.dart';
+import 'package:book_net/views/base_widgets/button/raised_gradient_button.dart';
+import 'package:book_net/views/base_widgets/text_field/text_field.dart';
+import 'package:book_net/views/login_screen/widgets/button/facebook_button.dart';
+import 'package:book_net/views/login_screen/widgets/button/google_button.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -30,33 +36,40 @@ class _LoginScreenState extends State<LoginScreen> {
         }
       },
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: AppColors.whiteColor,
         body: Container(
-          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
           child: Column(
             children: [
               const SizedBox(
-                height: 24,
+                height: 60,
               ),
-              const TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'Email address',
-                ),
+              Image.asset('assets/images/LogoHorizontal.png'),
+              const SizedBox(
+                height: 52,
+              ),
+              CustomTextField(
+                text: 'E-mail address',
+                controller: userController,
               ),
               const SizedBox(
                 height: 24,
               ),
-              const TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'Password',
-                ),
+              CustomTextField(
+                text: 'Password',
+                controller: passController,
               ),
+              const SizedBox(
+                height: 12,
+              ),
+              //  CustomTextField(
+              //   text: 'Password',
+              // ),
               Align(
                 alignment: Alignment.bottomRight,
                 child: TextButton(
-                  child: Text('Forgot your password?'),
+                  child: const Text('Forgot your password?',
+                      style: TextStyle(fontSize: TextConfigs.textSizeSm)),
                   onPressed: () {},
                 ),
               ),
@@ -66,91 +79,58 @@ class _LoginScreenState extends State<LoginScreen> {
               RaisedGradientButton(
                   child: const Text(
                     'LOGIN',
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(
+                        color: AppColors.whiteColor,
+                        fontSize: TextConfigs.textSizeMd,
+                        fontWeight: FontWeight.w500),
                   ),
                   gradient: const LinearGradient(
                     colors: <Color>[
-                      Color(0xFF72DFC5),
-                      Color(0xFF1DDE7D),
+                      AppColors.green2Color,
+                      AppColors.green1Color,
                     ],
                   ),
                   onPressed: () {
-                    print('button clicked');
+                    log('button click');
+                    print('button clicked print');
                   }),
+              const SizedBox(
+                height: 40,
+              ),
+              Image.asset('assets/images/or.png'),
+              const SizedBox(
+                height: 20,
+              ),
               Row(
-                children: [
-                  new Flexible(child: FacebookButton(), flex: 1),
-                  const SizedBox(
-                    width: 20,
+                children: const [
+                  Flexible(child: FacebookButton(), flex: 1),
+                  SizedBox(
+                    width: 56,
                   ),
-                  new Flexible(child: FacebookButton(), flex: 1),
+                  Flexible(child: GoogleButton(), flex: 1),
                 ],
-              )
+              ),
+              const SizedBox(
+                height: 40,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const Text('Don’t have an account?',
+                      style: TextStyle(
+                          color: AppColors.greyColor,
+                          fontSize: TextConfigs.textSizeSm)),
+                  TextButton(
+                    onPressed: () {},
+                    child: const Text('Sign up',
+                        style: TextStyle(fontSize: TextConfigs.textSizeSm)),
+                  )
+                ],
+              ),
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-class RaisedGradientButton extends StatelessWidget {
-  final Widget child;
-  final Gradient gradient;
-  final double width;
-  final double height;
-  final Function onPressed;
-
-  const RaisedGradientButton({
-    Key? key,
-    required this.child,
-    required this.gradient,
-    this.width = double.infinity,
-    this.height = 50.0,
-    required this.onPressed,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: width,
-      height: 50.0,
-      decoration: BoxDecoration(
-          gradient: gradient,
-          borderRadius: BorderRadius.all(Radius.circular(8.0)),
-          boxShadow: [
-            BoxShadow(
-              color: Color(0xFF1DDE7D).withOpacity(0.2),
-              offset: Offset(0, 4),
-              blurRadius: 4,
-            ),
-          ]),
-      child: Material(
-        color: Colors.transparent,
-        child: InkWell(
-            onTap: () {},
-            child: Center(
-              child: child,
-            )),
-      ),
-    );
-  }
-}
-
-class FacebookButton extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-
-      // mainAxisSize: MainAxisSize.max,
-      child: ElevatedButton.icon(
-        icon: const Icon(Icons.facebook_outlined, size: 18),
-        label: const Text('FACEBOOK'),
-        style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all<Color>(Color(0xFF3B5999)),
-        ),
-        onPressed: () {},
       ),
     );
   }

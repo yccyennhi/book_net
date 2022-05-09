@@ -1,6 +1,6 @@
 import 'package:book_net/views/login_screen/login_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+// import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 
 void main() {
@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
       ),
       home: AnimatedSplashScreen(
         splash: Image.asset('assets/images/LOGO.png'),
-        nextScreen: LoginScreen(),
+        nextScreen: const LoginScreen(),
         splashTransition: SplashTransition.fadeTransition,
       ),
     );
