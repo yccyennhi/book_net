@@ -1,6 +1,5 @@
 import 'package:book_net/configs/color_configs.dart';
 import 'package:book_net/configs/text_configs.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -16,7 +15,7 @@ class Utils {
               horizontal: 35.w,
               vertical: 250.h,
             ),
-            backgroundColor: AppColors.kBlackColor,
+            backgroundColor: AppColors.blackColor,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20),
             ),
@@ -40,12 +39,12 @@ class Utils {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
                       ),
-                      backgroundColor: AppColors.kBlackColor,
+                      backgroundColor: AppColors.blackColor,
                     ),
                     child: Text(
                       'OK',
                       style: TextStyle(
-                        color: AppColors.kBlackColor,
+                        color: AppColors.blackColor,
                         fontSize: 15.sp,
                       ),
                     ),
