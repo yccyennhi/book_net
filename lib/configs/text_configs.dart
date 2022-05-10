@@ -1,22 +1,27 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import 'color_configs.dart';
 
 class TextConfigs {
-  static final baseTextStyle = GoogleFonts.montserrat();
+  //size
+  static const int textSizeSm = 12;
+  static const int textSizeMd = 16;
+  static const int textSizeLg = 20;
+  static const int textSizeSl = 24;
 
-  // Using copyWith to create new TextStyle
-  static final kText24w700Black = baseTextStyle.copyWith(
-    fontSize: 24.sp,
-    fontWeight: FontWeight.w700,
-    color: AppColors.blackColor,
+  static const fontFamily = 'SegoeUI';
+
+  // Naming [font style][size][color]
+
+  static final regular12Grey2 = TextStyle(
+    fontFamily: fontFamily,
+    color: AppColors.grey2Color,
+    fontSize: textSizeSm.sp,
   );
 
-  //size
-  static const double textSizeSm = 12;
-  static const double textSizeMd = 16;
-  static const double textSizeLg = 20;
-  static const double textSizeSl = 24;
+  static final medium14 = TextStyle(
+    fontFamily: fontFamily,
+    fontSize: textSizeMd.sp,
+  );
 }

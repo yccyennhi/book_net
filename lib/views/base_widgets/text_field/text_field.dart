@@ -25,10 +25,7 @@ class CustomTextField extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text(_text,
-                style: const TextStyle(
-                    color: AppColors.grey2Color,
-                    fontSize: TextConfigs.textSizeSm)),
+            Text(_text, style: TextConfigs.regular12Grey2),
             const SizedBox(
               height: 4,
             ),

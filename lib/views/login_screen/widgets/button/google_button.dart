@@ -33,11 +33,9 @@ class GoogleButton extends StatelessWidget {
               child: Row(children: <Widget>[
                 Image.asset('assets/icons/google.png'),
                 const SizedBox(width: 16),
-                const Text('GOOGLE',
-                    style: TextStyle(
-                        color: AppColors.grey3Color,
-                        fontSize: TextConfigs.textSizeMd,
-                        fontWeight: FontWeight.w500))
+                Text('GOOGLE',
+                    style: TextConfigs.medium14
+                        .copyWith(color: AppColors.grey3Color))
               ]),
             )),
       ),

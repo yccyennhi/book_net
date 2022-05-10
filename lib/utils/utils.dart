@@ -22,7 +22,6 @@ class Utils {
             content: Center(
               child: Text(
                 content,
-                style: TextConfigs.kText24w700Black,
               ),
             ),
             actions: [
