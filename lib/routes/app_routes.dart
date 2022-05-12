@@ -1,3 +1,7 @@
+import 'package:book_net/views/login_screen/login_screen.dart';
+import 'package:book_net/views/main.dart';
+import 'package:book_net/views/signup_screen/signup_screen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AppRoutes {
@@ -18,6 +22,23 @@ class AppRoutes {
       //       child: ExampleScreen(),
       //     ),
       //   );
+
+      case SignUpScreen.id:
+        return CupertinoPageRoute(
+          settings: settings,
+          builder: (_) => const SignUpScreen(),
+        );
+      case LoginScreen.id:
+        return CupertinoPageRoute(
+          settings: settings,
+          builder: (_) => const LoginScreen(),
+        );
+      case SplashScreen.id:
+        return CupertinoPageRoute(
+          settings: settings,
+          builder: (_) => const SplashScreen(),
+        );
+
       default:
         return _errorRoute();
     }

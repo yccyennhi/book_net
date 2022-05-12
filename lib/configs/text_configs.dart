@@ -20,6 +20,12 @@ class TextConfigs {
     fontSize: textSizeSm.sp,
   );
 
+  static final regular12Blue = TextStyle(
+    fontFamily: fontFamily,
+    // color: AppColors.blueColor,
+    fontSize: textSizeSm.sp,
+  );
+
   static final medium14 = TextStyle(
     fontFamily: fontFamily,
     fontSize: textSizeMd.sp,

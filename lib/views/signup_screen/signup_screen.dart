@@ -3,54 +3,47 @@ import 'dart:developer';
 import 'package:book_net/configs/color_configs.dart';
 import 'package:book_net/configs/text_configs.dart';
 import 'package:book_net/views/base_widgets/button/raised_gradient_button.dart';
+import 'package:book_net/views/base_widgets/text_field/confirm_password_validator.dart';
 import 'package:book_net/views/base_widgets/text_field/password_text_field.dart';
 import 'package:book_net/views/base_widgets/text_field/text_field.dart';
 import 'package:book_net/views/login_screen/widgets/button/facebook_button.dart';
 import 'package:book_net/views/login_screen/widgets/button/google_button.dart';
-import 'package:book_net/views/signup_screen/signup_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
-  static const String id = 'login';
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({Key? key}) : super(key: key);
+  static const String id = 'signUp';
 
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
-  // var loginBloc;
+class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController userController = TextEditingController();
   TextEditingController passController = TextEditingController();
+  TextEditingController confirmPassController = TextEditingController();
 
   final emailValidator = MultiValidator([
     RequiredValidator(errorText: 'E-mail is required'),
     EmailValidator(errorText: 'Invalid E-mail'),
   ]);
 
-  final passwordValidator = MultiValidator([
-    RequiredValidator(errorText: 'Password is required'),
-    MinLengthValidator(8, errorText: 'Password must be at least 8 digits long'),
-    PatternValidator(r'(?=.*?[#?!@$%^&*-])',
-        errorText: 'Password must have at least one special character')
-  ]);
+  final passwordValidator =
+      ConfirmPasswordValidator(errorText: "Password must not have whitespace");
 
   final _key = GlobalKey<FormState>();
-
-  @override
-  void initState() {
-    super.initState();
-    //  loginBloc = BlocProvider.of<LoginBloc>(context);
-  }
-
   @override
   Widget build(BuildContext context) {
+    final confirmPasswordValidator =
+        MatchValidator(errorText: 'Passwords do not match').validateMatch(
+            passController.text.trim(), confirmPassController.text.trim());
+
     login() {
       log('button click');
       log('${_key.currentState!.validate()}');
-      print(passwordValidator
-          .validators[passwordValidator.validators.length - 1].errorText);
+      // print(passwordValidator
+      //     .validators[passwordValidator.validators.length - 1].errorText);
     }
 
     return GestureDetector(
@@ -82,11 +75,30 @@ class _LoginScreenState extends State<LoginScreen> {
                       const SizedBox(
                         height: 24,
                       ),
+                      CustomTextField(
+                        text: 'First name',
+                        controller: userController,
+                        validator: emailValidator,
+                      ),
+                      const SizedBox(height: 24),
+                      CustomTextField(
+                        text: 'Last name',
+                        controller: userController,
+                        validator: emailValidator,
+                      ),
+                      const SizedBox(
+                        height: 24,
+                      ),
                       PasswordTextField(
                         text: 'Password',
                         controller: passController,
                         validator: passwordValidator,
                       ),
+                      // PasswordTextField(
+                      //   text: 'Confirm password',
+                      //   controller: confirmPassController,
+                      //   validator: confirmPasswordValidator,
+                      // ),
                     ],
                   ),
                 ),
@@ -146,8 +158,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       style: TextConfigs.regular12Grey2,
                     ),
                     TextButton(
-                      onPressed: () =>
-                          Navigator.pushNamed(context, SignUpScreen.id),
+                      onPressed: () {},
                       child: Text(
                         'Sign up',
                         style: TextConfigs.regular12Blue,

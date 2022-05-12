@@ -35,7 +35,6 @@ class FacebookButton extends StatelessWidget {
             child: Center(
               child: Row(children: <Widget>[
                 Image.asset('assets/icons/facebook.png'),
-                const SizedBox(width: 8),
                 Text('FACEBOOK',
                     style: TextConfigs.medium14
                         .copyWith(color: AppColors.whiteColor))

@@ -3,12 +3,14 @@ import 'package:book_net/configs/style_configs.dart';
 import 'package:book_net/configs/text_configs.dart';
 import 'package:flutter/material.dart';
 
-class CustomTextField extends StatefulWidget {
+class CustomTextField extends StatelessWidget {
   const CustomTextField({
     Key? key,
     required String text,
     required TextEditingController controller,
     this.width = double.infinity,
+    this.suffixIcon,
+    this.osbcure,
     required String? Function(String?)? validator,
   })  : _text = text,
         _controller = controller,
@@ -19,62 +21,61 @@ class CustomTextField extends StatefulWidget {
   final String _text;
   final TextEditingController _controller;
   final String? Function(String?)? _validator;
+  final Widget? suffixIcon;
+  final bool? osbcure;
 
-  @override
-  State<CustomTextField> createState() => _CustomTextFieldState();
-}
-
-class _CustomTextFieldState extends State<CustomTextField> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: widget.width,
+      width: width,
       child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text(widget._text, style: TextConfigs.regular12Grey2),
+            Text(_text, style: TextConfigs.regular12Grey2),
             const SizedBox(
               height: 4,
             ),
             TextFormField(
-              controller: widget._controller,
+              controller: _controller,
+              obscureText: osbcure ?? false,
               // onEditingComplete: ,
-              decoration: const InputDecoration(
-                focusedBorder: OutlineInputBorder(
+              decoration: InputDecoration(
+                suffixIcon: suffixIcon,
+                focusedBorder: const OutlineInputBorder(
                   borderRadius:
                       BorderRadius.all(Radius.circular(AppStyles.radiusMd)),
                   borderSide:
                       BorderSide(width: 1, color: AppColors.green3Color),
                 ),
-                disabledBorder: OutlineInputBorder(
+                disabledBorder: const OutlineInputBorder(
                   borderRadius:
                       BorderRadius.all(Radius.circular(AppStyles.radiusMd)),
                   borderSide: BorderSide(width: 1, color: Colors.orange),
                 ),
-                enabledBorder: OutlineInputBorder(
+                enabledBorder: const OutlineInputBorder(
                   borderRadius:
                       BorderRadius.all(Radius.circular(AppStyles.radiusMd)),
                   borderSide: BorderSide(width: 1, color: AppColors.grey1Color),
                 ),
-                border: OutlineInputBorder(
+                border: const OutlineInputBorder(
                     borderRadius:
                         BorderRadius.all(Radius.circular(AppStyles.radiusMd)),
                     borderSide:
                         BorderSide(width: 1, color: AppColors.grey1Color)),
-                errorBorder: OutlineInputBorder(
+                errorBorder: const OutlineInputBorder(
                     borderRadius:
                         BorderRadius.all(Radius.circular(AppStyles.radiusMd)),
                     borderSide:
                         BorderSide(width: 1, color: AppColors.redColor)),
-                focusedErrorBorder: OutlineInputBorder(
+                focusedErrorBorder: const OutlineInputBorder(
                     borderRadius:
                         BorderRadius.all(Radius.circular(AppStyles.radiusMd)),
                     borderSide:
                         BorderSide(width: 1, color: AppColors.redColor)),
               ),
 
-              validator: widget._validator,
+              validator: _validator,
             ),
           ]),
     );
