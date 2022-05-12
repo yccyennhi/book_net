@@ -1,5 +1,6 @@
 import 'package:book_net/configs/color_configs.dart';
 import 'package:book_net/configs/style_configs.dart';
+import 'package:book_net/configs/text_configs.dart';
 import 'package:flutter/material.dart';
 
 class FacebookButton extends StatelessWidget {
@@ -35,8 +36,9 @@ class FacebookButton extends StatelessWidget {
               child: Row(children: <Widget>[
                 Image.asset('assets/icons/facebook.png'),
                 const SizedBox(width: 8),
-                const Text('FACEBOOK',
-                    style: TextStyle(color: AppColors.whiteColor))
+                Text('FACEBOOK',
+                    style: TextConfigs.medium14
+                        .copyWith(color: AppColors.whiteColor))
               ]),
             )),
       ),

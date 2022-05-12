@@ -33,10 +33,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text(widget._text,
-                style: const TextStyle(
-                    color: AppColors.grey2Color,
-                    fontSize: TextConfigs.textSizeSm)),
+            Text(widget._text, style: TextConfigs.regular12Grey2),
             const SizedBox(
               height: 4,
             ),

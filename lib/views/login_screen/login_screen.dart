@@ -50,13 +50,7 @@ class _LoginScreenState extends State<LoginScreen> {
     }
 
     return GestureDetector(
-      onTap: () {
-        FocusScopeNode currentFocus = FocusScope.of(context);
-
-        if (!currentFocus.hasPrimaryFocus) {
-          currentFocus.unfocus();
-        }
-      },
+      onTap: () => setUnfocus(context),
       child: Scaffold(
         backgroundColor: AppColors.whiteColor,
         body: SingleChildScrollView(
@@ -98,8 +92,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 Align(
                   alignment: Alignment.bottomRight,
                   child: TextButton(
-                    child: const Text('Forgot your password?',
-                        style: TextStyle(fontSize: TextConfigs.textSizeSm)),
+                    child: Text('Forgot your password?',
+                        style: TextConfigs.regular12Grey2),
                     onPressed: () {},
                   ),
                 ),
@@ -107,12 +101,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 32,
                 ),
                 RaisedGradientButton(
-                  child: const Text(
+                  child: Text(
                     'LOGIN',
-                    style: TextStyle(
-                        color: AppColors.whiteColor,
-                        fontSize: TextConfigs.textSizeMd,
-                        fontWeight: FontWeight.w500),
+                    style: TextConfigs.medium14
+                        .copyWith(color: AppColors.whiteColor),
                   ),
                   gradient: const LinearGradient(
                     colors: <Color>[
@@ -145,14 +137,11 @@ class _LoginScreenState extends State<LoginScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const Text('Don’t have an account?',
-                        style: TextStyle(
-                            color: AppColors.greyColor,
-                            fontSize: TextConfigs.textSizeSm)),
+                    Text('Don’t have an account?',
+                        style: TextConfigs.regular12Grey2),
                     TextButton(
                       onPressed: () {},
-                      child: const Text('Sign up',
-                          style: TextStyle(fontSize: TextConfigs.textSizeSm)),
+                      child: Text('Sign up', style: TextConfigs.regular12Grey2),
                     )
                   ],
                 ),
@@ -162,5 +151,13 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ),
     );
+  }
+
+  setUnfocus(BuildContext context) {
+    FocusScopeNode currentFocus = FocusScope.of(context);
+
+    if (!currentFocus.hasPrimaryFocus) {
+      currentFocus.unfocus();
+    }
   }
 }
