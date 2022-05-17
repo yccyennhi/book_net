@@ -7,6 +7,7 @@ import 'package:book_net/views/base_widgets/text_field/text_field.dart';
 import 'package:book_net/views/login_screen/widgets/button/facebook_button.dart';
 import 'package:book_net/views/login_screen/widgets/button/google_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -35,26 +36,26 @@ class _LoginScreenState extends State<LoginScreen> {
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
           child: Column(
             children: [
-              const SizedBox(
-                height: 60,
+              SizedBox(
+                height: 60.h,
               ),
               Image.asset('assets/images/LogoHorizontal.png'),
-              const SizedBox(
-                height: 52,
+              SizedBox(
+                height: 52.h,
               ),
               CustomTextField(
                 text: 'E-mail address',
                 controller: userController,
               ),
-              const SizedBox(
-                height: 24,
+              SizedBox(
+                height: 24.h,
               ),
               CustomTextField(
                 text: 'Password',
                 controller: passController,
               ),
-              const SizedBox(
-                height: 12,
+              SizedBox(
+                height: 12.h,
               ),
               //  CustomTextField(
               //   text: 'Password',
@@ -67,8 +68,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   onPressed: () {},
                 ),
               ),
-              const SizedBox(
-                height: 32,
+              SizedBox(
+                height: 32.h,
               ),
               RaisedGradientButton(
                   child: Text(
@@ -86,24 +87,24 @@ class _LoginScreenState extends State<LoginScreen> {
                     log('button click');
                     print('button clicked print');
                   }),
-              const SizedBox(
-                height: 40,
+              SizedBox(
+                height: 40.h,
               ),
               Image.asset('assets/images/or.png'),
-              const SizedBox(
-                height: 20,
+              SizedBox(
+                height: 20.h,
               ),
               Row(
-                children: const [
-                  Flexible(child: FacebookButton(), flex: 1),
+                children: [
+                  const Flexible(child: FacebookButton(), flex: 1),
                   SizedBox(
-                    width: 56,
+                    width: 56.w,
                   ),
-                  Flexible(child: GoogleButton(), flex: 1),
+                  const Flexible(child: GoogleButton(), flex: 1),
                 ],
               ),
-              const SizedBox(
-                height: 40,
+              SizedBox(
+                height: 40.h,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,

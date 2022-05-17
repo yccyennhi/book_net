@@ -5,10 +5,10 @@ import 'color_configs.dart';
 
 class TextConfigs {
   //size
-  static const int textSizeSm = 12;
-  static const int textSizeMd = 16;
-  static const int textSizeLg = 20;
-  static const int textSizeSl = 24;
+  static double textSizeSm = 12.sp;
+  static double textSizeMd = 16.sp;
+  static double textSizeLg = 20.sp;
+  static double textSizeSl = 24.sp;
 
   static const fontFamily = 'SegoeUI';
 
@@ -17,11 +17,11 @@ class TextConfigs {
   static final regular12Grey2 = TextStyle(
     fontFamily: fontFamily,
     color: AppColors.grey2Color,
-    fontSize: textSizeSm.sp,
+    fontSize: textSizeSm,
   );
 
   static final medium14 = TextStyle(
     fontFamily: fontFamily,
-    fontSize: textSizeMd.sp,
+    fontSize: textSizeMd,
   );
 }

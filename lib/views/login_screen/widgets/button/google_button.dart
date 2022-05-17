@@ -2,6 +2,7 @@ import 'package:book_net/configs/color_configs.dart';
 import 'package:book_net/configs/style_configs.dart';
 import 'package:book_net/configs/text_configs.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class GoogleButton extends StatelessWidget {
   const GoogleButton({Key? key}) : super(key: key);
@@ -32,7 +33,7 @@ class GoogleButton extends StatelessWidget {
             child: Center(
               child: Row(children: <Widget>[
                 Image.asset('assets/icons/google.png'),
-                const SizedBox(width: 16),
+                SizedBox(width: 16.w),
                 Text('GOOGLE',
                     style: TextConfigs.medium14
                         .copyWith(color: AppColors.grey3Color))

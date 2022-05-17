@@ -2,6 +2,7 @@ import 'package:book_net/configs/color_configs.dart';
 import 'package:book_net/configs/style_configs.dart';
 import 'package:book_net/configs/text_configs.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FacebookButton extends StatelessWidget {
   const FacebookButton({Key? key}) : super(key: key);
@@ -35,7 +36,7 @@ class FacebookButton extends StatelessWidget {
             child: Center(
               child: Row(children: <Widget>[
                 Image.asset('assets/icons/facebook.png'),
-                const SizedBox(width: 16),
+                SizedBox(width: 16.w),
                 Text('FACEBOOK',
                     style: TextConfigs.medium14
                         .copyWith(color: AppColors.whiteColor))
