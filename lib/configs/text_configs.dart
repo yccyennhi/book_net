@@ -10,7 +10,7 @@ class TextConfigs {
   static double textSizeLg = 20.sp;
   static double textSizeSl = 24.sp;
 
-  static const fontFamily = 'SegoeUI';
+  static const fontFamily = 'Inter';
 
   // Naming [font style][size][color]
 

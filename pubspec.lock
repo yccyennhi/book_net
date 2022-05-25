@@ -303,6 +303,15 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.5"
+  persistent_bottom_nav_bar:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: HEAD
+      resolved-ref: "134fad97f415429ca1f794e33492164d259d5d52"
+      url: "https://github.com/PcolBP/PersistentBottomNavBar.git"
+    source: git
+    version: "4.0.2"
   petitparser:
     dependency: transitive
     description:
