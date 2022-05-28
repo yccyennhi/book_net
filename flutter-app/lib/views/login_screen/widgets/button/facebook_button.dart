@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FacebookButton extends StatelessWidget {
-  const FacebookButton({Key? key}) : super(key: key);
+  const FacebookButton({Key? key, this.text}) : super(key: key);
+  final String? text;
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +45,7 @@ class FacebookButton extends StatelessWidget {
             ),
             Align(
               alignment: Alignment.center,
-              child: Text('Continue with Facebook',
+              child: Text(text!,
                   style: TextConfigs.medium16
                       .copyWith(color: AppColors.whiteColor)),
             )

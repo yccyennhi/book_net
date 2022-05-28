@@ -70,11 +70,13 @@ class _LoginTypeScreenState extends State<LoginTypeScreen> {
                 SizedBox(
                   height: 16.h,
                 ),
-                const GoogleButton(),
+                const GoogleButton(text: 'Continue with Google'),
                 SizedBox(
                   height: 16.h,
                 ),
-                const FacebookButton(),
+                const FacebookButton(
+                  text: 'Continue with Facebook',
+                ),
               ]),
         ),
       ),

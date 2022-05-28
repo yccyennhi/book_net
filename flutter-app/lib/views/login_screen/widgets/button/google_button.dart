@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class GoogleButton extends StatelessWidget {
-  const GoogleButton({Key? key}) : super(key: key);
-
+  const GoogleButton({Key? key, this.text}) : super(key: key);
+  final String? text;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -43,7 +43,7 @@ class GoogleButton extends StatelessWidget {
                 ),
                 Align(
                   alignment: Alignment.center,
-                  child: Text('Continue with Google',
+                  child: Text(text!,
                       style: TextConfigs.medium16
                           .copyWith(color: AppColors.blackColor)),
                 )
