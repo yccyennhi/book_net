@@ -1,12 +1,12 @@
 import 'package:book_net/configs/color_configs.dart';
 import 'package:book_net/configs/text_configs.dart';
 import 'package:book_net/configs/validate_configs.dart';
+import 'package:book_net/views/base_widgets/bar/bar.dart';
+import 'package:book_net/views/base_widgets/button/icon_button.dart';
 import 'package:book_net/views/base_widgets/button/raised_gradient_button.dart';
 import 'package:book_net/views/base_widgets/text_field/password_text_field.dart';
 import 'package:book_net/views/base_widgets/text_field/text_field.dart';
 import 'package:book_net/views/login_screen/login_screen.dart';
-import 'package:book_net/views/login_screen/widgets/button/facebook_button.dart';
-import 'package:book_net/views/login_screen/widgets/button/google_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:form_field_validator/form_field_validator.dart';
@@ -38,21 +38,31 @@ class _SignUpScreenState extends State<SignUpScreen> {
       Navigator.pushNamed(context, LoginScreen.id);
     }
 
+    onPressedFacebook() {}
+
+    onPressedGoogle() {}
+
     return GestureDetector(
       onTap: () => setUnfocus(context),
       child: Scaffold(
         backgroundColor: AppColors.whiteColor,
+        appBar: PreferredSize(
+          preferredSize: Size(double.infinity, 48.h),
+          child: const Bars(
+            title: 'Sign up',
+          ),
+        ),
         body: SingleChildScrollView(
           child: Container(
             padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 8.h),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
+                Text('Welcome.', style: TextConfigs.bold32),
+                Text('Create a new account.', style: TextConfigs.medium16),
                 SizedBox(
-                  height: 60.h,
-                ),
-                Image.asset('assets/images/LogoHorizontal.png'),
-                SizedBox(
-                  height: 52.h,
+                  height: 24.h,
                 ),
                 Form(
                   key: _key,
@@ -126,33 +136,22 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   height: 20.h,
                 ),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const Flexible(child: FacebookButton(), flex: 1),
+                    CustomIconButton(
+                        icon: Image.asset('assets/icons/facebook.png'),
+                        color: AppColors.blueColor),
                     SizedBox(
-                      width: 40.w,
+                      width: 16.w,
                     ),
-                    const Flexible(child: GoogleButton(), flex: 1),
+                    CustomIconButton(
+                        icon: Image.asset('assets/icons/google.png'),
+                        color: AppColors.whiteColor),
                   ],
                 ),
                 SizedBox(
                   height: 40.h,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Already have an account?',
-                      style: TextConfigs.regular12Grey2,
-                    ),
-                    TextButton(
-                      onPressed: onPressedLogin,
-                      child: Text(
-                        'Login',
-                        style: TextConfigs.regular12Blue,
-                      ),
-                    )
-                  ],
                 ),
               ],
             ),
