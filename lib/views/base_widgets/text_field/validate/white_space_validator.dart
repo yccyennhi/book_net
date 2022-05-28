@@ -1,8 +1,8 @@
 import 'package:form_field_validator/form_field_validator.dart';
 
-class ConfirmPasswordValidator extends TextFieldValidator {
+class WhiteSpaceValidator extends TextFieldValidator {
   // pass the error text to the super constructor
-  ConfirmPasswordValidator({required String errorText}) : super(errorText);
+  WhiteSpaceValidator({required String errorText}) : super(errorText);
 
   // return false if you want the validator to return error
   // message when the value is empty.

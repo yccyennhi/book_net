@@ -9,34 +9,41 @@ import 'package:book_net/views/login_screen/widgets/button/facebook_button.dart'
 import 'package:book_net/views/login_screen/widgets/button/google_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:form_field_validator/form_field_validator.dart';
 
-class SignUpScreen extends StatefulWidget {
-  const SignUpScreen({Key? key}) : super(key: key);
-  static const String id = 'signUp';
+class ForgotPasswordScreen extends StatefulWidget {
+  const ForgotPasswordScreen({Key? key}) : super(key: key);
+  static const String id = 'login';
 
   @override
-  State<SignUpScreen> createState() => _SignUpScreenState();
+  _ForgotPasswordScreenState createState() => _ForgotPasswordScreenState();
 }
 
-class _SignUpScreenState extends State<SignUpScreen> {
+class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
+  // var loginBloc;
   TextEditingController userController = TextEditingController();
-  TextEditingController firstNameController = TextEditingController();
-  TextEditingController lastNameController = TextEditingController();
   TextEditingController passController = TextEditingController();
-  TextEditingController confirmPassController = TextEditingController();
 
   final _key = GlobalKey<FormState>();
 
   @override
-  Widget build(BuildContext context) {
-    onPressedSignUp() {
-      _key.currentState!.validate();
-    }
+  void initState() {
+    super.initState();
+    //  loginBloc = BlocProvider.of<LoginBloc>(context);
+  }
 
+  @override
+  Widget build(BuildContext context) {
     onPressedLogin() {
       Navigator.pushNamed(context, LoginScreen.id);
+
+      // log('button click');
+      // log('${_key.currentState!.validate()}');
+      // print(passwordValidator
+      //     .validators[passwordValidator.validators.length - 1].errorText);
     }
+
+    // onPressedLogin() {
+    // }
 
     return GestureDetector(
       onTap: () => setUnfocus(context),
@@ -44,13 +51,29 @@ class _SignUpScreenState extends State<SignUpScreen> {
         backgroundColor: AppColors.whiteColor,
         body: SingleChildScrollView(
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 8.h),
+            padding: EdgeInsets.symmetric(horizontal: 20.h, vertical: 8.w),
             child: Column(
               children: [
                 SizedBox(
-                  height: 60.h,
+                  height: 40.h,
                 ),
                 Image.asset('assets/images/LogoHorizontal.png'),
+                Text('Forgot password', style: TextConfigs.semibold20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text('Already have an account?',
+                        style: TextConfigs.regular16Grey),
+                    TextButton(
+                      onPressed: onPressedLogin,
+                      child: Text(
+                        'Login',
+                        style: TextConfigs.regular12Blue,
+                      ),
+                    )
+                  ],
+                ),
                 SizedBox(
                   height: 52.h,
                 ),
@@ -66,39 +89,23 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       SizedBox(
                         height: 24.h,
                       ),
-                      CustomTextField(
-                        text: 'First name',
-                        controller: firstNameController,
-                        validator: ValidateConfigs.firstNameValidator,
-                      ),
-                      SizedBox(
-                        height: 24.h,
-                      ),
-                      CustomTextField(
-                        text: 'Last name',
-                        controller: lastNameController,
-                        validator: ValidateConfigs.lastNameValidator,
-                      ),
-                      SizedBox(
-                        height: 24.h,
-                      ),
                       PasswordTextField(
                         text: 'Password',
                         controller: passController,
                         validator: ValidateConfigs.passwordValidator,
                       ),
-                      SizedBox(
-                        height: 24.h,
-                      ),
-                      PasswordTextField(
-                        text: 'Confirm password',
-                        controller: confirmPassController,
-                        validator: (val) =>
-                            MatchValidator(errorText: 'Passwords do not match')
-                                .validateMatch(passController.text,
-                                    confirmPassController.text),
-                      ),
                     ],
+                  ),
+                ),
+                SizedBox(
+                  height: 12.h,
+                ),
+                Align(
+                  alignment: Alignment.bottomRight,
+                  child: TextButton(
+                    child: Text('Forgot your password?',
+                        style: TextConfigs.regular12Blue),
+                    onPressed: () {},
                   ),
                 ),
                 SizedBox(
@@ -106,7 +113,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
                 RaisedGradientButton(
                   child: Text(
-                    'SIGN UP',
+                    'LOGIN',
                     style: TextConfigs.medium16
                         .copyWith(color: AppColors.whiteColor),
                   ),
@@ -116,7 +123,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       AppColors.green1Color,
                     ],
                   ),
-                  onPressed: onPressedSignUp,
+                  onPressed: onPressedLogin,
                 ),
                 SizedBox(
                   height: 40.h,
@@ -129,30 +136,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   children: [
                     const Flexible(child: FacebookButton(), flex: 1),
                     SizedBox(
-                      width: 40.w,
+                      width: 40.h,
                     ),
                     const Flexible(child: GoogleButton(), flex: 1),
                   ],
                 ),
                 SizedBox(
                   height: 40.h,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Already have an account?',
-                      style: TextConfigs.regular12Grey2,
-                    ),
-                    TextButton(
-                      onPressed: onPressedLogin,
-                      child: Text(
-                        'Login',
-                        style: TextConfigs.regular12Blue,
-                      ),
-                    )
-                  ],
                 ),
               ],
             ),

@@ -1,3 +1,6 @@
+import 'package:book_net/views/carousel_screen/carousel_screen.dart';
+import 'package:book_net/views/launch_screen.dart/launch_screen.dart';
+import 'package:book_net/views/login_screen/choose_login_type.dart';
 import 'package:book_net/views/login_screen/login_screen.dart';
 import 'package:book_net/views/main.dart';
 import 'package:book_net/views/signup_screen/signup_screen.dart';
@@ -38,7 +41,21 @@ class AppRoutes {
           settings: settings,
           builder: (_) => const SplashScreen(),
         );
-
+      case LaunchScreen.id:
+        return CupertinoPageRoute(
+          settings: settings,
+          builder: (_) => const LaunchScreen(),
+        );
+      case LoginTypeScreen.id:
+        return CupertinoPageRoute(
+          settings: settings,
+          builder: (_) => const LoginTypeScreen(),
+        );
+      case CarouselScreen.id:
+        return CupertinoPageRoute(
+          settings: settings,
+          builder: (_) => const CarouselScreen(),
+        );
       default:
         return _errorRoute();
     }

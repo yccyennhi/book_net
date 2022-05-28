@@ -1,15 +1,13 @@
-import 'dart:developer';
-
 import 'package:book_net/configs/color_configs.dart';
 import 'package:book_net/configs/text_configs.dart';
+import 'package:book_net/configs/validate_configs.dart';
+import 'package:book_net/views/base_widgets/bar/bar.dart';
 import 'package:book_net/views/base_widgets/button/raised_gradient_button.dart';
 import 'package:book_net/views/base_widgets/text_field/password_text_field.dart';
 import 'package:book_net/views/base_widgets/text_field/text_field.dart';
-import 'package:book_net/views/login_screen/widgets/button/facebook_button.dart';
-import 'package:book_net/views/login_screen/widgets/button/google_button.dart';
 import 'package:book_net/views/signup_screen/signup_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:form_field_validator/form_field_validator.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -24,18 +22,6 @@ class _LoginScreenState extends State<LoginScreen> {
   TextEditingController userController = TextEditingController();
   TextEditingController passController = TextEditingController();
 
-  final emailValidator = MultiValidator([
-    RequiredValidator(errorText: 'E-mail is required'),
-    EmailValidator(errorText: 'Invalid E-mail'),
-  ]);
-
-  final passwordValidator = MultiValidator([
-    RequiredValidator(errorText: 'Password is required'),
-    MinLengthValidator(8, errorText: 'Password must be at least 8 digits long'),
-    PatternValidator(r'(?=.*?[#?!@$%^&*-])',
-        errorText: 'Password must have at least one special character')
-  ]);
-
   final _key = GlobalKey<FormState>();
 
   @override
@@ -46,116 +32,95 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    login() {
-      log('button click');
-      log('${_key.currentState!.validate()}');
-      print(passwordValidator
-          .validators[passwordValidator.validators.length - 1].errorText);
+    onPressedLogin() {
+      _key.currentState!.validate();
+      // log('button click');
+      // log('${_key.currentState!.validate()}');
+      // print(passwordValidator
+      //     .validators[passwordValidator.validators.length - 1].errorText);
+    }
+
+    onPressedSignUp() {
+      Navigator.pushNamed(context, SignUpScreen.id);
     }
 
     return GestureDetector(
       onTap: () => setUnfocus(context),
       child: Scaffold(
+        appBar: PreferredSize(
+          preferredSize: Size(double.infinity, 48.h),
+          child: const Bars(
+            title: 'Login',
+          ),
+        ),
         backgroundColor: AppColors.whiteColor,
         body: SingleChildScrollView(
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-            child: Column(
-              children: [
-                const SizedBox(
-                  height: 60,
-                ),
-                Image.asset('assets/images/LogoHorizontal.png'),
-                const SizedBox(
-                  height: 52,
-                ),
-                Form(
-                  key: _key,
-                  autovalidateMode: AutovalidateMode.always,
-                  child: Column(
-                    children: [
-                      CustomTextField(
-                        text: 'E-mail address',
-                        controller: userController,
-                        validator: emailValidator,
-                      ),
-                      const SizedBox(
-                        height: 24,
-                      ),
-                      PasswordTextField(
-                        text: 'Password',
-                        controller: passController,
-                        validator: passwordValidator,
-                      ),
-                    ],
+          child: Padding(
+            padding: EdgeInsets.fromLTRB(24.w, 0.h, 24.w, 0.h),
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
+                  maxHeight: MediaQuery.of(context).size.height - 48.h - 32.h),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text('Welcome back.', style: TextConfigs.bold32),
+                  Text('Log in to your account.', style: TextConfigs.medium16),
+                  SizedBox(
+                    height: 24.h,
                   ),
-                ),
-                const SizedBox(
-                  height: 12,
-                ),
-                Align(
-                  alignment: Alignment.bottomRight,
-                  child: TextButton(
+                  Form(
+                    key: _key,
+                    child: Column(
+                      children: [
+                        CustomTextField(
+                          text: 'E-mail address',
+                          controller: userController,
+                          validator: ValidateConfigs.emailValidator,
+                        ),
+                        SizedBox(
+                          height: 12.h,
+                        ),
+                        PasswordTextField(
+                          text: 'Password',
+                          controller: passController,
+                          validator: ValidateConfigs.passwordValidator,
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 4.h,
+                  ),
+                  TextButton(
                     child: Text('Forgot your password?',
                         style: TextConfigs.regular12Blue),
                     onPressed: () {},
                   ),
-                ),
-                const SizedBox(
-                  height: 28,
-                ),
-                RaisedGradientButton(
-                  child: Text(
-                    'LOGIN',
-                    style: TextConfigs.medium14
-                        .copyWith(color: AppColors.whiteColor),
+                  const Expanded(child: SizedBox()),
+                  Text(
+                    'By continuing, you agree to our Terms of Service and Privacy Policy.',
+                    style: TextConfigs.regular12Blue,
                   ),
-                  gradient: const LinearGradient(
-                    colors: <Color>[
-                      AppColors.green2Color,
-                      AppColors.green1Color,
-                    ],
+                  SizedBox(
+                    height: 20.h,
                   ),
-                  onPressed: login,
-                ),
-                const SizedBox(
-                  height: 40,
-                ),
-                Image.asset('assets/images/or.png'),
-                const SizedBox(
-                  height: 20,
-                ),
-                Row(
-                  children: const [
-                    Flexible(child: FacebookButton(), flex: 1),
-                    SizedBox(
-                      width: 40,
+                  RaisedGradientButton(
+                    child: Text(
+                      'LOGIN',
+                      style: TextConfigs.medium16
+                          .copyWith(color: AppColors.whiteColor),
                     ),
-                    Flexible(child: GoogleButton(), flex: 1),
-                  ],
-                ),
-                const SizedBox(
-                  height: 40,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Don’t have an account?',
-                      style: TextConfigs.regular12Grey2,
+                    gradient: const LinearGradient(
+                      colors: <Color>[
+                        AppColors.green1Color,
+                        AppColors.green2Color,
+                      ],
                     ),
-                    TextButton(
-                      onPressed: () =>
-                          Navigator.pushNamed(context, SignUpScreen.id),
-                      child: Text(
-                        'Sign up',
-                        style: TextConfigs.regular12Blue,
-                      ),
-                    )
-                  ],
-                ),
-              ],
+                    onPressed: onPressedLogin,
+                  ),
+                ],
+              ),
             ),
           ),
         ),

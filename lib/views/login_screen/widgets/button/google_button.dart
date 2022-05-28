@@ -2,6 +2,7 @@ import 'package:book_net/configs/color_configs.dart';
 import 'package:book_net/configs/style_configs.dart';
 import 'package:book_net/configs/text_configs.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class GoogleButton extends StatelessWidget {
   const GoogleButton({Key? key}) : super(key: key);
@@ -15,9 +16,10 @@ class GoogleButton extends StatelessWidget {
       decoration: BoxDecoration(
           borderRadius:
               const BorderRadius.all(Radius.circular(AppStyles.radiusMd)),
+          border: Border.all(color: AppColors.grayColor, width: 1.w),
           boxShadow: [
             BoxShadow(
-              color: AppColors.greyColor.withOpacity(0.5),
+              color: AppColors.greyColor.withOpacity(0.1),
               offset: const Offset(0, 4),
               blurRadius: 4,
             ),
@@ -30,11 +32,21 @@ class GoogleButton extends StatelessWidget {
         child: InkWell(
             onTap: () {},
             child: Center(
-              child: Row(children: <Widget>[
-                Image.asset('assets/icons/google.png'),
-                Text('GOOGLE',
-                    style: TextConfigs.medium14
-                        .copyWith(color: AppColors.grey3Color))
+              child: Stack(alignment: Alignment.centerLeft, children: <Widget>[
+                Padding(
+                  padding: EdgeInsets.only(left: 16.h),
+                  child: Image.asset(
+                    'assets/icons/google.png',
+                    width: 20.w,
+                    height: 20.h,
+                  ),
+                ),
+                Align(
+                  alignment: Alignment.center,
+                  child: Text('Continue with Google',
+                      style: TextConfigs.medium16
+                          .copyWith(color: AppColors.blackColor)),
+                )
               ]),
             )),
       ),
