@@ -1,7 +1,7 @@
 import 'package:book_net/configs/color_configs.dart';
 import 'package:book_net/configs/style_configs.dart';
+import 'package:book_net/configs/text_configs.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
@@ -32,53 +32,49 @@ class CustomTextField extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            // Text(_text, style: TextConfigs.regular12Grey2),
-            SizedBox(
-              height: 4.h,
+            Text(_text, style: TextConfigs.regular12Grey2),
+            const SizedBox(
+              height: 4,
             ),
             TextFormField(
               controller: _controller,
               obscureText: osbcure ?? false,
-              autovalidateMode:
-                  _controller != "" ? AutovalidateMode.onUserInteraction : null,
+              // onEditingComplete: ,
               decoration: InputDecoration(
-                hintText: _text,
-                labelText: _text,
                 suffixIcon: suffixIcon,
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: const BorderRadius.all(
-                      Radius.circular(AppStyles.radiusXxs)),
+                focusedBorder: const OutlineInputBorder(
+                  borderRadius:
+                      BorderRadius.all(Radius.circular(AppStyles.radiusMd)),
                   borderSide:
-                      BorderSide(width: 1.w, color: AppColors.green3Color),
+                      BorderSide(width: 1, color: AppColors.green3Color),
                 ),
-                disabledBorder: OutlineInputBorder(
-                  borderRadius: const BorderRadius.all(
-                      Radius.circular(AppStyles.radiusXxs)),
-                  borderSide: BorderSide(width: 1.w, color: Colors.orange),
+                disabledBorder: const OutlineInputBorder(
+                  borderRadius:
+                      BorderRadius.all(Radius.circular(AppStyles.radiusMd)),
+                  borderSide: BorderSide(width: 1, color: Colors.orange),
                 ),
-                enabledBorder: OutlineInputBorder(
-                  borderRadius: const BorderRadius.all(
-                      Radius.circular(AppStyles.radiusXxs)),
-                  borderSide:
-                      BorderSide(width: 1.w, color: AppColors.grey1Color),
+                enabledBorder: const OutlineInputBorder(
+                  borderRadius:
+                      BorderRadius.all(Radius.circular(AppStyles.radiusMd)),
+                  borderSide: BorderSide(width: 1, color: AppColors.grey1Color),
                 ),
-                border: OutlineInputBorder(
-                  borderRadius: const BorderRadius.all(
-                      Radius.circular(AppStyles.radiusXxs)),
-                  borderSide:
-                      BorderSide(width: 1.w, color: AppColors.grey1Color),
-                ),
-                errorBorder: OutlineInputBorder(
-                  borderRadius: const BorderRadius.all(
-                      Radius.circular(AppStyles.radiusXxs)),
-                  borderSide: BorderSide(width: 1.w, color: AppColors.redColor),
-                ),
-                focusedErrorBorder: OutlineInputBorder(
-                  borderRadius: const BorderRadius.all(
-                      Radius.circular(AppStyles.radiusXxs)),
-                  borderSide: BorderSide(width: 1.w, color: AppColors.redColor),
-                ),
+                border: const OutlineInputBorder(
+                    borderRadius:
+                        BorderRadius.all(Radius.circular(AppStyles.radiusMd)),
+                    borderSide:
+                        BorderSide(width: 1, color: AppColors.grey1Color)),
+                errorBorder: const OutlineInputBorder(
+                    borderRadius:
+                        BorderRadius.all(Radius.circular(AppStyles.radiusMd)),
+                    borderSide:
+                        BorderSide(width: 1, color: AppColors.redColor)),
+                focusedErrorBorder: const OutlineInputBorder(
+                    borderRadius:
+                        BorderRadius.all(Radius.circular(AppStyles.radiusMd)),
+                    borderSide:
+                        BorderSide(width: 1, color: AppColors.redColor)),
               ),
+
               validator: _validator,
             ),
           ]),

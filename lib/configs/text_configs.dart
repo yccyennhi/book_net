@@ -9,7 +9,6 @@ class TextConfigs {
   static const int textSizeMd = 16;
   static const int textSizeLg = 20;
   static const int textSizeSl = 24;
-  static const int textSizeSSl = 32;
 
   static const fontFamily = 'SegoeUI';
 
@@ -27,55 +26,8 @@ class TextConfigs {
     fontSize: textSizeSm.sp,
   );
 
-  static final regular16Blue = TextStyle(
-    fontFamily: fontFamily,
-    // color: AppColors.blueColor,
-    fontSize: textSizeMd.sp,
-  );
-
-  static final regular16Grey = TextStyle(
-    fontFamily: fontFamily,
-    color: AppColors.grey3Color,
-    fontSize: textSizeMd.sp,
-  );
-
-  static final medium16 = TextStyle(
+  static final medium14 = TextStyle(
     fontFamily: fontFamily,
     fontSize: textSizeMd.sp,
-    fontWeight: FontWeight.w500,
-  );
-
-  static final semibold20 = TextStyle(
-    fontFamily: fontFamily,
-    fontWeight: FontWeight.w600,
-    fontSize: textSizeLg.sp,
-  );
-
-  static final bold24Zomp = TextStyle(
-    fontFamily: fontFamily,
-    fontWeight: FontWeight.w700,
-    fontSize: textSizeSl.sp,
-    color: AppColors.zompColor,
-  );
-
-  static final bold24 = TextStyle(
-    fontFamily: fontFamily,
-    fontWeight: FontWeight.w700,
-    fontSize: textSizeSl.sp,
-    color: AppColors.blackColor,
-  );
-
-  static final bold20 = TextStyle(
-    fontFamily: fontFamily,
-    fontWeight: FontWeight.w700,
-    fontSize: textSizeSl.sp,
-    color: AppColors.blackColor,
-  );
-
-  static final bold32 = TextStyle(
-    fontFamily: fontFamily,
-    fontWeight: FontWeight.w700,
-    fontSize: textSizeSSl.sp,
-    color: AppColors.blackColor,
   );
 }

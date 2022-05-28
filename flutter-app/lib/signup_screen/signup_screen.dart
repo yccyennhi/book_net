@@ -1,14 +1,14 @@
+import 'dart:developer';
+
 import 'package:book_net/configs/color_configs.dart';
 import 'package:book_net/configs/text_configs.dart';
-import 'package:book_net/configs/validate_configs.dart';
 import 'package:book_net/views/base_widgets/button/raised_gradient_button.dart';
+import 'package:book_net/views/base_widgets/text_field/confirm_password_validator.dart';
 import 'package:book_net/views/base_widgets/text_field/password_text_field.dart';
 import 'package:book_net/views/base_widgets/text_field/text_field.dart';
-import 'package:book_net/views/login_screen/login_screen.dart';
 import 'package:book_net/views/login_screen/widgets/button/facebook_button.dart';
 import 'package:book_net/views/login_screen/widgets/button/google_button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -21,21 +21,29 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController userController = TextEditingController();
-  TextEditingController firstNameController = TextEditingController();
-  TextEditingController lastNameController = TextEditingController();
   TextEditingController passController = TextEditingController();
   TextEditingController confirmPassController = TextEditingController();
 
-  final _key = GlobalKey<FormState>();
+  final emailValidator = MultiValidator([
+    RequiredValidator(errorText: 'E-mail is required'),
+    EmailValidator(errorText: 'Invalid E-mail'),
+  ]);
 
+  final passwordValidator =
+      ConfirmPasswordValidator(errorText: "Password must not have whitespace");
+
+  final _key = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    onPressedSignUp() {
-      _key.currentState!.validate();
-    }
+    final confirmPasswordValidator =
+        MatchValidator(errorText: 'Passwords do not match').validateMatch(
+            passController.text.trim(), confirmPassController.text.trim());
 
-    onPressedLogin() {
-      Navigator.pushNamed(context, LoginScreen.id);
+    login() {
+      log('button click');
+      log('${_key.currentState!.validate()}');
+      // print(passwordValidator
+      //     .validators[passwordValidator.validators.length - 1].errorText);
     }
 
     return GestureDetector(
@@ -44,70 +52,74 @@ class _SignUpScreenState extends State<SignUpScreen> {
         backgroundColor: AppColors.whiteColor,
         body: SingleChildScrollView(
           child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 8.h),
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
             child: Column(
               children: [
-                SizedBox(
-                  height: 60.h,
+                const SizedBox(
+                  height: 60,
                 ),
                 Image.asset('assets/images/LogoHorizontal.png'),
-                SizedBox(
-                  height: 52.h,
+                const SizedBox(
+                  height: 52,
                 ),
                 Form(
                   key: _key,
+                  autovalidateMode: AutovalidateMode.always,
                   child: Column(
                     children: [
                       CustomTextField(
                         text: 'E-mail address',
                         controller: userController,
-                        validator: ValidateConfigs.emailValidator,
+                        validator: emailValidator,
                       ),
-                      SizedBox(
-                        height: 24.h,
+                      const SizedBox(
+                        height: 24,
                       ),
                       CustomTextField(
                         text: 'First name',
-                        controller: firstNameController,
-                        validator: ValidateConfigs.firstNameValidator,
+                        controller: userController,
+                        validator: emailValidator,
                       ),
-                      SizedBox(
-                        height: 24.h,
-                      ),
+                      const SizedBox(height: 24),
                       CustomTextField(
                         text: 'Last name',
-                        controller: lastNameController,
-                        validator: ValidateConfigs.lastNameValidator,
+                        controller: userController,
+                        validator: emailValidator,
                       ),
-                      SizedBox(
-                        height: 24.h,
+                      const SizedBox(
+                        height: 24,
                       ),
                       PasswordTextField(
                         text: 'Password',
                         controller: passController,
-                        validator: ValidateConfigs.passwordValidator,
+                        validator: passwordValidator,
                       ),
-                      SizedBox(
-                        height: 24.h,
-                      ),
-                      PasswordTextField(
-                        text: 'Confirm password',
-                        controller: confirmPassController,
-                        validator: (val) =>
-                            MatchValidator(errorText: 'Passwords do not match')
-                                .validateMatch(passController.text,
-                                    confirmPassController.text),
-                      ),
+                      // PasswordTextField(
+                      //   text: 'Confirm password',
+                      //   controller: confirmPassController,
+                      //   validator: confirmPasswordValidator,
+                      // ),
                     ],
                   ),
                 ),
-                SizedBox(
-                  height: 28.h,
+                const SizedBox(
+                  height: 12,
+                ),
+                Align(
+                  alignment: Alignment.bottomRight,
+                  child: TextButton(
+                    child: Text('Forgot your password?',
+                        style: TextConfigs.regular12Blue),
+                    onPressed: () {},
+                  ),
+                ),
+                const SizedBox(
+                  height: 28,
                 ),
                 RaisedGradientButton(
                   child: Text(
-                    'SIGN UP',
-                    style: TextConfigs.medium16
+                    'LOGIN',
+                    style: TextConfigs.medium14
                         .copyWith(color: AppColors.whiteColor),
                   ),
                   gradient: const LinearGradient(
@@ -116,39 +128,39 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       AppColors.green1Color,
                     ],
                   ),
-                  onPressed: onPressedSignUp,
+                  onPressed: login,
                 ),
-                SizedBox(
-                  height: 40.h,
+                const SizedBox(
+                  height: 40,
                 ),
                 Image.asset('assets/images/or.png'),
-                SizedBox(
-                  height: 20.h,
+                const SizedBox(
+                  height: 20,
                 ),
                 Row(
-                  children: [
-                    const Flexible(child: FacebookButton(), flex: 1),
+                  children: const [
+                    Flexible(child: FacebookButton(), flex: 1),
                     SizedBox(
-                      width: 40.w,
+                      width: 40,
                     ),
-                    const Flexible(child: GoogleButton(), flex: 1),
+                    Flexible(child: GoogleButton(), flex: 1),
                   ],
                 ),
-                SizedBox(
-                  height: 40.h,
+                const SizedBox(
+                  height: 40,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
-                      'Already have an account?',
+                      'Don’t have an account?',
                       style: TextConfigs.regular12Grey2,
                     ),
                     TextButton(
-                      onPressed: onPressedLogin,
+                      onPressed: () {},
                       child: Text(
-                        'Login',
+                        'Sign up',
                         style: TextConfigs.regular12Blue,
                       ),
                     )

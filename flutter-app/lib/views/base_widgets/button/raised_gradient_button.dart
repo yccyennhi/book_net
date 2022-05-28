@@ -26,11 +26,11 @@ class RaisedGradientButton extends StatelessWidget {
       decoration: BoxDecoration(
         gradient: gradient,
         borderRadius: const BorderRadius.all(
-          Radius.circular(AppStyles.radiusLg),
+          Radius.circular(AppStyles.radiusMd),
         ),
         boxShadow: [
           BoxShadow(
-            color: AppColors.lightGreenColor.withOpacity(0.2),
+            color: AppColors.green1Color.withOpacity(0.2),
             offset: const Offset(0, 4),
             blurRadius: 4,
           ),
@@ -40,7 +40,7 @@ class RaisedGradientButton extends StatelessWidget {
         color: Colors.transparent,
         child: InkWell(
           borderRadius: const BorderRadius.all(
-            Radius.circular(AppStyles.radiusLg),
+            Radius.circular(AppStyles.radiusMd),
           ),
           onTap: () {
             onPressed();

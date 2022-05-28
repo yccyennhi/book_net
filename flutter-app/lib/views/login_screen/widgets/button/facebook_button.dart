@@ -2,7 +2,6 @@ import 'package:book_net/configs/color_configs.dart';
 import 'package:book_net/configs/style_configs.dart';
 import 'package:book_net/configs/text_configs.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FacebookButton extends StatelessWidget {
   const FacebookButton({Key? key}) : super(key: key);
@@ -18,7 +17,7 @@ class FacebookButton extends StatelessWidget {
               const BorderRadius.all(Radius.circular(AppStyles.radiusMd)),
           boxShadow: [
             BoxShadow(
-              color: AppColors.greyColor.withOpacity(0.1),
+              color: AppColors.greyColor.withOpacity(0.5),
               offset: const Offset(0, 4),
               blurRadius: 4,
             ),
@@ -29,27 +28,18 @@ class FacebookButton extends StatelessWidget {
         borderRadius:
             const BorderRadius.all(Radius.circular(AppStyles.radiusMd)),
         child: InkWell(
-          borderRadius: const BorderRadius.all(
-            Radius.circular(AppStyles.radiusMd),
-          ),
-          onTap: () {},
-          child: Stack(alignment: Alignment.centerLeft, children: <Widget>[
-            Padding(
-              padding: EdgeInsets.only(left: 16.h),
-              child: Image.asset(
-                'assets/icons/facebook.png',
-                width: 20.w,
-                height: 20.h,
-              ),
+            borderRadius: const BorderRadius.all(
+              Radius.circular(AppStyles.radiusMd),
             ),
-            Align(
-              alignment: Alignment.center,
-              child: Text('Continue with Facebook',
-                  style: TextConfigs.medium16
-                      .copyWith(color: AppColors.whiteColor)),
-            )
-          ]),
-        ),
+            onTap: () {},
+            child: Center(
+              child: Row(children: <Widget>[
+                Image.asset('assets/icons/facebook.png'),
+                Text('FACEBOOK',
+                    style: TextConfigs.medium14
+                        .copyWith(color: AppColors.whiteColor))
+              ]),
+            )),
       ),
     );
   }
