@@ -1,5 +1,7 @@
-import 'package:book_net/views/home_screen/home_screen.dart';
+import 'package:book_net/routes/app_routes.dart';
+import 'package:book_net/views/launch_screen.dart/launch_screen.dart';
 import 'package:flutter/material.dart';
+// import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -32,18 +34,32 @@ class BookNetApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: const Size(360, 720),
-      builder: (child) => MaterialApp(
+      builder: (context, child) => MaterialApp(
         debugShowCheckedModeBanner: false,
+        onGenerateRoute: AppRoutes().onGenerateRoute,
+        initialRoute: SplashScreen.id,
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: child,
+        // home: child,
       ),
-      child: AnimatedSplashScreen(
-        splash: Image.asset('assets/images/LOGO.png'),
-        nextScreen: const HomeScreen(),
-        splashTransition: SplashTransition.fadeTransition,
-      ),
+      // child: const SplashScreen(),
+    );
+  }
+}
+
+class SplashScreen extends StatelessWidget {
+  const SplashScreen({
+    Key? key,
+  }) : super(key: key);
+  static const String id = 'splash';
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedSplashScreen(
+      splash: Image.asset('assets/images/LOGO.png'),
+      nextScreen: const LaunchScreen(),
+      splashTransition: SplashTransition.fadeTransition,
     );
   }
 }

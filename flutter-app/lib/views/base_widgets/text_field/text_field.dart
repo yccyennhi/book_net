@@ -1,7 +1,7 @@
 import 'package:book_net/configs/color_configs.dart';
 import 'package:book_net/configs/style_configs.dart';
-import 'package:book_net/configs/text_configs.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
@@ -9,13 +9,20 @@ class CustomTextField extends StatelessWidget {
     required String text,
     required TextEditingController controller,
     this.width = double.infinity,
+    this.suffixIcon,
+    this.osbcure,
+    required String? Function(String?)? validator,
   })  : _text = text,
         _controller = controller,
+        _validator = validator,
         super(key: key);
 
   final double width;
   final String _text;
   final TextEditingController _controller;
+  final String? Function(String?)? _validator;
+  final Widget? suffixIcon;
+  final bool? osbcure;
 
   @override
   Widget build(BuildContext context) {
@@ -25,56 +32,54 @@ class CustomTextField extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text(_text, style: TextConfigs.regular12Grey2),
-            const SizedBox(
-              height: 4,
+            // Text(_text, style: TextConfigs.regular12Grey2),
+            SizedBox(
+              height: 4.h,
             ),
             TextFormField(
               controller: _controller,
-              decoration: const InputDecoration(
+              obscureText: osbcure ?? false,
+              autovalidateMode:
+                  _controller != "" ? AutovalidateMode.onUserInteraction : null,
+              decoration: InputDecoration(
+                hintText: _text,
+                labelText: _text,
+                suffixIcon: suffixIcon,
                 focusedBorder: OutlineInputBorder(
-                  borderRadius:
-                      BorderRadius.all(Radius.circular(AppStyles.radiusMd)),
+                  borderRadius: const BorderRadius.all(
+                      Radius.circular(AppStyles.radiusXxs)),
                   borderSide:
-                      BorderSide(width: 1, color: AppColors.green3Color),
+                      BorderSide(width: 1.w, color: AppColors.green3Color),
                 ),
-
                 disabledBorder: OutlineInputBorder(
-                  borderRadius:
-                      BorderRadius.all(Radius.circular(AppStyles.radiusMd)),
-                  borderSide: BorderSide(width: 1, color: Colors.orange),
+                  borderRadius: const BorderRadius.all(
+                      Radius.circular(AppStyles.radiusXxs)),
+                  borderSide: BorderSide(width: 1.w, color: Colors.orange),
                 ),
-
                 enabledBorder: OutlineInputBorder(
-                  borderRadius:
-                      BorderRadius.all(Radius.circular(AppStyles.radiusMd)),
-                  borderSide: BorderSide(width: 1, color: AppColors.grey1Color),
+                  borderRadius: const BorderRadius.all(
+                      Radius.circular(AppStyles.radiusXxs)),
+                  borderSide:
+                      BorderSide(width: 1.w, color: AppColors.grey1Color),
                 ),
-
                 border: OutlineInputBorder(
-                    borderRadius:
-                        BorderRadius.all(Radius.circular(AppStyles.radiusMd)),
-                    borderSide:
-                        BorderSide(width: 1, color: AppColors.grey1Color)),
-
+                  borderRadius: const BorderRadius.all(
+                      Radius.circular(AppStyles.radiusXxs)),
+                  borderSide:
+                      BorderSide(width: 1.w, color: AppColors.grey1Color),
+                ),
                 errorBorder: OutlineInputBorder(
-                    borderRadius:
-                        BorderRadius.all(Radius.circular(AppStyles.radiusMd)),
-                    borderSide:
-                        BorderSide(width: 1, color: AppColors.redColor)),
-
+                  borderRadius: const BorderRadius.all(
+                      Radius.circular(AppStyles.radiusXxs)),
+                  borderSide: BorderSide(width: 1.w, color: AppColors.redColor),
+                ),
                 focusedErrorBorder: OutlineInputBorder(
-                    borderRadius:
-                        BorderRadius.all(Radius.circular(AppStyles.radiusMd)),
-                    borderSide:
-                        BorderSide(width: 1, color: AppColors.redColor)),
-
-                // border: OutlineInputBorder(borderSide: Colors.amber),
-                // hintText: 'E-mail address',
+                  borderRadius: const BorderRadius.all(
+                      Radius.circular(AppStyles.radiusXxs)),
+                  borderSide: BorderSide(width: 1.w, color: AppColors.redColor),
+                ),
               ),
-              style: const TextStyle(
-                height: 0,
-              ),
+              validator: _validator,
             ),
           ]),
     );

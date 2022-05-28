@@ -11,7 +11,7 @@ class FeedScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Appbar'),
+        title: const Text('Appbar'),
       ),
       body: Column(
         children: <Widget>[
@@ -21,7 +21,7 @@ class FeedScreen extends StatelessWidget {
                 vertical: AppStyles.defaultMarginVertical),
             child: Text(
               "Hi, TrungHieu! Let's explore something new!",
-              style: TextConfigs.bold20Black,
+              style: TextConfigs.bold20,
             ),
           ),
         ],
