@@ -1,6 +1,10 @@
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 class AppStyles {
   //margin
-  static const marginLg = 32.0;
+  static final defaultMarginHorizontal = 16.w;
+  static final defaultMarginVertical = 16.h;
+  static final marginLg = 32.w;
 
   //padding
 

@@ -21,7 +21,13 @@ class TextConfigs {
   );
 
   static final medium14 = TextStyle(
+      fontFamily: fontFamily,
+      fontSize: textSizeMd,
+      fontWeight: FontWeight.w300);
+
+  static final bold20Black = TextStyle(
     fontFamily: fontFamily,
-    fontSize: textSizeMd,
+    fontSize: textSizeLg.sp,
+    fontWeight: FontWeight.w600,
   );
 }
