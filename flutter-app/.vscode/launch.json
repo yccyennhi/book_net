@@ -8,21 +8,21 @@
             "name": "book_net",
             "request": "launch",
             "type": "dart",
-            "program": "lib/views/main.dart"
+            "program": "lib/main.dart"
         },
         {
             "name": "book_net (profile mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile",
-            "program": "lib/views/main.dart"
+            "program": "lib/main.dart"
         },
         {
             "name": "book_net (release mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release",
-            "program": "lib/views/main.dart"
+            "program": "lib/main.dart"
         }
     ]
 }

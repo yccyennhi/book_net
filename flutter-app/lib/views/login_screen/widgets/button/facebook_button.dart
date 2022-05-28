@@ -18,7 +18,7 @@ class FacebookButton extends StatelessWidget {
               const BorderRadius.all(Radius.circular(AppStyles.radiusMd)),
           boxShadow: [
             BoxShadow(
-              color: AppColors.greyColor.withOpacity(0.5),
+              color: AppColors.greyColor.withOpacity(0.1),
               offset: const Offset(0, 4),
               blurRadius: 4,
             ),
@@ -29,19 +29,27 @@ class FacebookButton extends StatelessWidget {
         borderRadius:
             const BorderRadius.all(Radius.circular(AppStyles.radiusMd)),
         child: InkWell(
-            borderRadius: const BorderRadius.all(
-              Radius.circular(AppStyles.radiusMd),
+          borderRadius: const BorderRadius.all(
+            Radius.circular(AppStyles.radiusMd),
+          ),
+          onTap: () {},
+          child: Stack(alignment: Alignment.centerLeft, children: <Widget>[
+            Padding(
+              padding: EdgeInsets.only(left: 16.h),
+              child: Image.asset(
+                'assets/icons/facebook.png',
+                width: 20.w,
+                height: 20.h,
+              ),
             ),
-            onTap: () {},
-            child: Center(
-              child: Row(children: <Widget>[
-                Image.asset('assets/icons/facebook.png'),
-                SizedBox(width: 16.w),
-                Text('FACEBOOK',
-                    style: TextConfigs.medium14
-                        .copyWith(color: AppColors.whiteColor))
-              ]),
-            )),
+            Align(
+              alignment: Alignment.center,
+              child: Text('Continue with Facebook',
+                  style: TextConfigs.medium16
+                      .copyWith(color: AppColors.whiteColor)),
+            )
+          ]),
+        ),
       ),
     );
   }
