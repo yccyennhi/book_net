@@ -78,4 +78,17 @@ class TextConfigs {
     fontSize: textSizeSSl.sp,
     color: AppColors.blackColor,
   );
+
+  static final bold16 = TextStyle(
+    fontFamily: fontFamily,
+    fontWeight: FontWeight.w700,
+    fontSize: textSizeMd.sp,
+    color: AppColors.blackColor,
+  );
+
+  static final regular12Gray = TextStyle(
+    fontFamily: fontFamily,
+    color: AppColors.darkGrayColor,
+    fontSize: textSizeSm.sp,
+  );
 }
