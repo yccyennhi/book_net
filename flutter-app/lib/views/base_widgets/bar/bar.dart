@@ -19,7 +19,8 @@ class Bars extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: AppColors.whiteColor,
-      shadowColor: AppColors.whiteColor,
+      bottomOpacity: 0.0,
+      elevation: 0,
       leading: leading ??
           IconButton(
             icon: Image.asset(
