@@ -5,25 +5,24 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "flutter-app",
-            "cwd": "flutter-app",
-            "request": "launch",
-            "type": "dart"
-        },
-        {
-            "name": "flutter-app (profile mode)",
-            "cwd": "flutter-app",
+            "name": "book_net",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "profile"
+            "program": "lib/views/main.dart"
         },
         {
-            "name": "flutter-app (release mode)",
-            "cwd": "flutter-app",
-            "program": "./flutter-app/lib/main.dart",
+            "name": "book_net (profile mode)",
             "request": "launch",
             "type": "dart",
-            "flutterMode": "release"
+            "flutterMode": "profile",
+            "program": "lib/views/main.dart"
+        },
+        {
+            "name": "book_net (release mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release",
+            "program": "lib/views/main.dart"
         }
     ]
 }
