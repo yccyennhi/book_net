@@ -1,5 +1,6 @@
 import 'package:book_net/main.dart';
 import 'package:book_net/views/carousel_screen/carousel_screen.dart';
+import 'package:book_net/views/home_screen/news_detail_screen/news_detail_screen.dart';
 import 'package:book_net/views/launch_screen.dart/launch_screen.dart';
 import 'package:book_net/views/login_screen/choose_login_type.dart';
 import 'package:book_net/views/login_screen/login_screen.dart';
@@ -55,6 +56,9 @@ class AppRoutes {
           settings: settings,
           builder: (_) => const CarouselScreen(),
         );
+      case NewsDetailScreen.id:
+        return CupertinoPageRoute(
+            settings: settings, builder: (_) => const NewsDetailScreen());
       default:
         return _errorRoute();
     }

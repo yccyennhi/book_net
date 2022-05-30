@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'guild.dart';
+part of 'guild_pojo.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Guild _$GuildFromJson(Map<String, dynamic> json) {
-  return _Guild.fromJson(json);
+GuildPojo _$GuildPojoFromJson(Map<String, dynamic> json) {
+  return _GuildPojo.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Guild {
+mixin _$GuildPojo {
   String get id => throw _privateConstructorUsedError;
   String get imageUrl => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
@@ -28,13 +28,14 @@ mixin _$Guild {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $GuildCopyWith<Guild> get copyWith => throw _privateConstructorUsedError;
+  $GuildPojoCopyWith<GuildPojo> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $GuildCopyWith<$Res> {
-  factory $GuildCopyWith(Guild value, $Res Function(Guild) then) =
-      _$GuildCopyWithImpl<$Res>;
+abstract class $GuildPojoCopyWith<$Res> {
+  factory $GuildPojoCopyWith(GuildPojo value, $Res Function(GuildPojo) then) =
+      _$GuildPojoCopyWithImpl<$Res>;
   $Res call(
       {String id,
       String imageUrl,
@@ -44,12 +45,12 @@ abstract class $GuildCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$GuildCopyWithImpl<$Res> implements $GuildCopyWith<$Res> {
-  _$GuildCopyWithImpl(this._value, this._then);
+class _$GuildPojoCopyWithImpl<$Res> implements $GuildPojoCopyWith<$Res> {
+  _$GuildPojoCopyWithImpl(this._value, this._then);
 
-  final Guild _value;
+  final GuildPojo _value;
   // ignore: unused_field
-  final $Res Function(Guild) _then;
+  final $Res Function(GuildPojo) _then;
 
   @override
   $Res call({
@@ -85,9 +86,10 @@ class _$GuildCopyWithImpl<$Res> implements $GuildCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$$_GuildCopyWith<$Res> implements $GuildCopyWith<$Res> {
-  factory _$$_GuildCopyWith(_$_Guild value, $Res Function(_$_Guild) then) =
-      __$$_GuildCopyWithImpl<$Res>;
+abstract class _$$_GuildPojoCopyWith<$Res> implements $GuildPojoCopyWith<$Res> {
+  factory _$$_GuildPojoCopyWith(
+          _$_GuildPojo value, $Res Function(_$_GuildPojo) then) =
+      __$$_GuildPojoCopyWithImpl<$Res>;
   @override
   $Res call(
       {String id,
@@ -98,13 +100,14 @@ abstract class _$$_GuildCopyWith<$Res> implements $GuildCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_GuildCopyWithImpl<$Res> extends _$GuildCopyWithImpl<$Res>
-    implements _$$_GuildCopyWith<$Res> {
-  __$$_GuildCopyWithImpl(_$_Guild _value, $Res Function(_$_Guild) _then)
-      : super(_value, (v) => _then(v as _$_Guild));
+class __$$_GuildPojoCopyWithImpl<$Res> extends _$GuildPojoCopyWithImpl<$Res>
+    implements _$$_GuildPojoCopyWith<$Res> {
+  __$$_GuildPojoCopyWithImpl(
+      _$_GuildPojo _value, $Res Function(_$_GuildPojo) _then)
+      : super(_value, (v) => _then(v as _$_GuildPojo));
 
   @override
-  _$_Guild get _value => super._value as _$_Guild;
+  _$_GuildPojo get _value => super._value as _$_GuildPojo;
 
   @override
   $Res call({
@@ -114,7 +117,7 @@ class __$$_GuildCopyWithImpl<$Res> extends _$GuildCopyWithImpl<$Res>
     Object? descrition = freezed,
     Object? memberList = freezed,
   }) {
-    return _then(_$_Guild(
+    return _then(_$_GuildPojo(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -141,8 +144,8 @@ class __$$_GuildCopyWithImpl<$Res> extends _$GuildCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Guild implements _Guild {
-  const _$_Guild(
+class _$_GuildPojo implements _GuildPojo {
+  const _$_GuildPojo(
       {required this.id,
       required this.imageUrl,
       required this.name,
@@ -150,8 +153,8 @@ class _$_Guild implements _Guild {
       required final List<String> memberList})
       : _memberList = memberList;
 
-  factory _$_Guild.fromJson(Map<String, dynamic> json) =>
-      _$$_GuildFromJson(json);
+  factory _$_GuildPojo.fromJson(Map<String, dynamic> json) =>
+      _$$_GuildPojoFromJson(json);
 
   @override
   final String id;
@@ -170,14 +173,14 @@ class _$_Guild implements _Guild {
 
   @override
   String toString() {
-    return 'Guild(id: $id, imageUrl: $imageUrl, name: $name, descrition: $descrition, memberList: $memberList)';
+    return 'GuildPojo(id: $id, imageUrl: $imageUrl, name: $name, descrition: $descrition, memberList: $memberList)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Guild &&
+            other is _$_GuildPojo &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.imageUrl, imageUrl) &&
             const DeepCollectionEquality().equals(other.name, name) &&
@@ -199,24 +202,25 @@ class _$_Guild implements _Guild {
 
   @JsonKey(ignore: true)
   @override
-  _$$_GuildCopyWith<_$_Guild> get copyWith =>
-      __$$_GuildCopyWithImpl<_$_Guild>(this, _$identity);
+  _$$_GuildPojoCopyWith<_$_GuildPojo> get copyWith =>
+      __$$_GuildPojoCopyWithImpl<_$_GuildPojo>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_GuildToJson(this);
+    return _$$_GuildPojoToJson(this);
   }
 }
 
-abstract class _Guild implements Guild {
-  const factory _Guild(
+abstract class _GuildPojo implements GuildPojo {
+  const factory _GuildPojo(
       {required final String id,
       required final String imageUrl,
       required final String name,
       required final String descrition,
-      required final List<String> memberList}) = _$_Guild;
+      required final List<String> memberList}) = _$_GuildPojo;
 
-  factory _Guild.fromJson(Map<String, dynamic> json) = _$_Guild.fromJson;
+  factory _GuildPojo.fromJson(Map<String, dynamic> json) =
+      _$_GuildPojo.fromJson;
 
   @override
   String get id => throw _privateConstructorUsedError;
@@ -230,6 +234,6 @@ abstract class _Guild implements Guild {
   List<String> get memberList => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$$_GuildCopyWith<_$_Guild> get copyWith =>
+  _$$_GuildPojoCopyWith<_$_GuildPojo> get copyWith =>
       throw _privateConstructorUsedError;
 }

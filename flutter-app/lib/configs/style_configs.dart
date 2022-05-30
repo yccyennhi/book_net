@@ -2,10 +2,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppStyles {
   //margin
+  static final smallMarginVertical = 12.h;
+  static final smallMarginHorizontal = 12.w;
   static final defaultMarginHorizontal = 16.w;
   static final defaultMarginVertical = 16.h;
   static final marginLg = 32.w;
 
+  //bar
+  static final appBarHeight = 48.h;
   //padding
 
   //radius
@@ -18,4 +22,7 @@ class AppStyles {
   static const heightButtonSm = 32.0;
   static const heightButtonMd = 40.0;
   static const heightButtonLg = 52.0;
+
+  //news body
+  static final newsBodyHeight = 176.h;
 }

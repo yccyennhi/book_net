@@ -1,12 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'user.dart';
+part of 'user_pojo.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_User _$$_UserFromJson(Map<String, dynamic> json) => _$_User(
+_$_UserPojo _$$_UserPojoFromJson(Map<String, dynamic> json) => _$_UserPojo(
       id: json['id'] as String,
       imageUrl: json['imageUrl'] as String,
       name: json['name'] as String,
@@ -23,7 +23,8 @@ _$_User _$$_UserFromJson(Map<String, dynamic> json) => _$_User(
       highestPoint: json['highestPoint'] as int,
     );
 
-Map<String, dynamic> _$$_UserToJson(_$_User instance) => <String, dynamic>{
+Map<String, dynamic> _$$_UserPojoToJson(_$_UserPojo instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'imageUrl': instance.imageUrl,
       'name': instance.name,

@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'user.dart';
+part of 'user_pojo.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-User _$UserFromJson(Map<String, dynamic> json) {
-  return _User.fromJson(json);
+UserPojo _$UserPojoFromJson(Map<String, dynamic> json) {
+  return _UserPojo.fromJson(json);
 }
 
 /// @nodoc
-mixin _$User {
+mixin _$UserPojo {
   String get id => throw _privateConstructorUsedError;
   String get imageUrl => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
@@ -34,13 +34,14 @@ mixin _$User {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $UserCopyWith<User> get copyWith => throw _privateConstructorUsedError;
+  $UserPojoCopyWith<UserPojo> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $UserCopyWith<$Res> {
-  factory $UserCopyWith(User value, $Res Function(User) then) =
-      _$UserCopyWithImpl<$Res>;
+abstract class $UserPojoCopyWith<$Res> {
+  factory $UserPojoCopyWith(UserPojo value, $Res Function(UserPojo) then) =
+      _$UserPojoCopyWithImpl<$Res>;
   $Res call(
       {String id,
       String imageUrl,
@@ -56,12 +57,12 @@ abstract class $UserCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
-  _$UserCopyWithImpl(this._value, this._then);
+class _$UserPojoCopyWithImpl<$Res> implements $UserPojoCopyWith<$Res> {
+  _$UserPojoCopyWithImpl(this._value, this._then);
 
-  final User _value;
+  final UserPojo _value;
   // ignore: unused_field
-  final $Res Function(User) _then;
+  final $Res Function(UserPojo) _then;
 
   @override
   $Res call({
@@ -127,9 +128,10 @@ class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
-  factory _$$_UserCopyWith(_$_User value, $Res Function(_$_User) then) =
-      __$$_UserCopyWithImpl<$Res>;
+abstract class _$$_UserPojoCopyWith<$Res> implements $UserPojoCopyWith<$Res> {
+  factory _$$_UserPojoCopyWith(
+          _$_UserPojo value, $Res Function(_$_UserPojo) then) =
+      __$$_UserPojoCopyWithImpl<$Res>;
   @override
   $Res call(
       {String id,
@@ -146,13 +148,14 @@ abstract class _$$_UserCopyWith<$Res> implements $UserCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
-    implements _$$_UserCopyWith<$Res> {
-  __$$_UserCopyWithImpl(_$_User _value, $Res Function(_$_User) _then)
-      : super(_value, (v) => _then(v as _$_User));
+class __$$_UserPojoCopyWithImpl<$Res> extends _$UserPojoCopyWithImpl<$Res>
+    implements _$$_UserPojoCopyWith<$Res> {
+  __$$_UserPojoCopyWithImpl(
+      _$_UserPojo _value, $Res Function(_$_UserPojo) _then)
+      : super(_value, (v) => _then(v as _$_UserPojo));
 
   @override
-  _$_User get _value => super._value as _$_User;
+  _$_UserPojo get _value => super._value as _$_UserPojo;
 
   @override
   $Res call({
@@ -168,7 +171,7 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
     Object? currentPoint = freezed,
     Object? highestPoint = freezed,
   }) {
-    return _then(_$_User(
+    return _then(_$_UserPojo(
       id: id == freezed
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -219,8 +222,8 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_User implements _User {
-  const _$_User(
+class _$_UserPojo implements _UserPojo {
+  _$_UserPojo(
       {required this.id,
       required this.imageUrl,
       required this.name,
@@ -235,7 +238,8 @@ class _$_User implements _User {
       : _friendList = friendList,
         _guildList = guildList;
 
-  factory _$_User.fromJson(Map<String, dynamic> json) => _$$_UserFromJson(json);
+  factory _$_UserPojo.fromJson(Map<String, dynamic> json) =>
+      _$$_UserPojoFromJson(json);
 
   @override
   final String id;
@@ -276,14 +280,14 @@ class _$_User implements _User {
 
   @override
   String toString() {
-    return 'User(id: $id, imageUrl: $imageUrl, name: $name, alias: $alias, gender: $gender, dateOfBirth: $dateOfBirth, bookShelf: $bookShelf, friendList: $friendList, guildList: $guildList, currentPoint: $currentPoint, highestPoint: $highestPoint)';
+    return 'UserPojo(id: $id, imageUrl: $imageUrl, name: $name, alias: $alias, gender: $gender, dateOfBirth: $dateOfBirth, bookShelf: $bookShelf, friendList: $friendList, guildList: $guildList, currentPoint: $currentPoint, highestPoint: $highestPoint)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_User &&
+            other is _$_UserPojo &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.imageUrl, imageUrl) &&
             const DeepCollectionEquality().equals(other.name, name) &&
@@ -320,17 +324,17 @@ class _$_User implements _User {
 
   @JsonKey(ignore: true)
   @override
-  _$$_UserCopyWith<_$_User> get copyWith =>
-      __$$_UserCopyWithImpl<_$_User>(this, _$identity);
+  _$$_UserPojoCopyWith<_$_UserPojo> get copyWith =>
+      __$$_UserPojoCopyWithImpl<_$_UserPojo>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UserToJson(this);
+    return _$$_UserPojoToJson(this);
   }
 }
 
-abstract class _User implements User {
-  const factory _User(
+abstract class _UserPojo implements UserPojo {
+  factory _UserPojo(
       {required final String id,
       required final String imageUrl,
       required final String name,
@@ -341,9 +345,9 @@ abstract class _User implements User {
       required final List<String> friendList,
       required final List<String> guildList,
       required final int currentPoint,
-      required final int highestPoint}) = _$_User;
+      required final int highestPoint}) = _$_UserPojo;
 
-  factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
+  factory _UserPojo.fromJson(Map<String, dynamic> json) = _$_UserPojo.fromJson;
 
   @override
   String get id => throw _privateConstructorUsedError;
@@ -369,5 +373,6 @@ abstract class _User implements User {
   int get highestPoint => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$$_UserCopyWith<_$_User> get copyWith => throw _privateConstructorUsedError;
+  _$$_UserPojoCopyWith<_$_UserPojo> get copyWith =>
+      throw _privateConstructorUsedError;
 }

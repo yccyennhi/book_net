@@ -1,11 +1,11 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'user.freezed.dart';
-part 'user.g.dart';
+part 'user_pojo.freezed.dart';
+part 'user_pojo.g.dart';
 
 @freezed
-class User with _$User {
-  const factory User(
+class UserPojo with _$UserPojo {
+  factory UserPojo(
       {required String id,
       required String imageUrl,
       required String name,
@@ -16,7 +16,8 @@ class User with _$User {
       required List<String> friendList, //TODO: Fix
       required List<String> guildList,
       required int currentPoint,
-      required int highestPoint}) = _User;
+      required int highestPoint}) = _UserPojo;
 
-  factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
+  factory UserPojo.fromJson(Map<String, dynamic> json) =>
+      _$UserPojoFromJson(json);
 }

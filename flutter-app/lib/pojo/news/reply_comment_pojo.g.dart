@@ -1,23 +1,21 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'review.dart';
+part of 'reply_comment_pojo.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Review _$$_ReviewFromJson(Map<String, dynamic> json) => _$_Review(
+_$_ReplyCommentPojo _$$_ReplyCommentPojoFromJson(Map<String, dynamic> json) =>
+    _$_ReplyCommentPojo(
       id: json['id'] as String,
-      user: User.fromJson(json['user'] as Map<String, dynamic>),
       content: json['content'] as String,
-      rate: json['rate'] as int,
-      createDate: json['createDate'] as String,
+      createDate: json['createDate'] as int,
     );
 
-Map<String, dynamic> _$$_ReviewToJson(_$_Review instance) => <String, dynamic>{
+Map<String, dynamic> _$$_ReplyCommentPojoToJson(_$_ReplyCommentPojo instance) =>
+    <String, dynamic>{
       'id': instance.id,
-      'user': instance.user,
       'content': instance.content,
-      'rate': instance.rate,
       'createDate': instance.createDate,
     };

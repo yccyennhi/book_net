@@ -30,7 +30,7 @@ class Bars extends StatelessWidget {
             ),
             onPressed: () => Navigator.of(context).pop(),
           ),
-      title: Text(title ?? "", style: TextConfigs.bold20),
+      title: Text(title ?? "", style: TextConfigs.bold18),
       centerTitle: true,
       actions: _list,
     );
