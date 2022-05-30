@@ -1,3 +1,4 @@
+import 'package:book_net/routes/app_routes.dart';
 import 'package:book_net/views/home_screen/achievement_screen/achievement_screen.dart';
 import 'package:book_net/views/home_screen/book_screen/book_screen.dart';
 import 'package:book_net/views/home_screen/feed_screen/feed_screen.dart';
@@ -70,6 +71,9 @@ class HomeScreen extends StatelessWidget {
           height: 20.w,
           width: 18.w,
         ),
+        routeAndNavigatorSettings: RouteAndNavigatorSettings(
+          onGenerateRoute: AppRoutes().onGenerateRoute,
+        ),
       ),
       PersistentBottomNavBarItem(
         icon: SvgPicture.asset(
@@ -83,6 +87,9 @@ class HomeScreen extends StatelessWidget {
           color: AppColors.grey2Color,
           height: 24.w,
           width: 24.w,
+        ),
+        routeAndNavigatorSettings: RouteAndNavigatorSettings(
+          onGenerateRoute: AppRoutes().onGenerateRoute,
         ),
       ),
       PersistentBottomNavBarItem(
@@ -98,6 +105,9 @@ class HomeScreen extends StatelessWidget {
           height: 24.w,
           width: 24.w,
         ),
+        routeAndNavigatorSettings: RouteAndNavigatorSettings(
+          onGenerateRoute: AppRoutes().onGenerateRoute,
+        ),
       ),
       PersistentBottomNavBarItem(
         icon: SvgPicture.asset(
@@ -112,6 +122,9 @@ class HomeScreen extends StatelessWidget {
           height: 22.w,
           width: 14.w,
         ),
+        routeAndNavigatorSettings: RouteAndNavigatorSettings(
+          onGenerateRoute: AppRoutes().onGenerateRoute,
+        ),
       ),
       PersistentBottomNavBarItem(
         icon: SvgPicture.asset(
@@ -125,6 +138,9 @@ class HomeScreen extends StatelessWidget {
           color: AppColors.grey2Color,
           height: 24.w,
           width: 24.w,
+        ),
+        routeAndNavigatorSettings: RouteAndNavigatorSettings(
+          onGenerateRoute: AppRoutes().onGenerateRoute,
         ),
       ),
     ];

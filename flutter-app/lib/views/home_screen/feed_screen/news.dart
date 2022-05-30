@@ -1,3 +1,4 @@
+import 'package:book_net/configs/color_configs.dart';
 import 'package:book_net/configs/style_configs.dart';
 import 'package:book_net/configs/text_configs.dart';
 import 'package:book_net/pojo/news/base_news_pojo.dart';
@@ -10,26 +11,39 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../base_widgets/rating_stars/base_rating_stars.dart';
+import '../news_detail_screen/news_detail_screen.dart';
 
 class NewsCard extends StatelessWidget {
-  const NewsCard({Key? key, required BaseNewsPojo news})
+  const NewsCard(
+      {Key? key, required BaseNewsPojo news, required this.screenType})
       : baseNewsPojo = news,
         super(key: key);
 
   final BaseNewsPojo baseNewsPojo;
+  final NewsScreenType screenType;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.only(top: AppStyles.defaultMarginVertical),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          _buildHeader(baseNewsPojo),
-          _buildBody(baseNewsPojo, context),
-          _buildFooter(baseNewsPojo),
-        ],
-      ),
+    return Column(
+      children: [
+        Container(
+          color: AppColors.whiteColor,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _buildHeader(baseNewsPojo),
+              _buildBody(baseNewsPojo, context),
+              _buildFooter(context, baseNewsPojo),
+            ],
+          ),
+        ),
+        if (screenType == NewsScreenType.feed)
+          SizedBox(
+            height: AppStyles.smallMarginVertical,
+          )
+        else
+          const SizedBox(),
+      ],
     );
   }
 
@@ -271,7 +285,7 @@ class NewsCard extends StatelessWidget {
     ]);
   }
 
-  Widget _buildFooter(BaseNewsPojo baseNewsPojo) {
+  Widget _buildFooter(BuildContext context, BaseNewsPojo baseNewsPojo) {
     return SizedBox(
       height: 44.h,
       width: double.infinity,
@@ -294,24 +308,45 @@ class NewsCard extends StatelessWidget {
               )
             ],
           ),
-          Row(
-            children: [
-              SizedBox(
-                width: 28.w,
-                child: Image.asset(
-                  'assets/icons/ic_comment.png',
-                  fit: BoxFit.fill,
+          GestureDetector(
+            onTap: () {
+              if (screenType == NewsScreenType.feed) {
+                _navigateToNewsDetailScreen(context, baseNewsPojo);
+              }
+            },
+            child: Row(
+              children: [
+                SizedBox(
+                  width: 28.w,
+                  child: Image.asset(
+                    'assets/icons/ic_comment.png',
+                    fit: BoxFit.fill,
+                  ),
                 ),
-              ),
-              SizedBox(width: 8.w),
-              Text(
-                "${baseNewsPojo.commentList.length}",
-                style: TextConfigs.regular14OceanGreen,
-              )
-            ],
+                SizedBox(width: 8.w),
+                Text(
+                  "${baseNewsPojo.commentList.length}",
+                  style: TextConfigs.regular14OceanGreen,
+                )
+              ],
+            ),
           )
         ],
       ),
     );
   }
+
+  void _navigateToNewsDetailScreen(
+      BuildContext context, BaseNewsPojo newsPojo) {
+    Navigator.pushNamed(
+      context,
+      NewsDetailScreen.id,
+      arguments: newsPojo,
+    );
+  }
+}
+
+enum NewsScreenType {
+  feed,
+  newsDetail;
 }

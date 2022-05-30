@@ -10,6 +10,8 @@ _$_CommentPojo _$$_CommentPojoFromJson(Map<String, dynamic> json) =>
     _$_CommentPojo(
       id: json['id'] as String,
       content: json['content'] as String,
+      commentUser:
+          UserPojo.fromJson(json['commentUser'] as Map<String, dynamic>),
       replyList: (json['replyList'] as List<dynamic>)
           .map((e) => ReplyCommentPojo.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -20,6 +22,7 @@ Map<String, dynamic> _$$_CommentPojoToJson(_$_CommentPojo instance) =>
     <String, dynamic>{
       'id': instance.id,
       'content': instance.content,
+      'commentUser': instance.commentUser,
       'replyList': instance.replyList,
       'createDate': instance.createDate,
     };

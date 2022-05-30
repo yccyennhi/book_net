@@ -8,6 +8,7 @@ import '../../../configs/style_configs.dart';
 import '../../../pojo/news/post_news_pojo.dart';
 import '../../base_widgets/bar/bar.dart';
 import '../../base_widgets/button/raised_gradient_button.dart';
+import '../news_detail_screen/news_detail_screen.dart';
 
 class FeedScreen extends StatelessWidget {
   static const id = "FeedScreen";
@@ -33,21 +34,23 @@ class FeedScreen extends StatelessWidget {
   }
 
   Widget _buildHeader() {
-    return Column(
-      children: [
-        Padding(
-          padding: EdgeInsets.symmetric(
-              horizontal: AppStyles.defaultMarginHorizontal,
-              vertical: AppStyles.defaultMarginVertical),
-          child: Text(
-            "Hi, Trung Hieu! Let's explore something new!",
-            style: TextConfigs.bold20,
+    return Container(
+      color: AppColors.whiteColor,
+      child: Column(
+        children: [
+          Padding(
+            padding: EdgeInsets.symmetric(
+                horizontal: AppStyles.defaultMarginHorizontal,
+                vertical: AppStyles.defaultMarginVertical),
+            child: Text(
+              "Hi, Trung Hieu! Let's explore something new!",
+              style: TextConfigs.bold20,
+            ),
           ),
-        ),
-        Padding(
-          padding: EdgeInsets.symmetric(
-              horizontal: AppStyles.defaultMarginHorizontal),
-          child: RaisedGradientButton(
+          Padding(
+            padding: EdgeInsets.symmetric(
+                horizontal: AppStyles.defaultMarginHorizontal),
+            child: RaisedGradientButton(
               child: Text(
                 'Create a post',
                 style:
@@ -59,9 +62,14 @@ class FeedScreen extends StatelessWidget {
                   AppColors.green2Color,
                 ],
               ),
-              onPressed: () {}),
-        ),
-      ],
+              onPressed: () {},
+            ),
+          ),
+          SizedBox(
+            height: AppStyles.smallMarginVertical,
+          )
+        ],
+      ),
     );
   }
 
@@ -69,12 +77,13 @@ class FeedScreen extends StatelessWidget {
     List<Widget> listItem = [];
 
     for (BaseNewsPojo model in newsListTest) {
-      listItem.add(NewsCard(news: model));
+      listItem.add(NewsCard(
+        news: model,
+        screenType: NewsScreenType.feed,
+      ));
     }
 
     listItem.insert(0, _buildHeader());
     return listItem;
   }
-
-  void _navigateToNewsDetailScreen() {}
 }

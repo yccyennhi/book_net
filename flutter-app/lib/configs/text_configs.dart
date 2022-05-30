@@ -32,6 +32,9 @@ class TextConfigs {
     fontSize: textSizeSm.sp,
   );
 
+  static final regular12Amazon =
+      regular12.copyWith(color: AppColors.amazonColor);
+
   static final regularItalic12DarkGrey = base.copyWith(
       fontSize: textSizeSm.sp,
       fontStyle: FontStyle.italic,
@@ -80,6 +83,11 @@ class TextConfigs {
   static final semibold14 = baseSemiBold.copyWith(
     fontSize: textSizeRg.sp,
   );
+
+  static final semibold14Grey2 =
+      semibold14.copyWith(color: AppColors.grey2Color);
+  static final semibold14OceanGreen =
+      semibold14.copyWith(color: AppColors.oceanGreenColor);
 
   static final semibold20 = baseSemiBold.copyWith(
     fontSize: textSizeLg.sp,

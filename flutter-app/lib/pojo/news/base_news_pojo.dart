@@ -76,9 +76,13 @@ final List<CommentPojo> commentListTestModel = [
   CommentPojo(
       id: 'id',
       content: 'Commment comment',
+      commentUser: userTestModel,
       replyList: [
         ReplyCommentPojo(
-            id: 'id', content: 'Reply Comment', createDate: 1653286844319)
+            id: 'id',
+            content: 'Reply Comment',
+            commentUser: userTestModel,
+            createDate: 1653286844319)
       ],
       createDate: 1653286844319)
 ];

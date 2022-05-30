@@ -1,4 +1,5 @@
 import 'package:book_net/pojo/news/reply_comment_pojo.dart';
+import 'package:book_net/pojo/user/user_pojo.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'comment_pojo.freezed.dart';
@@ -9,6 +10,7 @@ class CommentPojo with _$CommentPojo {
   factory CommentPojo(
       {required String id,
       required String content,
+      required UserPojo commentUser,
       required List<ReplyCommentPojo> replyList,
       required int createDate}) = _CommentPojo;
 

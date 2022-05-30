@@ -22,6 +22,7 @@ CommentPojo _$CommentPojoFromJson(Map<String, dynamic> json) {
 mixin _$CommentPojo {
   String get id => throw _privateConstructorUsedError;
   String get content => throw _privateConstructorUsedError;
+  UserPojo get commentUser => throw _privateConstructorUsedError;
   List<ReplyCommentPojo> get replyList => throw _privateConstructorUsedError;
   int get createDate => throw _privateConstructorUsedError;
 
@@ -39,8 +40,11 @@ abstract class $CommentPojoCopyWith<$Res> {
   $Res call(
       {String id,
       String content,
+      UserPojo commentUser,
       List<ReplyCommentPojo> replyList,
       int createDate});
+
+  $UserPojoCopyWith<$Res> get commentUser;
 }
 
 /// @nodoc
@@ -55,6 +59,7 @@ class _$CommentPojoCopyWithImpl<$Res> implements $CommentPojoCopyWith<$Res> {
   $Res call({
     Object? id = freezed,
     Object? content = freezed,
+    Object? commentUser = freezed,
     Object? replyList = freezed,
     Object? createDate = freezed,
   }) {
@@ -67,6 +72,10 @@ class _$CommentPojoCopyWithImpl<$Res> implements $CommentPojoCopyWith<$Res> {
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String,
+      commentUser: commentUser == freezed
+          ? _value.commentUser
+          : commentUser // ignore: cast_nullable_to_non_nullable
+              as UserPojo,
       replyList: replyList == freezed
           ? _value.replyList
           : replyList // ignore: cast_nullable_to_non_nullable
@@ -76,6 +85,13 @@ class _$CommentPojoCopyWithImpl<$Res> implements $CommentPojoCopyWith<$Res> {
           : createDate // ignore: cast_nullable_to_non_nullable
               as int,
     ));
+  }
+
+  @override
+  $UserPojoCopyWith<$Res> get commentUser {
+    return $UserPojoCopyWith<$Res>(_value.commentUser, (value) {
+      return _then(_value.copyWith(commentUser: value));
+    });
   }
 }
 
@@ -89,8 +105,12 @@ abstract class _$$_CommentPojoCopyWith<$Res>
   $Res call(
       {String id,
       String content,
+      UserPojo commentUser,
       List<ReplyCommentPojo> replyList,
       int createDate});
+
+  @override
+  $UserPojoCopyWith<$Res> get commentUser;
 }
 
 /// @nodoc
@@ -107,6 +127,7 @@ class __$$_CommentPojoCopyWithImpl<$Res> extends _$CommentPojoCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? content = freezed,
+    Object? commentUser = freezed,
     Object? replyList = freezed,
     Object? createDate = freezed,
   }) {
@@ -119,6 +140,10 @@ class __$$_CommentPojoCopyWithImpl<$Res> extends _$CommentPojoCopyWithImpl<$Res>
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String,
+      commentUser: commentUser == freezed
+          ? _value.commentUser
+          : commentUser // ignore: cast_nullable_to_non_nullable
+              as UserPojo,
       replyList: replyList == freezed
           ? _value._replyList
           : replyList // ignore: cast_nullable_to_non_nullable
@@ -137,6 +162,7 @@ class _$_CommentPojo implements _CommentPojo {
   _$_CommentPojo(
       {required this.id,
       required this.content,
+      required this.commentUser,
       required final List<ReplyCommentPojo> replyList,
       required this.createDate})
       : _replyList = replyList;
@@ -148,6 +174,8 @@ class _$_CommentPojo implements _CommentPojo {
   final String id;
   @override
   final String content;
+  @override
+  final UserPojo commentUser;
   final List<ReplyCommentPojo> _replyList;
   @override
   List<ReplyCommentPojo> get replyList {
@@ -160,7 +188,7 @@ class _$_CommentPojo implements _CommentPojo {
 
   @override
   String toString() {
-    return 'CommentPojo(id: $id, content: $content, replyList: $replyList, createDate: $createDate)';
+    return 'CommentPojo(id: $id, content: $content, commentUser: $commentUser, replyList: $replyList, createDate: $createDate)';
   }
 
   @override
@@ -170,6 +198,8 @@ class _$_CommentPojo implements _CommentPojo {
             other is _$_CommentPojo &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.content, content) &&
+            const DeepCollectionEquality()
+                .equals(other.commentUser, commentUser) &&
             const DeepCollectionEquality()
                 .equals(other._replyList, _replyList) &&
             const DeepCollectionEquality()
@@ -182,6 +212,7 @@ class _$_CommentPojo implements _CommentPojo {
       runtimeType,
       const DeepCollectionEquality().hash(id),
       const DeepCollectionEquality().hash(content),
+      const DeepCollectionEquality().hash(commentUser),
       const DeepCollectionEquality().hash(_replyList),
       const DeepCollectionEquality().hash(createDate));
 
@@ -200,6 +231,7 @@ abstract class _CommentPojo implements CommentPojo {
   factory _CommentPojo(
       {required final String id,
       required final String content,
+      required final UserPojo commentUser,
       required final List<ReplyCommentPojo> replyList,
       required final int createDate}) = _$_CommentPojo;
 
@@ -210,6 +242,8 @@ abstract class _CommentPojo implements CommentPojo {
   String get id => throw _privateConstructorUsedError;
   @override
   String get content => throw _privateConstructorUsedError;
+  @override
+  UserPojo get commentUser => throw _privateConstructorUsedError;
   @override
   List<ReplyCommentPojo> get replyList => throw _privateConstructorUsedError;
   @override
