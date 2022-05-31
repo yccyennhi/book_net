@@ -1,5 +1,6 @@
 import 'package:book_net/configs/text_configs.dart';
 import 'package:book_net/pojo/news/base_news_pojo.dart';
+import 'package:book_net/views/home_screen/create_news_screen/create_news_screen.dart';
 import 'package:book_net/views/home_screen/feed_screen/news.dart';
 import 'package:flutter/material.dart';
 
@@ -28,12 +29,12 @@ class FeedScreen extends StatelessWidget {
       body: ListView(
         scrollDirection: Axis.vertical,
         shrinkWrap: true,
-        children: _buildListItem(),
+        children: _buildListItem(context),
       ),
     );
   }
 
-  Widget _buildHeader() {
+  Widget _buildHeader(BuildContext context) {
     return Container(
       color: AppColors.whiteColor,
       child: Column(
@@ -62,7 +63,7 @@ class FeedScreen extends StatelessWidget {
                   AppColors.green2Color,
                 ],
               ),
-              onPressed: () {},
+              onPressed: () => _navigateToCreateNewsScreen(context),
             ),
           ),
           SizedBox(
@@ -73,7 +74,7 @@ class FeedScreen extends StatelessWidget {
     );
   }
 
-  List<Widget> _buildListItem() {
+  List<Widget> _buildListItem(BuildContext context) {
     List<Widget> listItem = [];
 
     for (BaseNewsPojo model in newsListTest) {
@@ -83,7 +84,11 @@ class FeedScreen extends StatelessWidget {
       ));
     }
 
-    listItem.insert(0, _buildHeader());
+    listItem.insert(0, _buildHeader(context));
     return listItem;
+  }
+
+  void _navigateToCreateNewsScreen(BuildContext context) {
+    Navigator.pushNamed(context, CreateNewsScreen.id);
   }
 }

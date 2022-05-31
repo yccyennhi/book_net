@@ -59,8 +59,16 @@ class TextConfigs {
     fontSize: textSizeRg.sp,
   );
 
+  static final regular14Grey2 = regular14.copyWith(
+    color: AppColors.grey2Color,
+  );
+
   static final regular14OceanGreen =
       base.copyWith(fontSize: textSizeRg.sp, color: AppColors.oceanGreenColor);
+
+  static final regular16 = base.copyWith(
+    fontSize: textSizeSRg.sp,
+  );
 
   static final regular16Blue = base.copyWith(
     // color: AppColors.blueColor,
