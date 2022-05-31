@@ -5,7 +5,6 @@ import 'package:book_net/views/base_widgets/bar/bar.dart';
 import 'package:book_net/views/base_widgets/button/raised_gradient_button.dart';
 import 'package:book_net/views/base_widgets/text_field/password_text_field.dart';
 import 'package:book_net/views/base_widgets/text_field/text_field.dart';
-import 'package:book_net/views/signup_screen/signup_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -38,10 +37,6 @@ class _LoginScreenState extends State<LoginScreen> {
       // log('${_key.currentState!.validate()}');
       // print(passwordValidator
       //     .validators[passwordValidator.validators.length - 1].errorText);
-    }
-
-    onPressedSignUp() {
-      Navigator.pushNamed(context, SignUpScreen.id);
     }
 
     return GestureDetector(

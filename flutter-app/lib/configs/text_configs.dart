@@ -91,4 +91,10 @@ class TextConfigs {
     color: AppColors.darkGrayColor,
     fontSize: textSizeSm.sp,
   );
+
+  static final regular12OceanGreen = TextStyle(
+    fontFamily: fontFamily,
+    color: AppColors.oceanGreenColor,
+    fontSize: textSizeSm.sp,
+  );
 }
