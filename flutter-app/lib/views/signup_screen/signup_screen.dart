@@ -1,4 +1,5 @@
 import 'package:book_net/configs/color_configs.dart';
+import 'package:book_net/configs/style_configs.dart';
 import 'package:book_net/configs/text_configs.dart';
 import 'package:book_net/configs/validate_configs.dart';
 import 'package:book_net/views/base_widgets/bar/bar.dart';
@@ -38,7 +39,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       child: Scaffold(
         backgroundColor: AppColors.whiteColor,
         appBar: PreferredSize(
-          preferredSize: Size(double.infinity, 48.h),
+          preferredSize: Size(double.infinity, AppStyles.appBarHeight),
           child: const Bars(
             title: 'Sign up',
           ),

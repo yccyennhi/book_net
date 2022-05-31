@@ -1,20 +1,22 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'review.dart';
+part of 'review_pojo.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Review _$$_ReviewFromJson(Map<String, dynamic> json) => _$_Review(
+_$_ReviewPojo _$$_ReviewPojoFromJson(Map<String, dynamic> json) =>
+    _$_ReviewPojo(
       id: json['id'] as String,
-      user: User.fromJson(json['user'] as Map<String, dynamic>),
+      user: UserPojo.fromJson(json['user'] as Map<String, dynamic>),
       content: json['content'] as String,
       rate: json['rate'] as int,
-      createDate: json['createDate'] as String,
+      createDate: json['createDate'] as int,
     );
 
-Map<String, dynamic> _$$_ReviewToJson(_$_Review instance) => <String, dynamic>{
+Map<String, dynamic> _$$_ReviewPojoToJson(_$_ReviewPojo instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'user': instance.user,
       'content': instance.content,

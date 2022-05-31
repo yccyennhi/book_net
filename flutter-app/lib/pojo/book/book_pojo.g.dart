@@ -1,12 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'book.dart';
+part of 'book_pojo.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Book _$$_BookFromJson(Map<String, dynamic> json) => _$_Book(
+_$_BookPojo _$$_BookPojoFromJson(Map<String, dynamic> json) => _$_BookPojo(
       id: json['id'] as String,
       imageUrl: json['imageUrl'] as String,
       author: json['author'] as String,
@@ -16,12 +16,13 @@ _$_Book _$$_BookFromJson(Map<String, dynamic> json) => _$_Book(
       rate: (json['rate'] as num).toDouble(),
       numberOfRating: json['numberOfRating'] as int,
       reviewList: (json['reviewList'] as List<dynamic>)
-          .map((e) => Review.fromJson(e as Map<String, dynamic>))
+          .map((e) => ReviewPojo.fromJson(e as Map<String, dynamic>))
           .toList(),
       numberOfDownloads: json['numberOfDownloads'] as int,
     );
 
-Map<String, dynamic> _$$_BookToJson(_$_Book instance) => <String, dynamic>{
+Map<String, dynamic> _$$_BookPojoToJson(_$_BookPojo instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'imageUrl': instance.imageUrl,
       'author': instance.author,

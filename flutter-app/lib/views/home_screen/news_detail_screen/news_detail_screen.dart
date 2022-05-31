@@ -1,0 +1,81 @@
+import 'package:book_net/configs/style_configs.dart';
+import 'package:book_net/configs/text_configs.dart';
+import 'package:book_net/pojo/news/base_news_pojo.dart';
+import 'package:book_net/views/base_widgets/bar/bar.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../configs/color_configs.dart';
+import '../feed_screen/news.dart';
+import 'comment_row_item.dart';
+import 'comment_text_field.dart';
+
+class NewsDetailScreen extends StatelessWidget {
+  static const String id = 'NewsDetailScreen';
+
+  const NewsDetailScreen({Key? key, required this.newsModel}) : super(key: key);
+
+  final BaseNewsPojo newsModel;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: AppColors.whiteColor,
+      appBar: PreferredSize(
+          preferredSize: Size(double.infinity, AppStyles.appBarHeight),
+          child: const Bars()),
+      body: Stack(alignment: Alignment.bottomCenter, children: [
+        ListView(
+          scrollDirection: Axis.vertical,
+          shrinkWrap: false,
+          children: _buildNewsDetail(newsModel),
+        ),
+        _buildPostCommentField()
+      ]),
+    );
+  }
+
+  List<Widget> _buildNewsDetail(BaseNewsPojo newsPojo) {
+    List<Widget> commentList = [];
+    commentList.addAll(_buildCommentList(newsPojo));
+    commentList.insert(
+        0,
+        NewsCard(
+          news: newsPojo,
+          screenType: NewsScreenType.newsDetail,
+        ));
+
+    return commentList;
+  }
+
+  List<Widget> _buildCommentList(BaseNewsPojo newsModel) {
+    List<CommentRowItem> commentList = [];
+    for (var comment in newsModel.commentList) {
+      commentList.add(CommentRowItem(commentPojo: comment));
+    }
+
+    return commentList;
+  }
+
+  Widget _buildPostCommentField() {
+    return Container(
+      padding: EdgeInsets.all(AppStyles.defaultMarginHorizontal),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          SizedBox(
+            height: 40.h,
+            width: 40.w,
+            child: CircleAvatar(
+              backgroundImage: NetworkImage(newsModel.userImageUrl),
+            ),
+          ),
+          SizedBox(
+            width: AppStyles.smallMarginHorizontal,
+          ),
+          const Flexible(child: CommentTextField()),
+        ],
+      ),
+    );
+  }
+}

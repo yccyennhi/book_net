@@ -1,12 +1,12 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'guild.dart';
+part of 'guild_pojo.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Guild _$$_GuildFromJson(Map<String, dynamic> json) => _$_Guild(
+_$_GuildPojo _$$_GuildPojoFromJson(Map<String, dynamic> json) => _$_GuildPojo(
       id: json['id'] as String,
       imageUrl: json['imageUrl'] as String,
       name: json['name'] as String,
@@ -16,7 +16,8 @@ _$_Guild _$$_GuildFromJson(Map<String, dynamic> json) => _$_Guild(
           .toList(),
     );
 
-Map<String, dynamic> _$$_GuildToJson(_$_Guild instance) => <String, dynamic>{
+Map<String, dynamic> _$$_GuildPojoToJson(_$_GuildPojo instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'imageUrl': instance.imageUrl,
       'name': instance.name,

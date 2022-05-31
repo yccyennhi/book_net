@@ -1,4 +1,5 @@
 import 'package:book_net/configs/color_configs.dart';
+import 'package:book_net/configs/style_configs.dart';
 import 'package:book_net/configs/text_configs.dart';
 import 'package:book_net/configs/validate_configs.dart';
 import 'package:book_net/views/base_widgets/bar/bar.dart';
@@ -43,7 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
       onTap: () => setUnfocus(context),
       child: Scaffold(
         appBar: PreferredSize(
-          preferredSize: Size(double.infinity, 48.h),
+          preferredSize: Size(double.infinity, AppStyles.appBarHeight),
           child: const Bars(
             title: 'Login',
           ),

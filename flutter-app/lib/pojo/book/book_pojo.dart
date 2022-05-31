@@ -1,12 +1,12 @@
-import 'package:book_net/models/book/review.dart';
+import 'package:book_net/pojo/book/review_pojo.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'book.freezed.dart';
-part 'book.g.dart';
+part 'book_pojo.freezed.dart';
+part 'book_pojo.g.dart';
 
 @freezed
-class Book with _$Book {
-  const factory Book({
+class BookPojo with _$BookPojo {
+  const factory BookPojo({
     required String id,
     required String imageUrl,
     required String author,
@@ -15,9 +15,10 @@ class Book with _$Book {
     required int numberOfPages,
     required double rate,
     required int numberOfRating,
-    required List<Review> reviewList,
+    required List<ReviewPojo> reviewList,
     required int numberOfDownloads,
-  }) = _Book;
+  }) = _BookPojo;
 
-  factory Book.fromJson(Map<String, dynamic> json) => _$BookFromJson(json);
+  factory BookPojo.fromJson(Map<String, dynamic> json) =>
+      _$BookPojoFromJson(json);
 }

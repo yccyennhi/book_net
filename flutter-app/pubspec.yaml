@@ -25,6 +25,7 @@ dependencies:
   persistent_bottom_nav_bar:
     git:
       url: https://github.com/PcolBP/PersistentBottomNavBar.git
+  flutter_rating_stars: ^1.0.3+4
   
   #Utils
   freezed_annotation: any
@@ -59,9 +60,11 @@ flutter:
   fonts:
     - family: Inter
       fonts:
-        - asset: fonts/Inter-Regular.ttf
-        - asset: fonts/Inter-Medium.ttf
+        - asset: assets/fonts/Inter-Regular.ttf
+        - asset: assets/fonts/Inter-Medium.ttf
           weight: 300
-        - asset: fonts/Inter-Bold.ttf
-          weight: 600
+        - asset: assets/fonts/Inter-SemiBold.ttf
+          weight: 500
+        - asset: assets/fonts/Inter-Bold.ttf
+          weight: 700
 
