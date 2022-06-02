@@ -1,4 +1,4 @@
-import 'package:book_net/pojo/news/base_news_pojo.dart';
+import 'package:book_net/dto/news/base_news_dto.dart';
 import 'package:book_net/routes/app_routes.dart';
 import 'package:book_net/view_models/user/curr_user.dart';
 import 'package:book_net/views/home_screen/home_screen.dart';
@@ -64,7 +64,7 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return AnimatedSplashScreen(
       splash: Image.asset('assets/images/LOGO.png'),
-      nextScreen: const HomeScreen(),
+      nextScreen: const LaunchScreen(),
       splashTransition: SplashTransition.fadeTransition,
     );
   }

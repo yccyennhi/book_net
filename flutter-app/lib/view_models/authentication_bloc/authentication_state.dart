@@ -1,22 +1,20 @@
-// part of 'authentication_bloc.dart';
+import 'package:equatable/equatable.dart';
 
-// abstract class AuthenticationState extends Equatable {
-//   const AuthenticationState();
+enum LoginStatus { initial, inProgress, fail, success }
 
-//   @override
-//   List<Object> get props => [];
-// }
+class LogInState extends Equatable {
+  const LogInState._({this.status = LoginStatus.initial});
 
-// class LoginInitial extends AuthenticationState {}
+  final LoginStatus status;
 
-// class SigningInState extends AuthenticationState {}
+  const LogInState.initial() : this._();
 
-// class SignedInState extends AuthenticationState {
-//   final LoginModel login;
-//   SignedInState(this.login);
-// }
+  const LogInState.inProgress() : this._(status: LoginStatus.inProgress);
 
-// class SignInErrorState extends AuthenticationState {
-//   final String error;
-//   SignInErrorState(this.error);
-// }
+  const LogInState.logInFail() : this._(status: LoginStatus.fail);
+
+  const LogInState.logInSuccess() : this._(status: LoginStatus.success);
+
+  @override
+  List<Object> get props => [status];
+}

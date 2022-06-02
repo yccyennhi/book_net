@@ -1,10 +1,10 @@
 import 'package:book_net/configs/color_configs.dart';
 import 'package:book_net/configs/style_configs.dart';
 import 'package:book_net/configs/text_configs.dart';
-import 'package:book_net/pojo/news/base_news_pojo.dart';
-import 'package:book_net/pojo/news/guild_news_pojo.dart';
-import 'package:book_net/pojo/news/post_news_pojo.dart';
-import 'package:book_net/pojo/news/review_news_pojo.dart';
+import 'package:book_net/dto/news/base_news_dto.dart';
+import 'package:book_net/dto/news/guild_news_dto.dart';
+import 'package:book_net/dto/news/post_news_dto.dart';
+import 'package:book_net/dto/news/review_news_dto.dart';
 import 'package:book_net/utils/time_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -15,11 +15,11 @@ import '../news_detail_screen/news_detail_screen.dart';
 
 class NewsCard extends StatelessWidget {
   const NewsCard(
-      {Key? key, required BaseNewsPojo news, required this.screenType})
-      : baseNewsPojo = news,
+      {Key? key, required BaseNewsDto news, required this.screenType})
+      : baseNewsDto = news,
         super(key: key);
 
-  final BaseNewsPojo baseNewsPojo;
+  final BaseNewsDto baseNewsDto;
   final NewsScreenType screenType;
 
   @override
@@ -31,9 +31,9 @@ class NewsCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _buildHeader(baseNewsPojo),
-              _buildBody(baseNewsPojo, context),
-              _buildFooter(context, baseNewsPojo),
+              _buildHeader(baseNewsDto),
+              _buildBody(baseNewsDto, context),
+              _buildFooter(context, baseNewsDto),
             ],
           ),
         ),
@@ -47,17 +47,17 @@ class NewsCard extends StatelessWidget {
     );
   }
 
-  Widget _buildHeader(BaseNewsPojo baseNewsPojo) {
-    switch (NewsType.fromInt(baseNewsPojo.type)) {
+  Widget _buildHeader(BaseNewsDto baseNewsDto) {
+    switch (NewsType.fromInt(baseNewsDto.type)) {
       case NewsType.guild:
-        return _buildGuildHeader(baseNewsPojo);
+        return _buildGuildHeader(baseNewsDto);
       default:
-        return _buildDefaultHeader(baseNewsPojo);
+        return _buildDefaultHeader(baseNewsDto);
     }
   }
 
-  Widget _buildGuildHeader(BaseNewsPojo baseNewsPojo) {
-    GuildNewsPojo guildNewsPojo = baseNewsPojo as GuildNewsPojo;
+  Widget _buildGuildHeader(BaseNewsDto baseNewsDto) {
+    GuildNewsDto guildNewsDto = baseNewsDto as GuildNewsDto;
 
     return Container(
       height: 40.h,
@@ -73,7 +73,7 @@ class NewsCard extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(8.h),
                   child: Image.network(
-                    guildNewsPojo.guildImageUrl,
+                    guildNewsDto.guildImageUrl,
                     height: 36.h,
                     width: 36.h,
                     fit: BoxFit.cover,
@@ -84,7 +84,7 @@ class NewsCard extends StatelessWidget {
                 width: 24.w,
                 height: 24.h,
                 child: CircleAvatar(
-                  backgroundImage: NetworkImage(guildNewsPojo.userImageUrl),
+                  backgroundImage: NetworkImage(guildNewsDto.userImageUrl),
                 ),
               )
             ],
@@ -97,13 +97,13 @@ class NewsCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  baseNewsPojo.userAlias,
+                  baseNewsDto.userAlias,
                   style: TextConfigs.semibold14,
                 ),
                 Row(
                   children: [
                     Text(
-                      TimeUtils.getDurationText(baseNewsPojo.createDate),
+                      TimeUtils.getDurationText(baseNewsDto.createDate),
                       style: TextConfigs.regular12Grey2,
                     ),
                     Padding(
@@ -111,7 +111,7 @@ class NewsCard extends StatelessWidget {
                           horizontal: AppStyles.smallMarginHorizontal),
                       child: Image.asset('assets/icons/ic_dot.png'),
                     ),
-                    Text(guildNewsPojo.guildName,
+                    Text(guildNewsDto.guildName,
                         style: TextConfigs.regular12Grey2)
                   ],
                 )
@@ -123,7 +123,7 @@ class NewsCard extends StatelessWidget {
     );
   }
 
-  Widget _buildDefaultHeader(BaseNewsPojo baseNewsPojo) {
+  Widget _buildDefaultHeader(BaseNewsDto baseNewsDto) {
     return Container(
       height: 40.h,
       padding:
@@ -134,7 +134,7 @@ class NewsCard extends StatelessWidget {
             height: 40.h,
             width: 40.w,
             child: CircleAvatar(
-              backgroundImage: NetworkImage(baseNewsPojo.userImageUrl),
+              backgroundImage: NetworkImage(baseNewsDto.userImageUrl),
             ),
           ),
           Padding(
@@ -145,11 +145,11 @@ class NewsCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  baseNewsPojo.userAlias,
+                  baseNewsDto.userAlias,
                   style: TextConfigs.semibold14,
                 ),
                 Text(
-                  TimeUtils.getDurationText(baseNewsPojo.createDate),
+                  TimeUtils.getDurationText(baseNewsDto.createDate),
                   style: TextConfigs.regular12Grey2,
                 )
               ],
@@ -162,17 +162,17 @@ class NewsCard extends StatelessWidget {
     );
   }
 
-  Widget _buildBody(BaseNewsPojo baseNewsPojo, BuildContext context) {
-    switch (NewsType.fromInt(baseNewsPojo.type)) {
+  Widget _buildBody(BaseNewsDto baseNewsDto, BuildContext context) {
+    switch (NewsType.fromInt(baseNewsDto.type)) {
       case NewsType.review:
-        return _buildReviewBody(baseNewsPojo);
+        return _buildReviewBody(baseNewsDto);
       default:
-        return _buildDefaultBody(baseNewsPojo);
+        return _buildDefaultBody(baseNewsDto);
     }
   }
 
-  Widget _buildReviewBody(BaseNewsPojo baseNewsPojo) {
-    ReviewNewsPojo reviewNewsPojo = baseNewsPojo as ReviewNewsPojo;
+  Widget _buildReviewBody(BaseNewsDto baseNewsDto) {
+    ReviewNewsDto reviewNewsDto = baseNewsDto as ReviewNewsDto;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -182,7 +182,7 @@ class NewsCard extends StatelessWidget {
               horizontal: AppStyles.defaultMarginHorizontal,
               vertical: AppStyles.smallMarginVertical),
           child: Text(
-            reviewNewsPojo.caption,
+            reviewNewsDto.caption,
             textAlign: TextAlign.start,
             style: TextConfigs.regular14,
           ),
@@ -191,7 +191,7 @@ class NewsCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Image.network(
-              reviewNewsPojo.bookImageUrl,
+              reviewNewsDto.bookImageUrl,
               height: AppStyles.newsBodyHeight,
               width: 128.w,
               fit: BoxFit.cover,
@@ -205,7 +205,7 @@ class NewsCard extends StatelessWidget {
                 Padding(
                   padding: EdgeInsets.only(top: AppStyles.smallMarginVertical),
                   child: Text(
-                    reviewNewsPojo.bookName,
+                    reviewNewsDto.bookName,
                     overflow: TextOverflow.ellipsis,
                     style: TextConfigs.bold16,
                   ),
@@ -214,7 +214,7 @@ class NewsCard extends StatelessWidget {
                   padding:
                       EdgeInsets.only(top: AppStyles.defaultMarginVertical),
                   child: Text(
-                    'by ${reviewNewsPojo.bookAuthor}',
+                    'by ${reviewNewsDto.bookAuthor}',
                     style: TextConfigs.boldItalic12Grey2,
                   ),
                 ),
@@ -224,7 +224,7 @@ class NewsCard extends StatelessWidget {
                     width: 200.w,
                     child: Flexible(
                       child: Text(
-                        reviewNewsPojo.bookDescription,
+                        reviewNewsDto.bookDescription,
                         overflow: TextOverflow.ellipsis,
                         maxLines: 2,
                         style: TextConfigs.regular12,
@@ -238,14 +238,14 @@ class NewsCard extends StatelessWidget {
                   child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        BaseRatingStar(value: baseNewsPojo.bookAvgRating),
+                        BaseRatingStar(value: reviewNewsDto.bookAvgRating),
                         Padding(
                           padding: EdgeInsets.symmetric(
                               horizontal: AppStyles.smallMarginHorizontal),
                           child: Image.asset('assets/icons/ic_dot.png'),
                         ),
                         Text(
-                          '${reviewNewsPojo.bookNumberOfRating} ratings',
+                          '${reviewNewsDto.bookNumberOfRating} ratings',
                           style: TextConfigs.regularItalic12DarkGrey,
                         )
                       ]),
@@ -258,12 +258,12 @@ class NewsCard extends StatelessWidget {
     );
   }
 
-  Widget _buildDefaultBody(BaseNewsPojo baseNewsPojo) {
-    var newsPojo;
-    if (NewsType.fromInt(baseNewsPojo.type) == NewsType.post) {
-      newsPojo = baseNewsPojo as PostNewsPojo;
+  Widget _buildDefaultBody(BaseNewsDto baseNewsDto) {
+    var newsDto;
+    if (NewsType.fromInt(baseNewsDto.type) == NewsType.post) {
+      newsDto = baseNewsDto as PostNewsDto;
     } else {
-      newsPojo = baseNewsPojo as GuildNewsPojo;
+      newsDto = baseNewsDto as GuildNewsDto;
     }
 
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
@@ -272,7 +272,7 @@ class NewsCard extends StatelessWidget {
             horizontal: AppStyles.defaultMarginHorizontal,
             vertical: AppStyles.smallMarginVertical),
         child: Text(
-          newsPojo.caption,
+          newsDto.caption,
           textAlign: TextAlign.start,
           style: TextConfigs.regular14,
         ),
@@ -280,12 +280,12 @@ class NewsCard extends StatelessWidget {
       SizedBox(
         width: double.infinity,
         height: AppStyles.newsBodyHeight,
-        child: Image.network(newsPojo.imageUrl, fit: BoxFit.fitWidth),
+        child: Image.network(newsDto.imageUrl, fit: BoxFit.fitWidth),
       ),
     ]);
   }
 
-  Widget _buildFooter(BuildContext context, BaseNewsPojo baseNewsPojo) {
+  Widget _buildFooter(BuildContext context, BaseNewsDto baseNewsDto) {
     return SizedBox(
       height: 44.h,
       width: double.infinity,
@@ -303,7 +303,7 @@ class NewsCard extends StatelessWidget {
               ),
               SizedBox(width: 8.w),
               Text(
-                "${baseNewsPojo.numberOfLikes}",
+                "${baseNewsDto.numberOfLikes}",
                 style: TextConfigs.regular14OceanGreen,
               )
             ],
@@ -311,7 +311,7 @@ class NewsCard extends StatelessWidget {
           GestureDetector(
             onTap: () {
               if (screenType == NewsScreenType.feed) {
-                _navigateToNewsDetailScreen(context, baseNewsPojo);
+                _navigateToNewsDetailScreen(context, baseNewsDto);
               }
             },
             child: Row(
@@ -325,7 +325,7 @@ class NewsCard extends StatelessWidget {
                 ),
                 SizedBox(width: 8.w),
                 Text(
-                  "${baseNewsPojo.commentList.length}",
+                  "${baseNewsDto.commentList.length}",
                   style: TextConfigs.regular14OceanGreen,
                 )
               ],
@@ -336,12 +336,11 @@ class NewsCard extends StatelessWidget {
     );
   }
 
-  void _navigateToNewsDetailScreen(
-      BuildContext context, BaseNewsPojo newsPojo) {
+  void _navigateToNewsDetailScreen(BuildContext context, BaseNewsDto newsDto) {
     Navigator.pushNamed(
       context,
       NewsDetailScreen.id,
-      arguments: newsPojo,
+      arguments: newsDto,
     );
   }
 }
