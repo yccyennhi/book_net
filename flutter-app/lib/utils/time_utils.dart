@@ -12,11 +12,13 @@ class TimeUtils {
     DateTime nowEpoch = DateTime.now();
     DateTime argEpoch = DateTime.fromMillisecondsSinceEpoch(timeInEpoch);
 
+    int durationInYear = nowEpoch.year - argEpoch.year;
+    int durationInMonth = nowEpoch.month - argEpoch.month;
     int durationInDay = nowEpoch.day - argEpoch.day;
     int durationInHour = nowEpoch.hour - argEpoch.hour;
     int durationInMinute = nowEpoch.minute - argEpoch.minute;
 
-    if (durationInDay > 7) {
+    if (durationInYear > 0 || durationInMonth > 0 || durationInDay > 7) {
       DateFormat format = DateFormat(yyyyMMdd);
       text = format.format(nowEpoch);
     } else if (durationInDay > 0) {

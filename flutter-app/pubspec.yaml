@@ -19,8 +19,6 @@ dependencies:
   flutter_svg: ^0.23.0+1
   intl: ^0.17.0
   google_fonts: ^2.1.0
-  flutter_bloc: ^7.3.1
-  equatable: ^2.0.0
   animated_splash_screen: ^1.2.0
   persistent_bottom_nav_bar:
     git:
@@ -30,6 +28,9 @@ dependencies:
   #Utils
   freezed_annotation: any
   
+  #Bloc
+  equatable: ^2.0.3
+  flutter_bloc: ^7.3.1
 
   #Http
   http: ^0.13.0
@@ -48,6 +49,7 @@ dev_dependencies:
   build_runner: any
   freezed: any
   json_serializable: any
+  json_annotation: 4.5.0
 
 flutter:
   uses-material-design: true

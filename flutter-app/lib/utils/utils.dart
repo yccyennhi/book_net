@@ -3,54 +3,92 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Utils {
-  static Future successfulSubmission(
-      BuildContext context, String content) async {
-    await showDialog(
+  static Future showLoading(BuildContext context) async {
+    return showDialog(
+      barrierDismissible: false,
       context: context,
-      builder: (context) {
-        var kPopupBackgroundColor;
-        return AlertDialog(
-            insetPadding: EdgeInsets.symmetric(
-              horizontal: 35.w,
-              vertical: 250.h,
-            ),
-            backgroundColor: AppColors.blackColor,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
-            ),
-            content: Center(
-              child: Text(
-                content,
-              ),
-            ),
-            actions: [
-              Center(
-                child: Container(
-                  height: 43.h,
-                  width: 220.w,
-                  padding: EdgeInsets.only(bottom: 5.h),
-                  child: OutlinedButton(
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    style: OutlinedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      backgroundColor: AppColors.blackColor,
-                    ),
-                    child: Text(
-                      'OK',
-                      style: TextStyle(
-                        color: AppColors.blackColor,
-                        fontSize: 15.sp,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ]);
-      },
+      builder: (_) => const LoadingWidget(
+        color: Colors.white,
+      ),
     );
   }
+
+  static dismissDialog(BuildContext context) {
+    Navigator.pop(context);
+  }
+}
+
+class LoadingWidget extends StatefulWidget {
+  const LoadingWidget({
+    Key? key,
+    this.color,
+    this.size = 50.0,
+    this.itemBuilder,
+    this.duration = const Duration(seconds: 1),
+    this.controller,
+  })  : assert(
+          !(itemBuilder is IndexedWidgetBuilder && color is Color) &&
+              !(itemBuilder == null && color == null),
+          'You should specify either a itemBuilder or a color',
+        ),
+        super(key: key);
+
+  final Color? color;
+  final double size;
+  final IndexedWidgetBuilder? itemBuilder;
+  final Duration duration;
+  final AnimationController? controller;
+
+  @override
+  _LoadingWidgetState createState() => _LoadingWidgetState();
+}
+
+class _LoadingWidgetState extends State<LoadingWidget>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _animation;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _controller = (widget.controller ??
+        AnimationController(vsync: this, duration: widget.duration))
+      ..addListener(() => setState(() {}))
+      ..repeat();
+    _animation = CurveTween(curve: Curves.easeInOut).animate(_controller);
+  }
+
+  @override
+  void dispose() {
+    if (widget.controller == null) {
+      _controller.dispose();
+    }
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      type: MaterialType.transparency,
+      child: Center(
+        child: Opacity(
+          opacity: 1.0 - _animation.value,
+          child: Transform.scale(
+            scale: _animation.value,
+            child: SizedBox.fromSize(
+              size: Size.square(widget.size),
+              child: _itemBuilder(0),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _itemBuilder(int index) => widget.itemBuilder != null
+      ? widget.itemBuilder!(context, index)
+      : DecoratedBox(
+          decoration:
+              BoxDecoration(shape: BoxShape.circle, color: widget.color));
 }

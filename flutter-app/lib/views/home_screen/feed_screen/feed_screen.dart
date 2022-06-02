@@ -1,12 +1,12 @@
 import 'package:book_net/configs/text_configs.dart';
-import 'package:book_net/pojo/news/base_news_pojo.dart';
+import 'package:book_net/dto/news/base_news_dto.dart';
 import 'package:book_net/views/home_screen/create_news_screen/create_news_screen.dart';
 import 'package:book_net/views/home_screen/feed_screen/news.dart';
 import 'package:flutter/material.dart';
 
 import '../../../configs/color_configs.dart';
 import '../../../configs/style_configs.dart';
-import '../../../pojo/news/post_news_pojo.dart';
+import '../../../dto/news/post_news_dto.dart';
 import '../../base_widgets/bar/bar.dart';
 import '../../base_widgets/button/raised_gradient_button.dart';
 import '../news_detail_screen/news_detail_screen.dart';
@@ -77,7 +77,7 @@ class FeedScreen extends StatelessWidget {
   List<Widget> _buildListItem(BuildContext context) {
     List<Widget> listItem = [];
 
-    for (BaseNewsPojo model in newsListTest) {
+    for (BaseNewsDto model in newsListTest) {
       listItem.add(NewsCard(
         news: model,
         screenType: NewsScreenType.feed,

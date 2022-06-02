@@ -1,6 +1,6 @@
 import 'package:book_net/configs/style_configs.dart';
 import 'package:book_net/configs/text_configs.dart';
-import 'package:book_net/pojo/news/base_news_pojo.dart';
+import 'package:book_net/dto/news/base_news_dto.dart';
 import 'package:book_net/views/base_widgets/bar/bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -15,7 +15,7 @@ class NewsDetailScreen extends StatelessWidget {
 
   const NewsDetailScreen({Key? key, required this.newsModel}) : super(key: key);
 
-  final BaseNewsPojo newsModel;
+  final BaseNewsDto newsModel;
 
   @override
   Widget build(BuildContext context) {
@@ -35,23 +35,23 @@ class NewsDetailScreen extends StatelessWidget {
     );
   }
 
-  List<Widget> _buildNewsDetail(BaseNewsPojo newsPojo) {
+  List<Widget> _buildNewsDetail(BaseNewsDto newsDto) {
     List<Widget> commentList = [];
-    commentList.addAll(_buildCommentList(newsPojo));
+    commentList.addAll(_buildCommentList(newsDto));
     commentList.insert(
         0,
         NewsCard(
-          news: newsPojo,
+          news: newsDto,
           screenType: NewsScreenType.newsDetail,
         ));
 
     return commentList;
   }
 
-  List<Widget> _buildCommentList(BaseNewsPojo newsModel) {
+  List<Widget> _buildCommentList(BaseNewsDto newsModel) {
     List<CommentRowItem> commentList = [];
     for (var comment in newsModel.commentList) {
-      commentList.add(CommentRowItem(commentPojo: comment));
+      commentList.add(CommentRowItem(commentdto: comment));
     }
 
     return commentList;
