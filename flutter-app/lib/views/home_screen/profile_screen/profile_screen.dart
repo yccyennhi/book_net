@@ -1,11 +1,17 @@
+import 'dart:developer';
+
 import 'package:book_net/configs/color_configs.dart';
 import 'package:book_net/configs/text_configs.dart';
 import 'package:book_net/configs/style_configs.dart';
 import 'package:book_net/dto/news/base_news_dto.dart';
 import 'package:book_net/views/base_widgets/bar/bar.dart';
+import 'package:book_net/views/base_widgets/button/icon_button.dart';
+import 'package:book_net/views/base_widgets/button/icon_with_text_button.dart';
 import 'package:book_net/views/base_widgets/button/raised_gradient_button.dart';
 import 'package:book_net/views/base_widgets/chips/custom_chip.dart';
+import 'package:book_net/views/base_widgets/modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:book_net/views/base_widgets/number_with_text/number_with_text.dart';
+import 'package:book_net/views/home_screen/edit_profile_screen/edit_profile_screen.dart';
 import 'package:book_net/views/home_screen/feed_screen/news.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -35,18 +41,63 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    onPressEditButton(BuildContext context) {
+      Navigator.of(context).popAndPushNamed(EditProfileScreen.id);
+    }
+
+    void onPressMenuButton() {
+      // print('clock');
+      showModalBottomSheet(
+        context: context,
+        useRootNavigator: true,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            top: Radius.circular(16),
+          ),
+        ),
+        builder: (context) => SizedBox(
+          height: 240.h,
+          child: CustomModalBottomSheet(
+            widgets: [
+              IconWithTextButton(
+                  onTap: () => onPressEditButton(context),
+                  text: 'Edit profile',
+                  icon: 'assets/icons/edit.png'),
+              IconWithTextButton(
+                  onTap: () => log('Setting'),
+                  text: 'Setting',
+                  icon: 'assets/icons/edit.png'),
+              const Divider(),
+            ],
+          ),
+        ),
+      );
+    }
+
     List<String> interested = [
       '🤡 Comedy',
       '👻 Horror',
       '💅🏻 Drama',
       '❤ Romantic'
     ];
+    List<Widget> iconButton = [
+      CustomIconButton(
+          icon: Image.asset('assets/icons/plus-square.png'),
+          color: AppColors.whiteColor,
+          onPressed: () => {}),
+      CustomIconButton(
+          icon: Image.asset('assets/icons/menu.png'),
+          color: AppColors.whiteColor,
+          onPressed: onPressMenuButton)
+    ];
+
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size(double.infinity, AppStyles.appBarHeight),
-        child: const Bars(
+        child: Bars(
           title: 'Profile',
-          leading: SizedBox(),
+          leading: const SizedBox(),
+          list: iconButton,
         ),
       ),
       body: SingleChildScrollView(

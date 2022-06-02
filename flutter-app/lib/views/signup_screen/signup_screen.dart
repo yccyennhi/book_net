@@ -133,13 +133,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   children: [
                     CustomIconButton(
                         icon: Image.asset('assets/icons/facebook.png'),
-                        color: AppColors.blueColor),
+                        color: AppColors.blueColor,
+                        onPressed: () => {}),
                     SizedBox(
                       width: 16.w,
                     ),
                     CustomIconButton(
                         icon: Image.asset('assets/icons/google.png'),
-                        color: AppColors.whiteColor),
+                        color: AppColors.whiteColor,
+                        onPressed: () => {}),
                   ],
                 ),
                 SizedBox(
