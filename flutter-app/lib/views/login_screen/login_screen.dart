@@ -1,7 +1,6 @@
 import 'package:book_net/configs/color_configs.dart';
 import 'package:book_net/configs/style_configs.dart';
 import 'package:book_net/configs/text_configs.dart';
-import 'package:book_net/configs/validate_configs.dart';
 import 'package:book_net/utils/utils.dart';
 import 'package:book_net/view_models/authentication_bloc/authentication_bloc.dart';
 import 'package:book_net/view_models/user/curr_user.dart';
@@ -89,8 +88,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           CustomTextField(
                             text: 'E-mail address',
                             controller: userController,
-                            validator: ValidateConfigs.emailValidator,
-                            // validator: null,
+                            // validator: ValidateConfigs.emailValidator,
+                            validator: null,
                           ),
                           SizedBox(
                             height: 12.h,
@@ -98,8 +97,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           PasswordTextField(
                             text: 'Password',
                             controller: passController,
-                            validator: ValidateConfigs.passwordValidator,
-                            // validator: null,
+                            // validator: ValidateConfigs.passwordValidator,
+                            validator: null,
                           ),
                         ],
                       ),

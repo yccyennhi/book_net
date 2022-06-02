@@ -1,9 +1,12 @@
 import 'package:book_net/configs/color_configs.dart';
 import 'package:book_net/configs/text_configs.dart';
 import 'package:book_net/configs/style_configs.dart';
+import 'package:book_net/dto/news/base_news_dto.dart';
 import 'package:book_net/views/base_widgets/bar/bar.dart';
 import 'package:book_net/views/base_widgets/button/raised_gradient_button.dart';
+import 'package:book_net/views/base_widgets/chips/custom_chip.dart';
 import 'package:book_net/views/base_widgets/number_with_text/number_with_text.dart';
+import 'package:book_net/views/home_screen/feed_screen/news.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:url_launcher/url_launcher_string.dart';
@@ -32,6 +35,12 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<String> interested = [
+      '🤡 Comedy',
+      '👻 Horror',
+      '💅🏻 Drama',
+      '❤ Romantic'
+    ];
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size(double.infinity, AppStyles.appBarHeight),
@@ -45,9 +54,6 @@ class ProfileScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
-                height: 16.h,
-              ),
               Padding(
                 padding: EdgeInsets.fromLTRB(24.w, 16.h, 24.w, 0.h),
                 child: Column(
@@ -58,8 +64,8 @@ class ProfileScreen extends StatelessWidget {
                         // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           CircleAvatar(
-                            backgroundImage: const NetworkImage(
-                                'https://www.woolha.com/media/2020/03/eevee.png'),
+                            backgroundImage:
+                                NetworkImage(userTestModel.imageUrl),
                             radius: 32.r,
                             foregroundColor: Colors.red,
                           ),
@@ -84,14 +90,14 @@ class ProfileScreen extends StatelessWidget {
                                 Flexible(
                                   child: NumberWithText(
                                     number: 33,
-                                    text: 'review',
+                                    text: 'follow',
                                   ),
                                   flex: 1,
                                 ),
                                 Flexible(
                                   child: NumberWithText(
                                     number: 33,
-                                    text: 'review',
+                                    text: 'like',
                                   ),
                                   flex: 1,
                                 ),
@@ -103,7 +109,7 @@ class ProfileScreen extends StatelessWidget {
                       height: 8.h,
                     ),
                     Text(
-                      'William Ng',
+                      userTestModel.alias,
                       style: TextConfigs.bold16,
                     ),
                   ],
@@ -112,7 +118,7 @@ class ProfileScreen extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(left: 16.w),
                 child: TextButton(
-                  child: Text('bc@gmail.com',
+                  child: Text(userTestModel.alias + '@gmail.com',
                       style: TextConfigs.regular12OceanGreen),
                   onPressed: launchEmailSubmission,
                 ),
@@ -130,31 +136,29 @@ class ProfileScreen extends StatelessWidget {
                 ),
               ),
               Container(
-                padding: EdgeInsets.fromLTRB(24.h, 4.h, 24.h, 8.h),
+                padding: EdgeInsets.fromLTRB(16.h, 4.h, 16.h, 16.h),
                 child: GridView.builder(
                   physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 3,
-                    childAspectRatio: 1.0,
-                    mainAxisSpacing: 10.0,
-                    crossAxisSpacing: 10.0,
+                    childAspectRatio: 2.5,
+                    mainAxisSpacing: 0,
+                    crossAxisSpacing: 5,
                   ),
-                  itemCount: 21,
+                  // gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  //     crossAxisCount: 3, childAspectRatio: 3),
+                  itemCount: interested.length,
                   itemBuilder: (context, index) {
-                    return Container(
-                      decoration: BoxDecoration(
-                        border: Border.all(width: 3.0),
-                      ),
-                    );
+                    return CustomChip(text: interested[index]);
                   },
                 ),
               ),
               Padding(
-                padding: EdgeInsets.fromLTRB(24.w, 16.h, 24.w, 16.h),
+                padding: EdgeInsets.fromLTRB(24.w, 0.h, 24.w, 16.h),
                 child: RaisedGradientButton(
                   child: Text(
-                    'View William’s bookshelf',
+                    'View ' + userTestModel.alias + ' bookshelf',
                     style: TextConfigs.medium16
                         .copyWith(color: AppColors.oceanGreenColor),
                   ),
@@ -168,6 +172,13 @@ class ProfileScreen extends StatelessWidget {
                 ),
               ),
               const Divider(),
+              ListView.builder(
+                primary: false,
+                shrinkWrap: true,
+                itemCount: newsListTest.length,
+                itemBuilder: (context, index) => NewsCard(
+                    news: newsListTest[index], screenType: NewsScreenType.feed),
+              ),
             ]),
       ),
     );
