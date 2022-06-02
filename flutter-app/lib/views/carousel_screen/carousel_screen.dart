@@ -115,7 +115,7 @@ class _CarouselScreenState extends State<CarouselScreen> {
                     onPressed: onPressedLogin,
                     child: Text(
                       'Login',
-                      style: TextConfigs.regular12Blue,
+                      style: TextConfigs.regular12OceanGreen,
                     ),
                   ),
                 ],
