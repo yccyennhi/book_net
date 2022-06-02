@@ -11,6 +11,7 @@ import 'package:book_net/views/base_widgets/button/raised_gradient_button.dart';
 import 'package:book_net/views/base_widgets/chips/custom_chip.dart';
 import 'package:book_net/views/base_widgets/modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:book_net/views/base_widgets/number_with_text/number_with_text.dart';
+import 'package:book_net/views/change_password_screen/change_password_screen.dart';
 import 'package:book_net/views/home_screen/edit_profile_screen/edit_profile_screen.dart';
 import 'package:book_net/views/home_screen/feed_screen/news.dart';
 import 'package:flutter/material.dart';
@@ -45,6 +46,10 @@ class ProfileScreen extends StatelessWidget {
       Navigator.of(context).popAndPushNamed(EditProfileScreen.id);
     }
 
+    onPressPasswordButton(BuildContext context) {
+      Navigator.of(context).popAndPushNamed(ChangePasswordScreen.id);
+    }
+
     void onPressMenuButton() {
       // print('clock');
       showModalBottomSheet(
@@ -56,12 +61,26 @@ class ProfileScreen extends StatelessWidget {
           ),
         ),
         builder: (context) => SizedBox(
-          height: 240.h,
+          height: 600.h,
           child: CustomModalBottomSheet(
             widgets: [
+              Padding(
+                padding: EdgeInsets.only(left: 20.w, bottom: 12.h),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    'Account',
+                    style: TextConfigs.bold16,
+                  ),
+                ),
+              ),
               IconWithTextButton(
                   onTap: () => onPressEditButton(context),
-                  text: 'Edit profile',
+                  text: 'Profile',
+                  icon: 'assets/icons/edit.png'),
+              IconWithTextButton(
+                  onTap: () => onPressPasswordButton(context),
+                  text: 'Password',
                   icon: 'assets/icons/edit.png'),
               IconWithTextButton(
                   onTap: () => log('Setting'),
