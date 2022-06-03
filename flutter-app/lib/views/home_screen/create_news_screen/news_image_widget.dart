@@ -9,12 +9,12 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../../../configs/color_configs.dart';
 import '../../../configs/style_configs.dart';
 import '../../../configs/text_configs.dart';
+import '../../base_widgets/button/raised_gradient_button.dart';
 
 class ImageAndPostWidget extends StatefulWidget {
-  const ImageAndPostWidget({Key? key, required this.isAbleToAddImage})
-      : super(key: key);
+  ImageAndPostWidget({Key? key, required this.onPostTap}) : super(key: key);
 
-  final bool isAbleToAddImage;
+  Function(List<File> images) onPostTap;
 
   @override
   State<ImageAndPostWidget> createState() => _ImageAndPostWidgetState();
@@ -23,7 +23,7 @@ class ImageAndPostWidget extends StatefulWidget {
 class _ImageAndPostWidgetState extends State<ImageAndPostWidget> {
   int _activeIndex = 0;
   final ImagePicker _imagePicker = ImagePicker();
-  final List<XFile> _imageFilesList = [];
+  final List<XFile> _imageXFilesList = [];
 
   @override
   Widget build(BuildContext context) {
@@ -33,22 +33,22 @@ class _ImageAndPostWidgetState extends State<ImageAndPostWidget> {
           alignment: Alignment.bottomCenter,
           children: [
             CarouselSlider.builder(
-              itemCount: _imageFilesList.length,
-              options: _buildImageOption(_imageFilesList.length),
+              itemCount: _imageXFilesList.length,
+              options: _buildImageOption(_imageXFilesList.length),
               itemBuilder: (context, index, realIndex) {
-                int totalImage = _imageFilesList.length;
+                int totalImage = _imageXFilesList.length;
                 return (totalImage > 0)
-                    ? _buildImage(_imageFilesList[index])
+                    ? _buildImage(_imageXFilesList[index])
                     : const SizedBox();
               },
             ),
-            (_imageFilesList.length > 1)
+            (_imageXFilesList.length > 1)
                 ? Padding(
                     padding:
                         EdgeInsets.only(bottom: AppStyles.smallMarginVertical),
                     child: AnimatedSmoothIndicator(
                       activeIndex: _activeIndex,
-                      count: _imageFilesList.length,
+                      count: _imageXFilesList.length,
                       effect: WormEffect(
                           dotColor: AppColors.grayColor,
                           activeDotColor: AppColors.green1Color,
@@ -61,29 +61,50 @@ class _ImageAndPostWidgetState extends State<ImageAndPostWidget> {
         ),
         GestureDetector(
           onTap: () => _selectImage(),
-          child: (widget.isAbleToAddImage)
-              ? Padding(
-                  padding: EdgeInsets.symmetric(
-                      horizontal: AppStyles.defaultMarginHorizontal,
-                      vertical: AppStyles.smallMarginVertical),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Add to post',
-                        style: TextConfigs.semibold16DarkGrey,
-                      ),
-                      SizedBox(
-                        width: 24.w,
-                        child: Image.asset(
-                          'assets/icons/ic_image.png',
-                          fit: BoxFit.fill,
-                        ),
-                      ),
-                    ],
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+                horizontal: AppStyles.defaultMarginHorizontal,
+                vertical: AppStyles.smallMarginVertical),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Add to post',
+                  style: TextConfigs.semibold16DarkGrey,
+                ),
+                SizedBox(
+                  width: 24.w,
+                  child: Image.asset(
+                    'assets/icons/ic_image.png',
+                    fit: BoxFit.fill,
                   ),
-                )
-              : null,
+                ),
+              ],
+            ),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.symmetric(
+              horizontal: AppStyles.defaultMarginHorizontal),
+          child: RaisedGradientButton(
+              child: Text(
+                'Post',
+                style:
+                    TextConfigs.medium16.copyWith(color: AppColors.whiteColor),
+              ),
+              gradient: const LinearGradient(
+                colors: <Color>[
+                  AppColors.green2Color,
+                  AppColors.green1Color,
+                ],
+              ),
+              onPressed: () {
+                List<File> imageFiles = [];
+                for (XFile xFile in _imageXFilesList) {
+                  imageFiles.add(File(xFile.path));
+                }
+                widget.onPostTap.call(imageFiles);
+              }),
         ),
       ],
     );
@@ -121,8 +142,8 @@ class _ImageAndPostWidgetState extends State<ImageAndPostWidget> {
 
     if (selectedImage.isNotEmpty) {
       setState(() {
-        _imageFilesList.clear();
-        _imageFilesList.addAll(selectedImage);
+        _imageXFilesList.clear();
+        _imageXFilesList.addAll(selectedImage);
       });
     }
   }
