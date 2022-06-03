@@ -46,7 +46,7 @@ class HomeScreen extends StatelessWidget {
       const GuildScreen(),
       const BookScreen(),
       const AchievementScreen(),
-      const ProfileScreen(),
+      ProfileScreen(),
     ];
   }
 

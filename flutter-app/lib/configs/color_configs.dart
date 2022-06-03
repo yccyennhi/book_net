@@ -26,4 +26,5 @@ class AppColors {
   static const lightestSkyColor = Color(0xFFF7F9FA);
   static const amazonColor = Color(0xFF347D5E);
   static const skyLightColor = Color(0xFFE3E5E5);
+  static const greenLightestColor = Color(0xFFECFCE5);
 }

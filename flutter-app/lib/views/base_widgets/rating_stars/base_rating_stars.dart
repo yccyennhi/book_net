@@ -1,5 +1,4 @@
 import 'package:book_net/configs/color_configs.dart';
-import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_rating_stars/flutter_rating_stars.dart';
 

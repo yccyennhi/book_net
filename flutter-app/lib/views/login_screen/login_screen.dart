@@ -1,10 +1,8 @@
 import 'package:book_net/configs/color_configs.dart';
 import 'package:book_net/configs/style_configs.dart';
 import 'package:book_net/configs/text_configs.dart';
-import 'package:book_net/configs/validate_configs.dart';
 import 'package:book_net/utils/utils.dart';
 import 'package:book_net/view_models/authentication_bloc/authentication_bloc.dart';
-import 'package:book_net/view_models/authentication_bloc/login_event.dart';
 import 'package:book_net/view_models/user/curr_user.dart';
 import 'package:book_net/views/base_widgets/bar/bar.dart';
 import 'package:book_net/views/base_widgets/button/raised_gradient_button.dart';
@@ -17,6 +15,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../view_models/authentication_bloc/authentication_state.dart';
+import '../../view_models/authentication_bloc/login_event.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -109,7 +108,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     TextButton(
                       child: Text('Forgot your password?',
-                          style: TextConfigs.regular12Blue),
+                          style: TextConfigs.regular12OceanGreen),
                       onPressed: () {},
                     ),
                     Flexible(
@@ -121,7 +120,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     Text(
                       'By continuing, you agree to our Terms of Service and Privacy Policy.',
-                      style: TextConfigs.regular12Blue,
+                      style: TextConfigs.regular12OceanGreen,
                     ),
                     SizedBox(
                       height: 20.h,
@@ -138,7 +137,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           AppColors.green2Color,
                         ],
                       ),
-                      onPressed: () => _onPressedLogin(context),
+                      onPressed: () => _onPressedLogin(
+                          context, _key.currentState!.validate()),
                     ),
                   ],
                 ),
@@ -158,10 +158,13 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }
 
-  _onPressedLogin(BuildContext context) {
-    _key.currentState!.validate();
-    context.read<LogInBloc>().add(LogInViaUsernameEvent(
-        username: userController.text, password: passController.text));
+  _onPressedLogin(BuildContext context, bool isValidate) {
+    if (isValidate) {
+      print('click');
+      context.read<LogInBloc>().add(LogInViaUsernameEvent(
+          username: userController.text, password: passController.text));
+    }
+
     // log('button click');
     // log('${_key.currentState!.validate()}');
     // print(passwordValidator

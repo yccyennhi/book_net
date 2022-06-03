@@ -25,9 +25,14 @@ class LogInBloc extends Bloc<LoginEvent, LogInState> {
 
     UserDto? response =
         await AuthenticationProvider().logIn(event.username, event.password);
+    print(response);
+
     if (response == null) {
+      print(response);
       emit(const LogInState.logInFail());
     } else {
+      print(response);
+
       emit(const LogInState.logInSuccess());
     }
   }
