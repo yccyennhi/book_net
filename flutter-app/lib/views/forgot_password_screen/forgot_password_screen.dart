@@ -12,7 +12,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
   const ForgotPasswordScreen({Key? key}) : super(key: key);
-  static const String id = 'login';
+  static const String id = 'ForgotPasswordScreen';
 
   @override
   _ForgotPasswordScreenState createState() => _ForgotPasswordScreenState();
@@ -57,32 +57,12 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                 SizedBox(
                   height: 40.h,
                 ),
-                Image.asset('assets/images/LogoHorizontal.png'),
-                Text('Forgot password', style: TextConfigs.semibold20),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Text('Already have an account?',
-                        style: TextConfigs.regular16Grey),
-                    TextButton(
-                      onPressed: onPressedLogin,
-                      child: Text(
-                        'Login',
-                        style: TextConfigs.regular12Blue,
-                      ),
-                    )
-                  ],
-                ),
-                SizedBox(
-                  height: 52.h,
-                ),
                 Form(
                   key: _key,
                   child: Column(
                     children: [
                       CustomTextField(
-                        text: 'E-mail address',
+                        text: 'Current password',
                         controller: userController,
                         validator: ValidateConfigs.emailValidator,
                       ),

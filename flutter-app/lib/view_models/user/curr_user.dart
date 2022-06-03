@@ -9,7 +9,7 @@ class CurrUserData {
     return _singleton;
   }
 
-  UserDto? user = null;
+  UserDto? user;
 
   setUser(UserDto userdto) => user = userdto;
 }

@@ -6,10 +6,8 @@ import 'package:flutter/material.dart';
 
 import '../../../configs/color_configs.dart';
 import '../../../configs/style_configs.dart';
-import '../../../dto/news/post_news_dto.dart';
 import '../../base_widgets/bar/bar.dart';
 import '../../base_widgets/button/raised_gradient_button.dart';
-import '../news_detail_screen/news_detail_screen.dart';
 
 class FeedScreen extends StatelessWidget {
   static const id = "FeedScreen";

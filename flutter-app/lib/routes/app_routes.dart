@@ -2,7 +2,10 @@ import 'package:book_net/main.dart';
 import 'package:book_net/dto/news/base_news_dto.dart';
 import 'package:book_net/view_models/authentication_bloc/authentication_bloc.dart';
 import 'package:book_net/views/carousel_screen/carousel_screen.dart';
+import 'package:book_net/views/change_password_screen/change_password_screen.dart';
+import 'package:book_net/views/forgot_password_screen/forgot_password_screen.dart';
 import 'package:book_net/views/home_screen/create_news_screen/create_news_screen.dart';
+import 'package:book_net/views/home_screen/edit_profile_screen/edit_profile_screen.dart';
 import 'package:book_net/views/home_screen/home_screen.dart';
 import 'package:book_net/views/home_screen/news_detail_screen/news_detail_screen.dart';
 import 'package:book_net/views/launch_screen.dart/launch_screen.dart';
@@ -80,6 +83,15 @@ class AppRoutes {
       case CreateNewsScreen.id:
         return CupertinoPageRoute(
             settings: settings, builder: (_) => const CreateNewsScreen());
+      case EditProfileScreen.id:
+        return CupertinoPageRoute(
+            settings: settings, builder: (_) => const EditProfileScreen());
+      case ForgotPasswordScreen.id:
+        return CupertinoPageRoute(
+            settings: settings, builder: (_) => const ForgotPasswordScreen());
+      case ChangePasswordScreen.id:
+        return CupertinoPageRoute(
+            settings: settings, builder: (_) => const ChangePasswordScreen());
       default:
         return _errorRoute();
     }

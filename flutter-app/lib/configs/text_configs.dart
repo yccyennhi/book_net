@@ -131,4 +131,10 @@ class TextConfigs {
   static final bold32 = baseBold.copyWith(
     fontSize: textSizeSSl.sp,
   );
+
+  static final regular12OceanGreen = TextStyle(
+    fontFamily: fontFamily,
+    color: AppColors.oceanGreenColor,
+    fontSize: textSizeSm.sp,
+  );
 }
