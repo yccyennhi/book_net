@@ -3,36 +3,24 @@ import 'package:book_net/routes/app_routes.dart';
 import 'package:book_net/view_models/user/curr_user.dart';
 import 'package:book_net/views/home_screen/home_screen.dart';
 import 'package:book_net/views/launch_screen.dart/launch_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 // import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-void main() {
+import 'firebase_options.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const BookNetApp());
 }
 
 class BookNetApp extends StatelessWidget {
   const BookNetApp({Key? key}) : super(key: key);
-
-  // @override
-  // Widget build(BuildContext context) {
-  //   return MultiBlocProvider(
-  //       // create: (context) => CounterCubit(),
-  //       providers: [
-  //         // BlocProvider<AuthenticationBloc>(
-  //         //   create: (context) => AuthenticationBloc(),
-  //         // ),
-  //       ],
-  //       child: MaterialApp(
-  //         debugShowCheckedModeBanner: false,
-  //         title: 'Flutter Demo',
-  //         theme: ThemeData(
-  //           visualDensity: VisualDensity.adaptivePlatformDensity,
-  //         ),
-  //         home: LoginScreen(),
-  //       ));
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +53,7 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return AnimatedSplashScreen(
       splash: Image.asset('assets/images/LOGO.png'),
-      nextScreen: const LaunchScreen(),
+      nextScreen: const HomeScreen(),
       splashTransition: SplashTransition.fadeTransition,
     );
   }

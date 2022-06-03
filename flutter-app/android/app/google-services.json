@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "849670174527",
+    "project_id": "booknet-2edba",
+    "storage_bucket": "booknet-2edba.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:849670174527:android:6d4d74e16bb786955e858a",
+        "android_client_info": {
+          "package_name": "com.example.book_net"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "849670174527-va641f6sjcf58bef4t4ulr3rtiucc457.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDz4E5xO4wH5TaGhQHz_eM5iohCUusuVOU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "849670174527-va641f6sjcf58bef4t4ulr3rtiucc457.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "849670174527-b404deld069k0rmtss4glqfbrg9v5mrf.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.bookNet"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
