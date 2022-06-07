@@ -20,7 +20,6 @@ class CreateNewsBloc extends Bloc<CreateNewsEvent, CreateNewsState> {
     emit(const CreateNewsState.inProgress());
     List<String> imagesUrl =
         await FirebaseService().uploadNewsImages(event.files);
-    print(imagesUrl);
     emit(const CreateNewsState.pushSuccess());
   }
 }

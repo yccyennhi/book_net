@@ -42,11 +42,11 @@ class HomeScreen extends StatelessWidget {
 
   List<Widget> _buildScreen() {
     return [
-      const FeedScreen(),
+      FeedScreen(),
       const GuildScreen(),
       const BookScreen(),
       const AchievementScreen(),
-      ProfileScreen(),
+      const ProfileScreen(),
     ];
   }
 
