@@ -1,4 +1,5 @@
 import 'package:book_net/configs/color_configs.dart';
+import 'package:book_net/configs/profile_configs.dart';
 import 'package:book_net/configs/style_configs.dart';
 import 'package:book_net/configs/text_configs.dart';
 import 'package:book_net/dto/news/base_news_dto.dart';
@@ -8,6 +9,7 @@ import 'package:book_net/views/base_widgets/chips/custom_chip.dart';
 import 'package:book_net/views/home_screen/edit_profile_screen/widget/edit_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
 
 class EditProfileScreen extends StatelessWidget {
   static const id = "EditProfileScreen";
@@ -16,15 +18,38 @@ class EditProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    onEditAlias(String type) {
-      Navigator.pushNamed(context, EditScreen.id, arguments: type);
+    TextEditingController txtBirthdateController =
+        TextEditingController(text: '6/8/2022');
+    DateTime initDate = DateTime(2022, 6, 8);
+    void pickDate() async {
+      final pickDate = await showDatePicker(
+        context: context,
+        initialDate: initDate,
+        firstDate: DateTime(1900),
+        lastDate: DateTime.now(),
+        builder: (context, child) {
+          return Theme(
+            data: Theme.of(context).copyWith(
+              colorScheme: const ColorScheme.light(
+                primary: AppColors.oceanGreenColor, // header background color
+                onPrimary: AppColors.teaGreenColor, // header text color
+                onSurface: AppColors.blackColor, // body text color
+              ),
+              textButtonTheme: TextButtonThemeData(
+                style: TextButton.styleFrom(
+                  primary: AppColors.oceanGreenColor, // button text color
+                ),
+              ),
+            ),
+            child: child!,
+          );
+        },
+      );
+      if (pickDate == null) return;
+      txtBirthdateController.text = DateFormat('dd/MM/yyyy').format(pickDate);
     }
 
-    onEditName(String type) {
-      Navigator.pushNamed(context, EditScreen.id, arguments: type);
-    }
-
-    onEditStatus(String type) {
+    onEdit(String type) {
       Navigator.pushNamed(context, EditScreen.id, arguments: type);
     }
 
@@ -81,13 +106,17 @@ class EditProfileScreen extends StatelessWidget {
             child: Column(
               children: [
                 FieldButton(
-                    fieldName: 'Alias',
+                    fieldName: Profile.alias,
                     fieldValue: 'Duy Quan',
-                    onTap: () => {onEditAlias('Alias')}),
+                    onTap: () => {onEdit(Profile.alias)}),
                 FieldButton(
-                    fieldName: 'Name', fieldValue: 'Duy Quan', onTap: () {}),
+                    fieldName: Profile.name,
+                    fieldValue: 'Duy Quan',
+                    onTap: () => {onEdit(Profile.name)}),
                 FieldButton(
-                    fieldName: 'Status', fieldValue: 'Duy Quan', onTap: () {}),
+                    fieldName: Profile.status,
+                    fieldValue: 'Duy Quan',
+                    onTap: () => {onEdit(Profile.status)}),
                 SizedBox(
                   height: 32.h,
                 ),
@@ -102,13 +131,17 @@ class EditProfileScreen extends StatelessWidget {
                   height: 12.h,
                 ),
                 FieldButton(
-                    fieldName: 'Email', fieldValue: 'Duy Quan', onTap: () {}),
-                FieldButton(
-                    fieldName: 'Date Of Birth',
+                    fieldName: Profile.email,
                     fieldValue: 'Duy Quan',
-                    onTap: () {}),
+                    onTap: () => {onEdit(Profile.email)}),
                 FieldButton(
-                    fieldName: 'Gender', fieldValue: 'Duy Quan', onTap: () {}),
+                    fieldName: Profile.dob,
+                    fieldValue: 'Duy Quan',
+                    onTap: pickDate),
+                FieldButton(
+                    fieldName: Profile.gender,
+                    fieldValue: 'Duy Quan',
+                    onTap: () => {onEdit(Profile.gender)}),
                 SizedBox(
                   height: 32.h,
                 ),
