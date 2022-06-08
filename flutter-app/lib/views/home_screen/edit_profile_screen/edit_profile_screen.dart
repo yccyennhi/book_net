@@ -136,7 +136,7 @@ class EditProfileScreen extends StatelessWidget {
                     onTap: () => {onEdit(Profile.email)}),
                 FieldButton(
                     fieldName: Profile.dob,
-                    fieldValue: 'Duy Quan',
+                    fieldValue: DateFormat('dd/MM/yyyy').format(initDate),
                     onTap: pickDate),
                 FieldButton(
                     fieldName: Profile.gender,

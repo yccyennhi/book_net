@@ -1,9 +1,14 @@
+import 'dart:developer';
+
 import 'package:book_net/configs/color_configs.dart';
+import 'package:book_net/configs/profile_configs.dart';
 import 'package:book_net/configs/style_configs.dart';
 import 'package:book_net/configs/text_configs.dart';
+import 'package:book_net/configs/validate_configs.dart';
 import 'package:book_net/views/base_widgets/bar/bar.dart';
 import 'package:book_net/views/base_widgets/button/raised_gradient_button.dart';
 import 'package:book_net/views/base_widgets/text_field/text_field.dart';
+import 'package:book_net/views/home_screen/edit_profile_screen/widget/drop_down.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -17,8 +22,11 @@ class EditScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    int gender = 1;
+
     TextEditingController textController = TextEditingController();
     onSave(String value) {
+      log('[GENDER]: $gender');
       print(type + ' ' + value);
       switch (type) {
         case 'Alias':
@@ -37,7 +45,6 @@ class EditScreen extends StatelessWidget {
       Navigator.of(context).pop();
     }
 
-    print(type);
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size(double.infinity, AppStyles.appBarHeight),
@@ -50,11 +57,29 @@ class EditScreen extends StatelessWidget {
           padding: EdgeInsets.all(24.h),
           child: Column(
             children: [
-              CustomTextField(
-                text: type,
-                controller: textController,
-                validator: null,
-              ),
+              if (type == Profile.gender)
+                DropDown(
+                  value: gender == 0
+                      ? 'Male'
+                      : gender == 1
+                          ? 'Female'
+                          : 'Unknow',
+                  callback: (newValue) {
+                    gender = newValue;
+                  },
+                )
+              else if (type == Profile.email)
+                CustomTextField(
+                  text: type,
+                  controller: textController,
+                  validator: ValidateConfigs.emailValidator,
+                )
+              else
+                CustomTextField(
+                  text: type,
+                  controller: textController,
+                  validator: null,
+                ),
               SizedBox(height: 16.h),
               RaisedGradientButton(
                 child: Text(
