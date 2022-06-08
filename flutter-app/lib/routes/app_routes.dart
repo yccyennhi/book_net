@@ -6,6 +6,7 @@ import 'package:book_net/views/change_password_screen/change_password_screen.dar
 import 'package:book_net/views/forgot_password_screen/forgot_password_screen.dart';
 import 'package:book_net/views/home_screen/create_news_screen/create_news_screen.dart';
 import 'package:book_net/views/home_screen/edit_profile_screen/edit_profile_screen.dart';
+import 'package:book_net/views/home_screen/edit_profile_screen/widget/edit_screen.dart';
 import 'package:book_net/views/home_screen/home_screen.dart';
 import 'package:book_net/views/home_screen/news_detail_screen/news_detail_screen.dart';
 import 'package:book_net/views/launch_screen.dart/launch_screen.dart';
@@ -92,6 +93,10 @@ class AppRoutes {
       case ChangePasswordScreen.id:
         return CupertinoPageRoute(
             settings: settings, builder: (_) => const ChangePasswordScreen());
+      case EditScreen.id:
+        final String value = settings.arguments as String;
+        return CupertinoPageRoute(
+            settings: settings, builder: (_) => EditScreen(type: value));
       default:
         return _errorRoute();
     }
