@@ -3,7 +3,6 @@ import 'package:book_net/configs/style_configs.dart';
 import 'package:book_net/configs/text_configs.dart';
 import 'package:book_net/utils/utils.dart';
 import 'package:book_net/view_models/authentication_bloc/login_bloc.dart';
-import 'package:book_net/view_models/user/curr_user.dart';
 import 'package:book_net/views/base_widgets/bar/bar.dart';
 import 'package:book_net/views/base_widgets/button/raised_gradient_button.dart';
 import 'package:book_net/views/base_widgets/text_field/password_text_field.dart';
@@ -76,6 +75,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text('Welcome back.', style: TextConfigs.bold32),
+                    SizedBox(
+                      height: 12.h,
+                    ),
                     Text('Log in to your account.',
                         style: TextConfigs.medium16),
                     SizedBox(

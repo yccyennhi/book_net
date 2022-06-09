@@ -6,6 +6,7 @@ class RaisedGradientButton extends StatelessWidget {
   final Widget child;
   final Gradient gradient;
   final double width;
+  final bool disable;
   final double height;
   final Function onPressed;
 
@@ -15,6 +16,7 @@ class RaisedGradientButton extends StatelessWidget {
     required this.gradient,
     this.width = double.infinity,
     this.height = AppStyles.heightButtonLg,
+    this.disable = false,
     required this.onPressed,
   }) : super(key: key);
 
@@ -24,13 +26,16 @@ class RaisedGradientButton extends StatelessWidget {
       width: width,
       height: height,
       decoration: BoxDecoration(
-        gradient: gradient,
+        gradient: !disable ? gradient : null,
+        color: disable ? AppColors.grayColor : null,
         borderRadius: const BorderRadius.all(
           Radius.circular(AppStyles.radiusLg),
         ),
         boxShadow: [
           BoxShadow(
-            color: AppColors.lightGreenColor.withOpacity(0.2),
+            color: !disable
+                ? AppColors.lightGreenColor.withOpacity(0.2)
+                : AppColors.grayColor.withOpacity(0.2),
             offset: const Offset(0, 4),
             blurRadius: 4,
           ),
@@ -43,7 +48,7 @@ class RaisedGradientButton extends StatelessWidget {
             Radius.circular(AppStyles.radiusLg),
           ),
           onTap: () {
-            onPressed();
+            if (!disable) onPressed();
           },
           child: Center(
             child: child,

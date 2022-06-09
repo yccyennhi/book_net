@@ -5,9 +5,9 @@ import 'package:book_net/configs/text_configs.dart';
 import 'package:book_net/dto/news/base_news_dto.dart';
 import 'package:book_net/views/base_widgets/bar/bar.dart';
 import 'package:book_net/views/base_widgets/button/field_button.dart';
-import 'package:book_net/views/base_widgets/chips/custom_chip.dart';
+import 'package:book_net/views/base_widgets/chips/list_chip.dart';
 import 'package:book_net/views/home_screen/edit_profile_screen/widget/edit_screen.dart';
-import 'package:book_net/views/home_screen/edit_profile_screen/widget/multi_select_chip.dart';
+import 'package:book_net/views/base_widgets/chips/multi_select_chip.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
@@ -241,23 +241,9 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 SizedBox(
                   height: 12.h,
                 ),
-                SizedBox(
-                  child: GridView.builder(
-                    physics: const NeverScrollableScrollPhysics(),
-                    shrinkWrap: true,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3,
-                      childAspectRatio: 2.5,
-                      mainAxisSpacing: 0,
-                      crossAxisSpacing: 5,
-                    ),
-                    itemCount: interested.length,
-                    itemBuilder: (context, index) {
-                      return CustomChip(text: interested[index]);
-                    },
-                  ),
-                ),
+                Align(
+                    alignment: Alignment.bottomLeft,
+                    child: ListChip(interested))
               ],
             ),
           )

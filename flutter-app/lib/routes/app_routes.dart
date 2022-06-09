@@ -5,6 +5,7 @@ import 'package:book_net/view_models/create_news_bloc/create_news_bloc.dart';
 import 'package:book_net/views/carousel_screen/carousel_screen.dart';
 import 'package:book_net/views/change_password_screen/change_password_screen.dart';
 import 'package:book_net/views/forgot_password_screen/forgot_password_screen.dart';
+import 'package:book_net/views/home_screen/bookshelf_screen/bookshelf_screen.dart';
 import 'package:book_net/views/home_screen/create_news_screen/create_news_screen.dart';
 import 'package:book_net/views/home_screen/edit_profile_screen/edit_profile_screen.dart';
 import 'package:book_net/views/home_screen/edit_profile_screen/widget/edit_screen.dart';
@@ -13,7 +14,9 @@ import 'package:book_net/views/home_screen/news_detail_screen/news_detail_screen
 import 'package:book_net/views/launch_screen.dart/launch_screen.dart';
 import 'package:book_net/views/login_screen/choose_login_type.dart';
 import 'package:book_net/views/login_screen/login_screen.dart';
+import 'package:book_net/views/setup_screen/setup_screen.dart';
 import 'package:book_net/views/signup_screen/signup_screen.dart';
+import 'package:book_net/views/verify_screen/verify_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -101,6 +104,16 @@ class AppRoutes {
         final String value = settings.arguments as String;
         return CupertinoPageRoute(
             settings: settings, builder: (_) => EditScreen(type: value));
+      case BookShelfScreen.id:
+        return CupertinoPageRoute(
+            settings: settings, builder: (_) => const BookShelfScreen());
+      case VerifyScreen.id:
+        return CupertinoPageRoute(
+            settings: settings, builder: (_) => const VerifyScreen());
+      case SetupScreen.id:
+        return CupertinoPageRoute(
+            settings: settings, builder: (_) => const SetupScreen());
+
       default:
         return _errorRoute();
     }

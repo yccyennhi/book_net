@@ -2,11 +2,13 @@ import 'package:book_net/configs/color_configs.dart';
 import 'package:book_net/configs/text_configs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:im_stepper/stepper.dart';
 
 class Bars extends StatelessWidget {
   const Bars({
     Key? key,
     this.title,
+    this.dotStepper,
     List<Widget>? list,
     this.leading,
   })  : _list = list,
@@ -15,6 +17,7 @@ class Bars extends StatelessWidget {
   final String? title;
   final List<Widget>? _list;
   final Widget? leading;
+  final DotStepper? dotStepper;
   @override
   Widget build(BuildContext context) {
     return AppBar(
@@ -30,7 +33,7 @@ class Bars extends StatelessWidget {
             ),
             onPressed: () => Navigator.of(context).pop(),
           ),
-      title: Text(title ?? "", style: TextConfigs.bold18),
+      title: dotStepper ?? Text(title ?? "", style: TextConfigs.bold18),
       centerTitle: true,
       actions: _list,
     );
