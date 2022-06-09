@@ -7,14 +7,74 @@ import 'package:book_net/views/base_widgets/bar/bar.dart';
 import 'package:book_net/views/base_widgets/button/field_button.dart';
 import 'package:book_net/views/base_widgets/chips/custom_chip.dart';
 import 'package:book_net/views/home_screen/edit_profile_screen/widget/edit_screen.dart';
+import 'package:book_net/views/home_screen/edit_profile_screen/widget/multi_select_chip.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
 
-class EditProfileScreen extends StatelessWidget {
+class EditProfileScreen extends StatefulWidget {
   static const id = "EditProfileScreen";
 
   const EditProfileScreen({super.key});
+
+  @override
+  State<EditProfileScreen> createState() => _EditProfileScreenState();
+}
+
+class _EditProfileScreenState extends State<EditProfileScreen> {
+  List<String> typeOfBookList = [
+    '🤡 Comedy',
+    '👻 Horror',
+    '💅🏻 Drama',
+    '❤ Romantic',
+    '❤ Fantasy',
+    '❤ Anime',
+  ];
+
+  List<String> selectedReportList = [];
+  onSaveBookType() {
+    print(selectedReportList);
+    Navigator.of(context).pop();
+  }
+
+  _showReportDialog() {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          //Here we will build the content of the dialog
+          return AlertDialog(
+            title: Text("Book Type",
+                style: TextConfigs.bold16.copyWith(
+                  color: AppColors.oceanGreenColor,
+                )),
+            content: Container(
+              constraints: const BoxConstraints(
+                maxHeight: 100.0,
+              ),
+              child: SingleChildScrollView(
+                child: MultiSelectChip(
+                  typeOfBookList,
+                  onSelectionChanged: (selectedList) {
+                    setState(() {
+                      selectedReportList = selectedList;
+                    });
+                  },
+                ),
+              ),
+            ),
+            actions: <Widget>[
+              TextButton(
+                child: Text(
+                  "Save",
+                  style: TextConfigs.medium14
+                      .copyWith(color: AppColors.oceanGreenColor),
+                ),
+                onPressed: onSaveBookType,
+              )
+            ],
+          );
+        });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,6 +111,10 @@ class EditProfileScreen extends StatelessWidget {
 
     onEdit(String type) {
       Navigator.pushNamed(context, EditScreen.id, arguments: type);
+    }
+
+    void onEditFavorite() {
+      MultiSelectChip;
     }
 
     List<String> interested = [
@@ -162,7 +226,7 @@ class EditProfileScreen extends StatelessWidget {
                         child: Align(
                           alignment: Alignment.centerRight,
                           child: TextButton(
-                            onPressed: () {},
+                            onPressed: _showReportDialog,
                             child: Text(
                               'Edit',
                               style: TextConfigs.medium14
