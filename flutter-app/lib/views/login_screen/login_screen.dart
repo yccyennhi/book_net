@@ -2,7 +2,7 @@ import 'package:book_net/configs/color_configs.dart';
 import 'package:book_net/configs/style_configs.dart';
 import 'package:book_net/configs/text_configs.dart';
 import 'package:book_net/utils/utils.dart';
-import 'package:book_net/view_models/authentication_bloc/authentication_bloc.dart';
+import 'package:book_net/view_models/authentication_bloc/login_bloc.dart';
 import 'package:book_net/view_models/user/curr_user.dart';
 import 'package:book_net/views/base_widgets/bar/bar.dart';
 import 'package:book_net/views/base_widgets/button/raised_gradient_button.dart';
@@ -14,8 +14,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../view_models/authentication_bloc/authentication_state.dart';
+import '../../view_models/authentication_bloc/login_state.dart';
 import '../../view_models/authentication_bloc/login_event.dart';
+import '../../view_models/status.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -41,11 +42,10 @@ class _LoginScreenState extends State<LoginScreen> {
     return BlocListener<LogInBloc, LogInState>(
       listener: (context, state) {
         switch (state.status) {
-          case LoginStatus.inProgress:
+          case Status.inProgress:
             Utils.showLoading(context);
             break;
-          case LoginStatus.success:
-            print(CurrUserData().user);
+          case Status.success:
             Utils.dismissDialog(context);
             _navigateToHomeScreen(context);
             break;

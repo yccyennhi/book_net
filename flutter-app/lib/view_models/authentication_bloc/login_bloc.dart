@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:book_net/dto/user/user_dto.dart';
 import 'package:book_net/services/authentication/authentication_provider.dart';
-import 'package:book_net/view_models/authentication_bloc/authentication_state.dart';
+import 'package:book_net/view_models/authentication_bloc/login_state.dart';
 import 'package:book_net/view_models/authentication_bloc/login_event.dart';
 
 class LogInBloc extends Bloc<LoginEvent, LogInState> {
@@ -21,18 +21,14 @@ class LogInBloc extends Bloc<LoginEvent, LogInState> {
   ) async {
     emit(const LogInState.inProgress());
 
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 1));
 
     UserDto? response =
         await AuthenticationProvider().logIn(event.username, event.password);
-    print(response);
 
     if (response == null) {
-      print(response);
       emit(const LogInState.logInFail());
     } else {
-      print(response);
-
       emit(const LogInState.logInSuccess());
     }
   }

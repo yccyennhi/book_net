@@ -14,7 +14,7 @@ class Utils {
   }
 
   static dismissDialog(BuildContext context) {
-    Navigator.pop(context);
+    Navigator.of(context, rootNavigator: true).pop();
   }
 }
 

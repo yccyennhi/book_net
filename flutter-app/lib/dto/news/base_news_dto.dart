@@ -112,7 +112,7 @@ final ReviewNewsDto reviewNewsTestModel = ReviewNewsDto(
 const GuildDto guildTestModel = GuildDto(
     id: 'id',
     imageUrl:
-        'https://scontent.fhan3-2.fna.fbcdn.net/v/t39.30808-6/229970825_1969814793182837_7646581825036902120_n.jpg?_nc_cat=1&ccb=1-7&_nc_sid=8631f5&_nc_ohc=qXDvHoxnJx4AX_MyAbb&_nc_oc=AQkEWEIJCctI6Y69POBGBnOYw0A5ttnbzpMT1Gi8T4yqu1d8Y2KgQrHdkyDQwn8FS_c&_nc_ht=scontent.fhan3-2.fna&oh=00_AT8hCxJSZF70iPSmi4jbLL2HJIJU3cFyCDVSz_cj0wEVog&oe=6298CA8B',
+        'https://scontent.fsgn2-5.fna.fbcdn.net/v/t1.6435-9/87220350_3114466355253620_8717576024990154752_n.jpg?stp=dst-jpg_s2048x2048&_nc_cat=102&ccb=1-7&_nc_sid=e3f864&_nc_ohc=jxQsnB6ejhgAX-Ce8gl&_nc_ht=scontent.fsgn2-5.fna&oh=00_AT-eTbC5-7_rUX24aTaaFo1xZAp5wnn4FcVgdTCP_9pyWA&oe=62BFF3EA',
     name: 'Đảo mèo',
     descrition: 'Đảo mèo descrition',
     memberList: ['memberList']);

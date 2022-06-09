@@ -5,7 +5,8 @@ class TimeUtils {
   static const hour = 'h';
   static const day = 'd';
 
-  static const yyyyMMdd = 'yyyy-mm-dd';
+  static const String yyyyMMdd = 'yyyy-MM-dd';
+  static const String yyyMMdd_HHmm = 'yyyy-MM-dd HH:mm';
 
   static String getDurationText(int timeInEpoch) {
     String text = '';
@@ -32,5 +33,11 @@ class TimeUtils {
     }
 
     return text;
+  }
+
+  static String getCurrentDateTime() {
+    final DateTime nowEpoch = DateTime.now();
+    final DateFormat formatter = DateFormat(yyyMMdd_HHmm);
+    return formatter.format(nowEpoch);
   }
 }

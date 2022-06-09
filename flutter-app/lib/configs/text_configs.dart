@@ -94,8 +94,17 @@ class TextConfigs {
 
   static final semibold14Grey2 =
       semibold14.copyWith(color: AppColors.grey2Color);
+
   static final semibold14OceanGreen =
       semibold14.copyWith(color: AppColors.oceanGreenColor);
+
+  static final semibold16 = baseSemiBold.copyWith(
+    fontSize: textSizeSRg.sp,
+  );
+
+  static final semibold16DarkGrey = semibold16.copyWith(
+    color: AppColors.darkGrayColor,
+  );
 
   static final semibold20 = baseSemiBold.copyWith(
     fontSize: textSizeLg.sp,
