@@ -42,11 +42,7 @@ class BookScreen extends StatelessWidget {
                       itemCount: listBook.length,
                       itemBuilder: (context, i) {
                         return Book(
-                          name: listBook[i].name,
-                          imgUrl: listBook[i].imageUrl,
-                          author: listBook[i].author,
-                          rate: listBook[i].rate,
-                          numberOfRating: listBook[i].numberOfRating,
+                          book: listBook[i],
                         );
                       }),
                 ),
@@ -64,11 +60,7 @@ class BookScreen extends StatelessWidget {
                       itemCount: listBook.length,
                       itemBuilder: (context, i) {
                         return Book(
-                          name: listBook[i].name,
-                          imgUrl: listBook[i].imageUrl,
-                          author: listBook[i].author,
-                          rate: listBook[i].rate,
-                          numberOfRating: listBook[i].numberOfRating,
+                          book: listBook[i],
                         );
                       }),
                 ),

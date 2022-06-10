@@ -1,3 +1,4 @@
+import 'package:book_net/dto/book/book_dto.dart';
 import 'package:book_net/main.dart';
 import 'package:book_net/dto/news/base_news_dto.dart';
 import 'package:book_net/view_models/authentication_bloc/login_bloc.dart';
@@ -7,6 +8,7 @@ import 'package:book_net/views/change_password_screen/change_password_screen.dar
 import 'package:book_net/views/forgot_password_screen/forgot_password_screen.dart';
 import 'package:book_net/views/home_screen/bookshelf_screen/bookshelf_screen.dart';
 import 'package:book_net/views/home_screen/create_news_screen/create_news_screen.dart';
+import 'package:book_net/views/home_screen/detail_book_screen/detail_book_screen.dart';
 import 'package:book_net/views/home_screen/edit_profile_screen/edit_profile_screen.dart';
 import 'package:book_net/views/home_screen/edit_profile_screen/widget/edit_screen.dart';
 import 'package:book_net/views/home_screen/home_screen.dart';
@@ -113,6 +115,11 @@ class AppRoutes {
       case SetupScreen.id:
         return CupertinoPageRoute(
             settings: settings, builder: (_) => const SetupScreen());
+      case DetailBookScreen.id:
+        final BookDto value = settings.arguments as BookDto;
+
+        return CupertinoPageRoute(
+            settings: settings, builder: (_) => DetailBookScreen(book: value));
 
       default:
         return _errorRoute();

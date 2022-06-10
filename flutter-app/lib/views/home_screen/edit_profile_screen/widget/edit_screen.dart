@@ -22,7 +22,7 @@ class EditScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int gender = 1;
+    String gender = 'Female';
 
     TextEditingController textController = TextEditingController();
     onSave(String value) {
@@ -59,11 +59,12 @@ class EditScreen extends StatelessWidget {
             children: [
               if (type == Profile.gender)
                 DropDown(
-                  value: gender == 0
-                      ? 'Male'
-                      : gender == 1
-                          ? 'Female'
-                          : 'Unknow',
+                  value: gender,
+                  items: const [
+                    'Male',
+                    'Female',
+                    'Unknow',
+                  ],
                   callback: (newValue) {
                     gender = newValue;
                   },
