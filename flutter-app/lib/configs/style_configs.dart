@@ -14,6 +14,7 @@ class AppStyles {
 
   //radius
   static const double radiusXxs = 8.0;
+  static const double radiusXss = 16.0;
   static const double radiusXs = 24.0;
   static const double radiusMd = 32.0;
   static const double radiusLg = 48.0;

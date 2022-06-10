@@ -1,3 +1,4 @@
+import 'package:book_net/dto/book/book_dto.dart';
 import 'package:book_net/dto/guild/guild_dto.dart';
 import 'package:book_net/dto/news/comment_dto.dart';
 import 'package:book_net/dto/news/guild_news_dto.dart';
@@ -129,3 +130,48 @@ final GuildNewsDto guildNewsDto = GuildNewsDto(
     guild: guildTestModel,
     imageUrl:
         'https://scontent.fsgn2-5.fna.fbcdn.net/v/t1.6435-9/123682547_1587251551483025_7141545519838769160_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=e3f864&_nc_ohc=LH3Twa4Bp-UAX84OLUg&_nc_ht=scontent.fsgn2-5.fna&oh=00_AT_eFvjsRaLCX-tXHwYkg1rDDMCjKSrCP0hTMSg9z7Oe_w&oe=62BA406D');
+
+final List<BookDto> listBook = [
+  const BookDto(
+    id: '2767052-the-hunger-games',
+    imageUrl:
+        'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1586722975l/2767052.jpg',
+    author: 'Suzanne Collins',
+    name: 'The Hunger Games',
+    descrition:
+        "WINNING MEANS FAME AND FORTUNE.LOSING MEANS CERTAIN DEATH.THE HUNGER GAMES HAVE BEGUN. . . .In the ruins of a place once known as North America lies the nation of Panem, a shining Capitol surrounded by twelve outlying districts. The Capitol is harsh and cruel and keeps the districts in line by forcing them all to send one boy and once girl between the ages of twelve and eighteen to participate in the annual Hunger Games, a fight to the death on live TV.Sixteen-year-old Katniss Everdeen regards it as a death sentence when she steps forward to take her sister's place in the Games. But Katniss has been close to dead before—and survival, for her, is second nature. Without really meaning to, she becomes a contender. But if she is to win, she will have to start making choices that weight survival against humanity and life against love.",
+    numberOfPages: 374,
+    rate: 4.33,
+    numberOfRating: 6376780,
+    numberOfDownloads: 12,
+    reviewList: [],
+  ),
+  const BookDto(
+    id: '2.Harry_Potter_and_the_Order_of_the_Phoenix',
+    imageUrl:
+        'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1546910265l/2.jpg',
+    author: 'J.K. Rowling, Mary GrandPré (Illustrator)',
+    name: 'Harry Potter and the Order of the Phoenix',
+    descrition:
+        "There is a door at the end of a silent corridor. And it’s haunting Harry Pottter’s dreams. Why else would he be waking in the middle of the night, screaming in terror?Harry has a lot on his mind for this, his fifth year at Hogwarts: a Defense Against the Dark Arts teacher with a personality like poisoned honey; a big surprise on the Gryffindor Quidditch team; and the looming terror of the Ordinary Wizarding Level exams. But all these things pale next to the growing threat of He-Who-Must-Not-Be-Named - a threat that neither the magical government nor the authorities at Hogwarts can stop.As the grasp of darkness tightens, Harry must discover the true depth and strength of his friends, the importance of boundless loyalty, and the shocking price of unbearable sacrifice.His fate depends on them all.",
+    numberOfPages: 870,
+    rate: 4.50,
+    numberOfRating: 2507623,
+    numberOfDownloads: 10,
+    reviewList: [],
+  ),
+  const BookDto(
+    id: '2657.To_Kill_a_Mockingbird',
+    imageUrl:
+        'https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1553383690l/2657.jpg',
+    author: 'Harper Lee)',
+    name: 'To Kill a Mockingbird',
+    descrition:
+        "There is a door at the end of a silent corridor. And it’s haunting Harry Pottter’s dreams. Why else would he be waking in the middle of the night, screaming in terror?Harry has a lot on his mind for this, his fifth year at Hogwarts: a Defense Against the Dark Arts teacher with a personality like poisoned honey; a big surprise on the Gryffindor Quidditch team; and the looming terror of the Ordinary Wizarding Level exams. But all these things pale next to the growing threat of He-Who-Must-Not-Be-Named - a threat that neither the magical government nor the authorities at Hogwarts can stop.As the grasp of darkness tightens, Harry must discover the true depth and strength of his friends, the importance of boundless loyalty, and the shocking price of unbearable sacrifice.His fate depends on them all.",
+    numberOfPages: 95,
+    rate: 4.28,
+    numberOfRating: 4501075,
+    numberOfDownloads: 15,
+    reviewList: [],
+  )
+];
