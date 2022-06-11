@@ -6,6 +6,7 @@ import 'package:book_net/dto/news/guild_news_dto.dart';
 import 'package:book_net/dto/news/post_news_dto.dart';
 import 'package:book_net/dto/news/review_news_dto.dart';
 import 'package:book_net/utils/time_utils.dart';
+import 'package:book_net/views/base_widgets/image/default_circle_avatar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -80,13 +81,10 @@ class NewsCard extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(
-                width: 24.w,
-                height: 24.h,
-                child: CircleAvatar(
-                  backgroundImage: NetworkImage(guildNewsDto.userImageUrl),
-                ),
-              )
+              DefaultCircleAvatar(
+                  width: 24.w,
+                  height: 24.h,
+                  imageUrl: guildNewsDto.userImageUrl)
             ],
           ),
           Padding(
@@ -130,13 +128,8 @@ class NewsCard extends StatelessWidget {
           EdgeInsets.symmetric(horizontal: AppStyles.defaultMarginHorizontal),
       child: Row(
         children: [
-          SizedBox(
-            height: 40.h,
-            width: 40.w,
-            child: CircleAvatar(
-              backgroundImage: NetworkImage(baseNewsDto.userImageUrl),
-            ),
-          ),
+          DefaultCircleAvatar(
+              width: 40.w, height: 40.h, imageUrl: baseNewsDto.userImageUrl),
           Padding(
             padding: EdgeInsets.symmetric(
                 horizontal: AppStyles.smallMarginHorizontal),

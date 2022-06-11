@@ -2,6 +2,8 @@ import 'package:book_net/configs/style_configs.dart';
 import 'package:book_net/configs/text_configs.dart';
 import 'package:book_net/dto/news/base_news_dto.dart';
 import 'package:book_net/views/base_widgets/bar/bar.dart';
+import 'package:book_net/views/base_widgets/image/default_circle_avatar.dart';
+import 'package:book_net/views/base_widgets/image/default_circle_avatar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -36,16 +38,22 @@ class NewsDetailScreen extends StatelessWidget {
   }
 
   List<Widget> _buildNewsDetail(BaseNewsDto newsDto) {
-    List<Widget> commentList = [];
-    commentList.addAll(_buildCommentList(newsDto));
-    commentList.insert(
-        0,
-        NewsCard(
-          news: newsDto,
-          screenType: NewsScreenType.newsDetail,
-        ));
+    List<Widget> result = [];
 
-    return commentList;
+    // Build news section
+    result.add(NewsCard(
+      news: newsDto,
+      screenType: NewsScreenType.newsDetail,
+    ));
+
+    result.addAll(_buildCommentList(newsDto));
+
+    // Add space
+    result.add(SizedBox(
+      height: 48.h,
+    ));
+
+    return result;
   }
 
   List<Widget> _buildCommentList(BaseNewsDto newsModel) {
@@ -64,13 +72,8 @@ class NewsDetailScreen extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SizedBox(
-            height: 40.h,
-            width: 40.w,
-            child: CircleAvatar(
-              backgroundImage: NetworkImage(newsModel.userImageUrl),
-            ),
-          ),
+          DefaultCircleAvatar(
+              width: 40.w, height: 40.h, imageUrl: newsModel.userImageUrl),
           SizedBox(
             width: AppStyles.smallMarginHorizontal,
           ),

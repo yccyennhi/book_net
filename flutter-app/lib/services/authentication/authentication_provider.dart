@@ -17,10 +17,7 @@ class AuthenticationProvider {
 
     final result = response.data["data"];
 
-    // Fake data
-    CurrUserData().user = CurrUserData()
-        .user
-        ?.copyWith(id: result["id"], name: result["username"]);
+    CurrUserData().user = UserDto.fromJson(result);
 
     return CurrUserData().user;
   }
