@@ -59,6 +59,15 @@ final List<BaseNewsDto> newsListTest = [
   reviewNewsTestModel,
   guildNewsDto
 ];
+
+final List<BaseNewsDto> newsGuildTest = [
+  guildNewsDto,
+  guildNewsDto,
+  guildNewsDto,
+  guildNewsDto,
+  guildNewsDto
+];
+
 final UserDto userTestModel = UserDto(
     id: 'id',
     imageUrl:

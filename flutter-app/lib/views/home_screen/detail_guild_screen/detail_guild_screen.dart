@@ -2,9 +2,12 @@ import 'package:book_net/configs/color_configs.dart';
 import 'package:book_net/configs/style_configs.dart';
 import 'package:book_net/configs/text_configs.dart';
 import 'package:book_net/dto/guild/guild_dto.dart';
+import 'package:book_net/dto/news/base_news_dto.dart';
 import 'package:book_net/views/base_widgets/bar/bar.dart';
 import 'package:book_net/views/base_widgets/image/image.dart';
+import 'package:book_net/views/home_screen/create_news_screen/create_news_screen.dart';
 import 'package:book_net/views/home_screen/detail_guild_screen/widget/stf_button.dart';
+import 'package:book_net/views/home_screen/feed_screen/news.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -63,14 +66,28 @@ class DetailGuildScreen extends StatelessWidget {
                       Text(guild.descrition,
                           style: TextConfigs.regular12
                               .copyWith(color: AppColors.darkGrayColor)),
-                      SizedBox(
-                        height: AppStyles.defaultMarginVertical,
-                      ),
-                      const StateFulButton(),
                     ],
                   ),
-                )
+                ),
+                const StateFulButton(),
               ]),
         ));
+  }
+
+  List<Widget> _buildListItem(BuildContext context) {
+    List<Widget> listItem = [];
+
+    for (BaseNewsDto model in newsGuildTest) {
+      listItem.add(NewsCard(
+        news: model,
+        screenType: NewsScreenType.feed,
+      ));
+    }
+
+    return listItem;
+  }
+
+  void _navigateToCreateNewsScreen(BuildContext context) {
+    Navigator.pushNamed(context, CreateNewsScreen.id);
   }
 }
