@@ -69,7 +69,9 @@ class DetailGuildScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                const StateFulButton(),
+                StateFulButton(
+                  guild: guild,
+                ),
               ]),
         ));
   }

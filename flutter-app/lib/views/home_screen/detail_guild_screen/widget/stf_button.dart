@@ -1,6 +1,7 @@
 import 'package:book_net/configs/color_configs.dart';
 import 'package:book_net/configs/style_configs.dart';
 import 'package:book_net/configs/text_configs.dart';
+import 'package:book_net/dto/guild/guild_dto.dart';
 import 'package:book_net/dto/news/base_news_dto.dart';
 import 'package:book_net/views/base_widgets/button/icon_with_text_button.dart';
 import 'package:book_net/views/base_widgets/button/raised_gradient_button.dart';
@@ -14,8 +15,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class StateFulButton extends StatefulWidget {
   const StateFulButton({
     super.key,
+    this.guild,
   });
-
+  final GuildDto? guild;
   @override
   State<StateFulButton> createState() => _StateFulButtonState();
 }
@@ -144,6 +146,6 @@ class _StateFulButtonState extends State<StateFulButton> {
   }
 
   void _navigateToCreateNewsScreen(BuildContext context) {
-    Navigator.pushNamed(context, CreateNewsScreen.id);
+    Navigator.pushNamed(context, CreateNewsScreen.id, arguments: widget.guild);
   }
 }

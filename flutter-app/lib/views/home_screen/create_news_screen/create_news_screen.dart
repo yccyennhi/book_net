@@ -1,4 +1,6 @@
 import 'package:book_net/configs/color_configs.dart';
+import 'package:book_net/dto/guild/guild_dto.dart';
+import 'package:book_net/dto/news/base_news_dto.dart';
 import 'package:book_net/view_models/create_news_bloc/create_news_bloc.dart';
 import 'package:book_net/view_models/create_news_bloc/create_news_event.dart';
 import 'package:book_net/view_models/create_news_bloc/create_news_state.dart';
@@ -17,10 +19,12 @@ import 'news_image_widget.dart';
 
 class CreateNewsScreen extends StatelessWidget {
   static const id = 'CreateNewsScreen';
-  const CreateNewsScreen({Key? key}) : super(key: key);
-
+  const CreateNewsScreen({Key? key, this.guild}) : super(key: key);
+  final GuildDto? guild;
   @override
   Widget build(BuildContext context) {
+    print('new post');
+    print(guild?.name);
     return BlocListener<CreateNewsBloc, CreateNewsState>(
       listener: (context, state) {
         switch (state.status) {
@@ -46,7 +50,9 @@ class CreateNewsScreen extends StatelessWidget {
           body: SingleChildScrollView(
             child: Column(
               children: [
-                _buildHeader(context),
+                guild != null
+                    ? _buildGuildHeader(context)
+                    : _buildHeader(context),
                 SizedBox(
                   height: AppStyles.defaultMarginVertical,
                 ),
@@ -77,6 +83,64 @@ class CreateNewsScreen extends StatelessWidget {
           border: InputBorder.none,
           hintText: 'Write something...',
         ),
+      ),
+    );
+  }
+
+  Widget _buildGuildHeader(BuildContext context) {
+    return Container(
+      height: 40.h,
+      padding:
+          EdgeInsets.symmetric(horizontal: AppStyles.defaultMarginHorizontal),
+      child: Row(
+        children: [
+          Stack(
+            alignment: Alignment.bottomRight,
+            children: [
+              Padding(
+                padding: EdgeInsets.all(4.h),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(8.h),
+                  child: Image.network(
+                    guildNewsDto.guildImageUrl,
+                    height: 36.h,
+                    width: 36.h,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+              DefaultCircleAvatar(
+                  width: 24.w,
+                  height: 24.h,
+                  imageUrl: guildNewsDto.userImageUrl)
+            ],
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(
+                horizontal: AppStyles.smallMarginHorizontal),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  userTestModel.alias,
+                  style: TextConfigs.semibold14,
+                ),
+                Row(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: AppStyles.smallMarginHorizontal),
+                      child: Image.asset('assets/icons/ic_dot.png'),
+                    ),
+                    Text(guildNewsDto.guildName,
+                        style: TextConfigs.regular12Grey2)
+                  ],
+                )
+              ],
+            ),
+          )
+        ],
       ),
     );
   }

@@ -90,11 +90,15 @@ class AppRoutes {
           ),
         );
       case CreateNewsScreen.id:
+        final GuildDto? value = settings.arguments as GuildDto?;
+
         return CupertinoPageRoute(
             settings: settings,
             builder: (_) => BlocProvider(
                 create: (context) => CreateNewsBloc(),
-                child: const CreateNewsScreen()));
+                child: CreateNewsScreen(
+                  guild: value,
+                )));
       case EditProfileScreen.id:
         return CupertinoPageRoute(
             settings: settings, builder: (_) => const EditProfileScreen());
