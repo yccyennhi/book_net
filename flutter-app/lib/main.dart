@@ -24,7 +24,7 @@ class BookNetApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Use for UI testing
-    CurrUserData().setUser(userTestModel);
+    // CurrUserData().setUser(userTestModel);
 
     return ScreenUtilInit(
       designSize: const Size(360, 720),
@@ -52,7 +52,7 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return AnimatedSplashScreen(
       splash: Image.asset('assets/images/LOGO.png'),
-      nextScreen: const HomeScreen(),
+      nextScreen: const LaunchScreen(),
       splashTransition: SplashTransition.fadeTransition,
     );
   }

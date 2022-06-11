@@ -3,6 +3,7 @@ import 'package:book_net/configs/text_configs.dart';
 import 'package:book_net/dto/news/base_news_dto.dart';
 import 'package:book_net/views/base_widgets/bar/bar.dart';
 import 'package:book_net/views/base_widgets/image/default_circle_avatar.dart';
+import 'package:book_net/views/base_widgets/image/default_circle_avatar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
