@@ -5,6 +5,7 @@ import 'package:book_net/view_models/create_news_bloc/create_news_bloc.dart';
 import 'package:book_net/view_models/create_news_bloc/create_news_event.dart';
 import 'package:book_net/view_models/create_news_bloc/create_news_state.dart';
 import 'package:book_net/view_models/user/curr_user.dart';
+import 'package:book_net/views/base_widgets/image/default_circle_avatar.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -91,13 +92,10 @@ class CreateNewsScreen extends StatelessWidget {
           EdgeInsets.symmetric(horizontal: AppStyles.defaultMarginHorizontal),
       child: Row(
         children: [
-          SizedBox(
-            height: 40.h,
-            width: 40.w,
-            child: CircleAvatar(
-              backgroundImage: NetworkImage(CurrUserData().user!.imageUrl),
-            ),
-          ),
+          DefaultCircleAvatar(
+              width: 40.w,
+              height: 40.h,
+              imageUrl: CurrUserData().user!.imageUrl),
           Padding(
             padding: EdgeInsets.symmetric(
                 horizontal: AppStyles.smallMarginHorizontal),

@@ -2,6 +2,7 @@ import 'package:book_net/configs/color_configs.dart';
 import 'package:book_net/configs/style_configs.dart';
 import 'package:book_net/dto/news/comment_dto.dart';
 import 'package:book_net/dto/news/reply_comment_dto.dart';
+import 'package:book_net/views/base_widgets/image/default_circle_avatar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -26,13 +27,10 @@ class ReplyCommentRowItem extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          SizedBox(
-            width: 40.w,
-            height: 40.h,
-            child: CircleAvatar(
-                backgroundImage:
-                    NetworkImage(replyCommentDto.commentUser.imageUrl)),
-          ),
+          DefaultCircleAvatar(
+              width: 40.w,
+              height: 40.h,
+              imageUrl: replyCommentDto.commentUser.imageUrl),
           SizedBox(width: AppStyles.smallMarginHorizontal),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,

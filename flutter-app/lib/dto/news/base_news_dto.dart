@@ -27,7 +27,7 @@ class BaseNewsDto {
   int createDate;
 
   String get userAlias => user.alias;
-  String get userImageUrl => user.imageUrl;
+  String? get userImageUrl => user.imageUrl;
   // factory BaseNewsDto.fromJson(Map<String, dynamic> json) {
 
   // }
@@ -62,16 +62,18 @@ final List<BaseNewsDto> newsListTest = [
 final UserDto userTestModel = UserDto(
     id: 'id',
     imageUrl:
-        'https://scontent.fsgn2-6.fna.fbcdn.net/v/t1.6435-9/176869830_1722285027979676_4686567485411404858_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=fZSaWooaGbkAX-wW0vZ&_nc_ht=scontent.fsgn2-6.fna&oh=00_AT-bvy-nieiOghaaxPGkoC4xJlsGPGM-D-mrEQ-NsccUtw&oe=62B9088A',
+        'https://scontent.fsgn2-6.fna.fbcdn.net/v/t1.6435-9/176869830_1722285027979676_4686567485411404858_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=_EfwKIv53SsAX-eJq2b&tn=xvG496jA7qoqR9u7&_nc_ht=scontent.fsgn2-6.fna&oh=00_AT-I7mn0_l5G48pBsWGOxGVdrLhNp05lPonO3B6FKBV9dw&oe=62C8DA8A',
     name: 'Duy Quan',
     alias: 'duyquann',
-    gender: true,
-    dateOfBirth: '01/01/1999',
-    bookShelf: 'bookShelf',
+    gender: 2,
+    dob: '01/01/1999',
+    bookShelf: ['bookShelf'],
     friendList: ['friendList'],
     guildList: ['guildList'],
     currentPoint: 100,
-    highestPoint: 1000);
+    highestPoint: 1000,
+    createDate: 1654925791410,
+    email: 'duyquan@gmail.com');
 
 final List<CommentDto> commentListTestModel = [
   commentTestModel,

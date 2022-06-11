@@ -3,9 +3,11 @@ import 'package:book_net/configs/profile_configs.dart';
 import 'package:book_net/configs/style_configs.dart';
 import 'package:book_net/configs/text_configs.dart';
 import 'package:book_net/dto/news/base_news_dto.dart';
+import 'package:book_net/view_models/user/curr_user.dart';
 import 'package:book_net/views/base_widgets/bar/bar.dart';
 import 'package:book_net/views/base_widgets/button/field_button.dart';
 import 'package:book_net/views/base_widgets/chips/list_chip.dart';
+import 'package:book_net/views/base_widgets/image/default_circle_avatar.dart';
 import 'package:book_net/views/home_screen/edit_profile_screen/widget/edit_screen.dart';
 import 'package:book_net/views/base_widgets/chips/multi_select_chip.dart';
 import 'package:flutter/material.dart';
@@ -137,11 +139,10 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
           ),
           Align(
             alignment: Alignment.center,
-            child: CircleAvatar(
-              backgroundImage: NetworkImage(userTestModel.imageUrl),
-              radius: 38.r,
-              foregroundColor: Colors.red,
-            ),
+            child: DefaultCircleAvatar(
+                width: 40.w,
+                height: 40.h,
+                imageUrl: CurrUserData().user!.imageUrl),
           ),
           SizedBox(
             height: 16.h,

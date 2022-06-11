@@ -9,6 +9,7 @@ import 'package:book_net/views/base_widgets/button/icon_button.dart';
 import 'package:book_net/views/base_widgets/button/icon_with_text_button.dart';
 import 'package:book_net/views/base_widgets/button/raised_gradient_button.dart';
 import 'package:book_net/views/base_widgets/chips/list_chip.dart';
+import 'package:book_net/views/base_widgets/image/default_circle_avatar.dart';
 import 'package:book_net/views/base_widgets/modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:book_net/views/base_widgets/number_with_text/number_with_text.dart';
 import 'package:book_net/views/change_password_screen/change_password_screen.dart';
@@ -136,12 +137,10 @@ class ProfileScreen extends StatelessWidget {
                     Row(
                         // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          CircleAvatar(
-                            backgroundImage:
-                                NetworkImage(userTestModel.imageUrl),
-                            radius: 32.r,
-                            foregroundColor: Colors.red,
-                          ),
+                          DefaultCircleAvatar(
+                              width: 40.w,
+                              height: 40.h,
+                              imageUrl: guildNewsDto.userImageUrl),
                           SizedBox(
                             width: 20.w,
                           ),
