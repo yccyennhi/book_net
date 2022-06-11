@@ -3,7 +3,7 @@ import 'package:book_net/configs/style_configs.dart';
 import 'package:book_net/configs/text_configs.dart';
 import 'package:book_net/dto/guild/guild_dto.dart';
 import 'package:book_net/views/base_widgets/image/image.dart';
-import 'package:book_net/views/home_screen/detail_book_screen/detail_book_screen.dart';
+import 'package:book_net/views/home_screen/detail_guild_screen/detail_guild_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -15,7 +15,7 @@ class Guild extends StatelessWidget {
   Widget build(BuildContext context) {
     onTap() {
       print('object' + guild.name);
-      Navigator.pushNamed(context, DetailBookScreen.id, arguments: guild);
+      Navigator.pushNamed(context, DetailGuildScreen.id, arguments: guild);
     }
 
     return GestureDetector(
