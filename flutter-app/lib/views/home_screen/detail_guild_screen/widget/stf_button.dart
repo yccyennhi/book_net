@@ -39,13 +39,13 @@ class _StateFulButtonState extends State<StateFulButton> {
           ),
         ),
         builder: (context) => SizedBox(
-          height: 600.h,
+          height: 200.h,
           child: CustomModalBottomSheet(
             widgets: [
               IconWithTextButton(
                 onTap: () => onPressLeaveButton(context),
                 text: 'Leave group',
-                iconFlutter: Icons.create_outlined,
+                iconFlutter: Icons.u_turn_left_rounded,
               ),
               const Divider(),
             ],

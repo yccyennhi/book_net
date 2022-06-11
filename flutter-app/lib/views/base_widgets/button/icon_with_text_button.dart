@@ -42,7 +42,7 @@ class IconWithTextButton extends StatelessWidget {
                   iconFlutter != null
                       ? Icon(
                           iconFlutter!,
-                          color: AppColors.oceanGreenColor,
+                          color: AppColors.darkGrayColor,
                           size: 20.h,
                         )
                       : const SizedBox.shrink(),
