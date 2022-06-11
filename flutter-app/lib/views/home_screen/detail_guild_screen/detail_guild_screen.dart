@@ -3,9 +3,7 @@ import 'package:book_net/configs/style_configs.dart';
 import 'package:book_net/configs/text_configs.dart';
 import 'package:book_net/dto/guild/guild_dto.dart';
 import 'package:book_net/views/base_widgets/bar/bar.dart';
-import 'package:book_net/views/base_widgets/button/raised_gradient_button.dart';
 import 'package:book_net/views/base_widgets/image/image.dart';
-import 'package:book_net/views/home_screen/create_news_screen/create_news_screen.dart';
 import 'package:book_net/views/home_screen/detail_guild_screen/widget/stf_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -69,38 +67,10 @@ class DetailGuildScreen extends StatelessWidget {
                         height: AppStyles.defaultMarginVertical,
                       ),
                       const StateFulButton(),
-                      SizedBox(
-                        height: AppStyles.defaultMarginVertical,
-                      ),
-                      const Divider(),
-                      SizedBox(
-                        height: AppStyles.defaultMarginVertical,
-                      ),
-                      RaisedGradientButton(
-                        child: Text(
-                          'Create a post',
-                          style: TextConfigs.medium16
-                              .copyWith(color: AppColors.whiteColor),
-                        ),
-                        gradient: const LinearGradient(
-                          colors: <Color>[
-                            AppColors.green1Color,
-                            AppColors.green2Color,
-                          ],
-                        ),
-                        onPressed: () => _navigateToCreateNewsScreen(context),
-                      ),
-                      SizedBox(
-                        height: AppStyles.defaultMarginVertical,
-                      ),
                     ],
                   ),
                 )
               ]),
         ));
-  }
-
-  void _navigateToCreateNewsScreen(BuildContext context) {
-    Navigator.pushNamed(context, CreateNewsScreen.id);
   }
 }

@@ -37,11 +37,13 @@ Future<void> showMyDialog(BuildContext context, String title, String imageUrl,
               SizedBox(
                 height: 8.h,
               ),
-              CustomImage(
-                imageUrl: imageUrl,
-                width: 112,
-                height: 160,
-              ),
+              imageUrl != ''
+                  ? CustomImage(
+                      imageUrl: imageUrl,
+                      width: 112,
+                      height: 160,
+                    )
+                  : const SizedBox.shrink(),
               SizedBox(
                 height: 24.h,
               ),
