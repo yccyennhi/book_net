@@ -8,6 +8,7 @@ import 'package:book_net/views/base_widgets/bar/bar.dart';
 import 'package:book_net/views/base_widgets/dialog/confirm_dialog.dart';
 import 'package:book_net/views/base_widgets/image/image.dart';
 import 'package:book_net/views/base_widgets/rating_stars/base_rating_stars.dart';
+import 'package:book_net/views/home_screen/create_news_screen/create_news_screen.dart';
 import 'package:book_net/views/home_screen/detail_book_screen/widget/drop_down_box.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -101,7 +102,8 @@ class _DetailBookScreenState extends State<DetailBookScreen> {
                                 ),
                               ),
                               IconButton(
-                                onPressed: () {},
+                                onPressed: () =>
+                                    _navigateToCreateNewsScreen(context),
                                 icon: Icon(
                                   Icons.create_outlined,
                                   color: AppColors.oceanGreenColor,
@@ -163,5 +165,10 @@ class _DetailBookScreenState extends State<DetailBookScreen> {
                 )
               ]),
         ));
+  }
+
+  void _navigateToCreateNewsScreen(BuildContext context) {
+    Navigator.pushNamed(context, CreateNewsScreen.id,
+        arguments: [null, widget.book]);
   }
 }

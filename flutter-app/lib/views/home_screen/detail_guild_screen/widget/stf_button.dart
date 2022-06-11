@@ -146,6 +146,7 @@ class _StateFulButtonState extends State<StateFulButton> {
   }
 
   void _navigateToCreateNewsScreen(BuildContext context) {
-    Navigator.pushNamed(context, CreateNewsScreen.id, arguments: widget.guild);
+    Navigator.pushNamed(context, CreateNewsScreen.id,
+        arguments: [widget.guild, null]);
   }
 }

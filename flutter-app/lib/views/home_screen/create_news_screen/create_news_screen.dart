@@ -1,4 +1,5 @@
 import 'package:book_net/configs/color_configs.dart';
+import 'package:book_net/dto/book/book_dto.dart';
 import 'package:book_net/dto/guild/guild_dto.dart';
 import 'package:book_net/dto/news/base_news_dto.dart';
 import 'package:book_net/view_models/create_news_bloc/create_news_bloc.dart';
@@ -6,6 +7,7 @@ import 'package:book_net/view_models/create_news_bloc/create_news_event.dart';
 import 'package:book_net/view_models/create_news_bloc/create_news_state.dart';
 import 'package:book_net/view_models/user/curr_user.dart';
 import 'package:book_net/views/base_widgets/image/default_circle_avatar.dart';
+import 'package:book_net/views/base_widgets/rating_stars/base_rating_stars.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -19,12 +21,12 @@ import 'news_image_widget.dart';
 
 class CreateNewsScreen extends StatelessWidget {
   static const id = 'CreateNewsScreen';
-  const CreateNewsScreen({Key? key, this.guild}) : super(key: key);
+  const CreateNewsScreen({Key? key, this.guild, this.book}) : super(key: key);
   final GuildDto? guild;
+  final BookDto? book;
   @override
   Widget build(BuildContext context) {
-    print('new post');
-    print(guild?.name);
+    print(book?.name);
     return BlocListener<CreateNewsBloc, CreateNewsState>(
       listener: (context, state) {
         switch (state.status) {
@@ -71,18 +73,109 @@ class CreateNewsScreen extends StatelessWidget {
   }
 
   Widget _buildTextField() {
-    return Container(
-      height: 180.h,
-      padding:
-          EdgeInsets.symmetric(horizontal: AppStyles.defaultMarginHorizontal),
-      child: TextFormField(
-        style: TextConfigs.regular16,
-        cursorColor: AppColors.green1Color,
-        maxLines: null,
-        decoration: const InputDecoration(
-          border: InputBorder.none,
-          hintText: 'Write something...',
-        ),
+    return SizedBox(
+      height: book == null ? 180.h : 250.h,
+      child: Column(
+        children: [
+          Padding(
+            padding: EdgeInsets.symmetric(
+                horizontal: AppStyles.defaultMarginHorizontal),
+            child: TextFormField(
+              style: TextConfigs.regular16,
+              cursorColor: AppColors.green1Color,
+              maxLines: null,
+              decoration: const InputDecoration(
+                border: InputBorder.none,
+                hintText: 'Write something...',
+              ),
+            ),
+          ),
+          book != null
+              ? Column(
+                  children: [
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Image.network(
+                          book!.imageUrl,
+                          height: AppStyles.newsBodyHeight,
+                          width: 128.w,
+                          fit: BoxFit.cover,
+                        ),
+                        SizedBox(
+                          width: AppStyles.smallMarginHorizontal,
+                        ),
+                        SizedBox(
+                          width: 200.w,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.only(
+                                    top: AppStyles.smallMarginVertical),
+                                child: SizedBox(
+                                  child: Text(
+                                    book!.name,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: TextConfigs.bold16,
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(
+                                    top: AppStyles.defaultMarginVertical),
+                                child: Text(
+                                  'by ${book!.author}',
+                                  overflow: TextOverflow.ellipsis,
+                                  style: TextConfigs.boldItalic12Grey2,
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(
+                                    top: AppStyles.smallMarginVertical),
+                                child: SizedBox(
+                                  width: 200.w,
+                                  child: Flexible(
+                                    child: Text(
+                                      book!.descrition,
+                                      overflow: TextOverflow.ellipsis,
+                                      maxLines: 2,
+                                      style: TextConfigs.regular12,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(
+                                    top: AppStyles.defaultMarginVertical),
+                                child: Row(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      BaseRatingStar(value: book!.rate),
+                                      Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: AppStyles
+                                                .smallMarginHorizontal),
+                                        child: Image.asset(
+                                            'assets/icons/ic_dot.png'),
+                                      ),
+                                      Text(
+                                        '${book!.numberOfRating} ratings',
+                                        style:
+                                            TextConfigs.regularItalic12DarkGrey,
+                                      )
+                                    ]),
+                              )
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                  ],
+                )
+              : const SizedBox.shrink(),
+        ],
       ),
     );
   }
