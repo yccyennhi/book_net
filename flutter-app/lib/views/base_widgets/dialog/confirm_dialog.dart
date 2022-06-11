@@ -18,6 +18,9 @@ Future<void> showMyDialog(BuildContext context, String title, String imageUrl,
     barrierDismissible: false, // user must tap button!
     builder: (BuildContext context) {
       return AlertDialog(
+        contentPadding: EdgeInsets.fromLTRB(16.h, 8.h, 16.h, 24.h),
+        insetPadding: EdgeInsets.all(16.w),
+        actionsPadding: EdgeInsets.fromLTRB(16.h, 8.h, 16.h, 8.h),
         shape: const RoundedRectangleBorder(
             borderRadius:
                 BorderRadius.all(Radius.circular(AppStyles.radiusXss))),
@@ -66,6 +69,9 @@ Future<void> showMyDialog(BuildContext context, String title, String imageUrl,
               action();
               Navigator.of(context).pop();
             },
+          ),
+          SizedBox(
+            height: 8.h,
           ),
           TextButton(
             child: SizedBox(
