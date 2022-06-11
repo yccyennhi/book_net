@@ -5,6 +5,7 @@ import 'package:book_net/configs/style_configs.dart';
 import 'package:book_net/configs/text_configs.dart';
 import 'package:book_net/dto/book/book_dto.dart';
 import 'package:book_net/views/base_widgets/bar/bar.dart';
+import 'package:book_net/views/base_widgets/dialog/confirm_dialog.dart';
 import 'package:book_net/views/base_widgets/image/image.dart';
 import 'package:book_net/views/base_widgets/rating_stars/base_rating_stars.dart';
 import 'package:book_net/views/home_screen/detail_book_screen/widget/drop_down_box.dart';
@@ -26,6 +27,12 @@ class _DetailBookScreenState extends State<DetailBookScreen> {
   void onChangeType(String? newValue) {
     setState(() {
       type = newValue!;
+    });
+  }
+
+  void setStateType() {
+    setState(() {
+      isAdded = !isAdded;
     });
   }
 
@@ -70,9 +77,16 @@ class _DetailBookScreenState extends State<DetailBookScreen> {
                             children: [
                               IconButton(
                                 onPressed: () {
-                                  setState(() {
-                                    isAdded = !isAdded;
-                                  });
+                                  if (isAdded == false) {
+                                    return setStateType();
+                                  }
+                                  showMyDialog(
+                                      context,
+                                      'Remove book',
+                                      widget.book.imageUrl,
+                                      'Are you sure want to remove this book from your device?',
+                                      'Remove book',
+                                      setStateType);
                                 },
                                 icon: Icon(
                                   isAdded
