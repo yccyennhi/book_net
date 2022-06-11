@@ -59,6 +59,7 @@ class NewsDetailScreen extends StatelessWidget {
 
   Widget _buildPostCommentField() {
     return Container(
+      color: AppColors.whiteColor,
       padding: EdgeInsets.all(AppStyles.defaultMarginHorizontal),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,

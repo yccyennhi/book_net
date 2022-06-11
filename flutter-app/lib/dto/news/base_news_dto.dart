@@ -74,19 +74,26 @@ final UserDto userTestModel = UserDto(
     highestPoint: 1000);
 
 final List<CommentDto> commentListTestModel = [
-  CommentDto(
-      id: 'id',
-      content: 'Commment comment',
-      commentUser: userTestModel,
-      replyList: [
-        ReplyCommentDto(
-            id: 'id',
-            content: 'Reply Comment',
-            commentUser: userTestModel,
-            createDate: 1653286844319)
-      ],
-      createDate: 1653286844319)
+  commentTestModel,
+  commentTestModel
 ];
+
+final commentTestModel = CommentDto(
+    id: 'id',
+    content: 'Commment comment',
+    commentUser: userTestModel,
+    replyList: [
+      replyCommentTestModel,
+      replyCommentTestModel,
+    ],
+    createDate: 1653286844319);
+
+final replyCommentTestModel = ReplyCommentDto(
+    id: 'id',
+    content: 'Reply Comment',
+    commentUser: userTestModel,
+    createDate: 1653286844319);
+
 final PostNewsDto postNewsTestModel = PostNewsDto(
     id: 'id',
     user: userTestModel,
