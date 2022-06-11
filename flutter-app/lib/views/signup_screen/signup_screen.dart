@@ -7,6 +7,7 @@ import 'package:book_net/views/base_widgets/button/icon_button.dart';
 import 'package:book_net/views/base_widgets/button/raised_gradient_button.dart';
 import 'package:book_net/views/base_widgets/text_field/password_text_field.dart';
 import 'package:book_net/views/base_widgets/text_field/text_field.dart';
+import 'package:book_net/views/verify_screen/verify_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:form_field_validator/form_field_validator.dart';
@@ -32,6 +33,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Widget build(BuildContext context) {
     onPressedSignUp() {
       _key.currentState!.validate();
+      if (_key.currentState!.validate()) {
+        Navigator.pushNamed(context, VerifyScreen.id);
+      }
     }
 
     return GestureDetector(

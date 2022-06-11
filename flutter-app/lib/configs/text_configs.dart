@@ -5,6 +5,7 @@ import 'color_configs.dart';
 
 class TextConfigs {
   //size
+  static const int textSizeXs = 10;
   static const int textSizeSm = 12;
   static const int textSizeRg = 14;
   static const int textSizeSRg = 16;
@@ -145,5 +146,10 @@ class TextConfigs {
     fontFamily: fontFamily,
     color: AppColors.oceanGreenColor,
     fontSize: textSizeSm.sp,
+  );
+  static final regular10 = TextStyle(
+    fontFamily: fontFamily,
+    color: AppColors.oceanGreenColor,
+    fontSize: textSizeXs.sp,
   );
 }

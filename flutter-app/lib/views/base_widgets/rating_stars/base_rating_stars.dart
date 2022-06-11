@@ -17,6 +17,7 @@ class _BaseRatingStarState extends State<BaseRatingStar> {
   @override
   Widget build(BuildContext context) {
     return RatingStars(
+      starSize: 12,
       value: widget.value,
       onValueChanged: widget.onValueChanged,
       maxValue: 5,

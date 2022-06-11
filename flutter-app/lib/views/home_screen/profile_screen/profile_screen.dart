@@ -8,10 +8,11 @@ import 'package:book_net/views/base_widgets/bar/bar.dart';
 import 'package:book_net/views/base_widgets/button/icon_button.dart';
 import 'package:book_net/views/base_widgets/button/icon_with_text_button.dart';
 import 'package:book_net/views/base_widgets/button/raised_gradient_button.dart';
-import 'package:book_net/views/base_widgets/chips/custom_chip.dart';
+import 'package:book_net/views/base_widgets/chips/list_chip.dart';
 import 'package:book_net/views/base_widgets/modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:book_net/views/base_widgets/number_with_text/number_with_text.dart';
 import 'package:book_net/views/change_password_screen/change_password_screen.dart';
+import 'package:book_net/views/home_screen/bookshelf_screen/bookshelf_screen.dart';
 import 'package:book_net/views/home_screen/edit_profile_screen/edit_profile_screen.dart';
 import 'package:book_net/views/home_screen/feed_screen/news.dart';
 import 'package:flutter/material.dart';
@@ -38,8 +39,6 @@ class ProfileScreen extends StatelessWidget {
     }
   }
 
-  onPressedViewBookshelf() {}
-
   @override
   Widget build(BuildContext context) {
     onPressEditButton(BuildContext context) {
@@ -48,6 +47,10 @@ class ProfileScreen extends StatelessWidget {
 
     onPressPasswordButton(BuildContext context) {
       Navigator.of(context).popAndPushNamed(ChangePasswordScreen.id);
+    }
+
+    onPressedViewBookshelf() {
+      Navigator.of(context).pushNamed(BookShelfScreen.id);
     }
 
     void onPressMenuButton() {
@@ -207,22 +210,7 @@ class ProfileScreen extends StatelessWidget {
               ),
               Container(
                 padding: EdgeInsets.fromLTRB(16.h, 4.h, 16.h, 16.h),
-                child: GridView.builder(
-                  physics: const NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3,
-                    childAspectRatio: 2.5,
-                    mainAxisSpacing: 0,
-                    crossAxisSpacing: 5,
-                  ),
-                  // gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  //     crossAxisCount: 3, childAspectRatio: 3),
-                  itemCount: interested.length,
-                  itemBuilder: (context, index) {
-                    return CustomChip(text: interested[index]);
-                  },
-                ),
+                child: ListChip(interested),
               ),
               Padding(
                 padding: EdgeInsets.fromLTRB(24.w, 0.h, 24.w, 16.h),
