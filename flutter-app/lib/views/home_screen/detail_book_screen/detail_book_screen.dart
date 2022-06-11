@@ -59,19 +59,23 @@ class _DetailBookScreenState extends State<DetailBookScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                widget.book.name,
-                                style: TextConfigs.bold16,
-                              ),
-                              Text(widget.book.author,
-                                  style: TextConfigs.regular12.copyWith(
-                                      color: AppColors.darkGrayColor)),
-                            ],
+                          SizedBox(
+                            width: MediaQuery.of(context).size.width - 150.w,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  widget.book.name,
+                                  style: TextConfigs.bold16,
+                                ),
+                                Text(widget.book.author,
+                                    style: TextConfigs.regular12.copyWith(
+                                        color: AppColors.darkGrayColor)),
+                              ],
+                            ),
                           ),
                           Row(
                             children: [
