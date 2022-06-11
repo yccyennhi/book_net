@@ -47,7 +47,7 @@ class GuildScreen extends StatelessWidget {
             SizedBox(
               height: 32.h,
             ),
-            Text('Maybe you like', style: TextConfigs.bold18),
+            Text('Explore some guild', style: TextConfigs.bold18),
             SizedBox(
               height: 16.h,
             ),
