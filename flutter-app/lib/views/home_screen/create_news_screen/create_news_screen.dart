@@ -58,7 +58,7 @@ class CreateNewsScreen extends StatelessWidget {
                 SizedBox(
                   height: AppStyles.defaultMarginVertical,
                 ),
-                _buildTextField(),
+                book != null ? _buildBookTextField() : _buildTextField(),
                 ImageAndPostWidget(
                   onPostTap: (images) => {
                     context
@@ -74,107 +74,137 @@ class CreateNewsScreen extends StatelessWidget {
 
   Widget _buildTextField() {
     return SizedBox(
-      height: book == null ? 180.h : 250.h,
+      height: book == null ? 180.h : 310.h,
       child: Column(
         children: [
           Padding(
             padding: EdgeInsets.symmetric(
                 horizontal: AppStyles.defaultMarginHorizontal),
-            child: TextFormField(
-              style: TextConfigs.regular16,
-              cursorColor: AppColors.green1Color,
-              maxLines: null,
-              decoration: const InputDecoration(
-                border: InputBorder.none,
-                hintText: 'Write something...',
+            child: SingleChildScrollView(
+              child: SizedBox(
+                height: 120.h,
+                width: double.infinity - 32.w,
+                child: TextFormField(
+                  style: TextConfigs.regular16,
+                  cursorColor: AppColors.green1Color,
+                  maxLines: null,
+                  decoration: const InputDecoration(
+                    border: InputBorder.none,
+                    hintText: 'Write something...',
+                  ),
+                ),
               ),
             ),
           ),
-          book != null
-              ? Column(
-                  children: [
-                    Row(
+        ],
+      ),
+    );
+  }
+
+  Widget _buildBookTextField() {
+    return SizedBox(
+      height: book == null ? 180.h : 310.h,
+      child: Column(
+        children: [
+          Padding(
+            padding: EdgeInsets.symmetric(
+                horizontal: AppStyles.defaultMarginHorizontal),
+            child: SingleChildScrollView(
+              child: SizedBox(
+                height: 120.h,
+                width: double.infinity - 32.w,
+                child: TextFormField(
+                  style: TextConfigs.regular16,
+                  cursorColor: AppColors.green1Color,
+                  maxLines: null,
+                  decoration: const InputDecoration(
+                    border: InputBorder.none,
+                    hintText: 'Write something...',
+                  ),
+                ),
+              ),
+            ),
+          ),
+          Column(
+            children: [
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Image.network(
+                    book!.imageUrl,
+                    height: AppStyles.newsBodyHeight,
+                    width: 128.w,
+                    fit: BoxFit.cover,
+                  ),
+                  SizedBox(
+                    width: AppStyles.smallMarginHorizontal,
+                  ),
+                  SizedBox(
+                    width: 200.w,
+                    child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Image.network(
-                          book!.imageUrl,
-                          height: AppStyles.newsBodyHeight,
-                          width: 128.w,
-                          fit: BoxFit.cover,
-                        ),
-                        SizedBox(
-                          width: AppStyles.smallMarginHorizontal,
-                        ),
-                        SizedBox(
-                          width: 200.w,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.only(
-                                    top: AppStyles.smallMarginVertical),
-                                child: SizedBox(
-                                  child: Text(
-                                    book!.name,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: TextConfigs.bold16,
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(
-                                    top: AppStyles.defaultMarginVertical),
-                                child: Text(
-                                  'by ${book!.author}',
-                                  overflow: TextOverflow.ellipsis,
-                                  style: TextConfigs.boldItalic12Grey2,
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(
-                                    top: AppStyles.smallMarginVertical),
-                                child: SizedBox(
-                                  width: 200.w,
-                                  child: Flexible(
-                                    child: Text(
-                                      book!.descrition,
-                                      overflow: TextOverflow.ellipsis,
-                                      maxLines: 2,
-                                      style: TextConfigs.regular12,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.only(
-                                    top: AppStyles.defaultMarginVertical),
-                                child: Row(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.center,
-                                    children: [
-                                      BaseRatingStar(value: book!.rate),
-                                      Padding(
-                                        padding: EdgeInsets.symmetric(
-                                            horizontal: AppStyles
-                                                .smallMarginHorizontal),
-                                        child: Image.asset(
-                                            'assets/icons/ic_dot.png'),
-                                      ),
-                                      Text(
-                                        '${book!.numberOfRating} ratings',
-                                        style:
-                                            TextConfigs.regularItalic12DarkGrey,
-                                      )
-                                    ]),
-                              )
-                            ],
+                        Padding(
+                          padding: EdgeInsets.only(
+                              top: AppStyles.smallMarginVertical),
+                          child: SizedBox(
+                            child: Text(
+                              book!.name,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextConfigs.bold16,
+                            ),
                           ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(
+                              top: AppStyles.defaultMarginVertical),
+                          child: Text(
+                            'by ${book!.author}',
+                            overflow: TextOverflow.ellipsis,
+                            style: TextConfigs.boldItalic12Grey2,
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(
+                              top: AppStyles.smallMarginVertical),
+                          child: SizedBox(
+                            width: 200.w,
+                            child: Flexible(
+                              child: Text(
+                                book!.descrition,
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 2,
+                                style: TextConfigs.regular12,
+                              ),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(
+                              top: AppStyles.defaultMarginVertical),
+                          child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                const BaseRatingStar(),
+                                Padding(
+                                  padding: EdgeInsets.symmetric(
+                                      horizontal:
+                                          AppStyles.smallMarginHorizontal),
+                                  child: Image.asset('assets/icons/ic_dot.png'),
+                                ),
+                                Text(
+                                  '${book!.numberOfRating} ratings',
+                                  style: TextConfigs.regularItalic12DarkGrey,
+                                )
+                              ]),
                         )
                       ],
                     ),
-                  ],
-                )
-              : const SizedBox.shrink(),
+                  )
+                ],
+              ),
+            ],
+          )
         ],
       ),
     );
