@@ -1,9 +1,20 @@
-class FeedRepository {
-  static final _singleton = FeedRepository._internal();
+import 'package:dio/dio.dart';
 
-  factory FeedRepository() {
+import '../../constants/endpoints.dart';
+import 'feed_repository.dart';
+
+class FeedProvider {
+  static final _singleton = FeedProvider._internal();
+
+  factory FeedProvider() {
     return _singleton;
   }
 
-  FeedRepository._internal();
+  FeedProvider._internal();
+
+  Future<void> createPostNews(
+      String userId, String caption, List<String> imagesUrl) async {
+    await FeedRepository().createPostNews(userId, caption, imagesUrl);
+    return;
+  }
 }

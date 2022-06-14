@@ -12,15 +12,13 @@ class AuthenticationRepository {
 
   AuthenticationRepository._internal();
 
-  final baseUrl = AppConfigs.apiUrl;
   String? _accessToken;
 
   set accessToken(String? val) => _accessToken = val;
 
   Future<Response> logIn(String username, String password) async {
     Dio _dio = Dio();
-    Response response = await _dio.post(
-        "$baseUrl${AppEndpoints.signInEndPoint}",
+    Response response = await _dio.post(AppEndpoints.signInEndPoint,
         data: {"username": username, "password": password});
     return response;
   }
