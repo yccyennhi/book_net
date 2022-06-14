@@ -1,5 +1,6 @@
 package com.booknet.api.feed.model;
 
+import com.booknet.api.profile.model.ProfileSimplifiedModel;
 import com.booknet.constants.IdPrefix;
 import com.booknet.utils.IdGenerator;
 import nonapi.io.github.classgraph.json.Id;
@@ -22,12 +23,11 @@ public class BaseNewsModel {
     @NotEmpty
     protected String caption;
 
-    @NotEmpty
-    protected int numberOfLikes;
-
     protected long createdDate;
 
     protected LinkedList<CommentModel> commentList;
+
+    protected LinkedList<String> likeUserIdList;
 
     private BaseNewsModel() {
     }
@@ -37,7 +37,7 @@ public class BaseNewsModel {
         this.userId = userId;
         this.type = type;
         this.caption = caption;
-        this.numberOfLikes = 0;
+        this.likeUserIdList = new LinkedList<>();
         this.commentList = new LinkedList<>();
         this.createdDate = Instant.now().toEpochMilli();
     }
@@ -74,44 +74,24 @@ public class BaseNewsModel {
         this.caption = caption;
     }
 
-    public long getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(long createdDate) {
-        this.createdDate = createdDate;
-    }
-
     public int getNumberOfLikes() {
-        return numberOfLikes;
-    }
-
-    public void setNumberOfLikes(int numberOfLikes) {
-        this.numberOfLikes = numberOfLikes;
-    }
-
-    public void increaseNumberOfLikes() {
-        numberOfLikes += 1;
-    }
-
-    public void decreaseNumberOfLikes() {
-        numberOfLikes -= 1;
+        return likeUserIdList.size();
     }
 
     public LinkedList<CommentModel> getCommentList() {
         return commentList;
     }
 
-    public CommentModel addCommentAndGet(String content) {
-        CommentModel comment = new CommentModel(content);
+    public CommentModel addCommentAndGet(String content, ProfileSimplifiedModel profileSimplified) {
+        CommentModel comment = new CommentModel(content, profileSimplified);
         commentList.add(comment);
         return comment;
     }
 
-    public ReplyCommentModel addReplyCommentAndGet(String commentId, String content) {
+    public ReplyCommentModel addReplyCommentAndGet(String commentId, String content, ProfileSimplifiedModel profileSimplified) {
         for (CommentModel comment: commentList) {
             if (comment.get_id().equals(commentId)) {
-                return comment.addReplyCommentAndGet(content);
+                return comment.addReplyCommentAndGet(content, profileSimplified);
             }
         }
         return null;
