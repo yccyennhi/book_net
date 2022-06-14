@@ -1,5 +1,7 @@
+import 'package:book_net/services/feed/feed_provider.dart';
 import 'package:book_net/services/firebase/firebase_service.dart';
 import 'package:book_net/view_models/create_news_bloc/create_news_event.dart';
+import 'package:book_net/view_models/user/curr_user.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'create_news_state.dart';
@@ -20,8 +22,9 @@ class CreateNewsBloc extends Bloc<CreateNewsEvent, CreateNewsState> {
     emit(const CreateNewsState.inProgress());
     List<String> imagesUrl =
         await FirebaseService().uploadNewsImages(event.files);
+    await FeedProvider()
+        .createPostNews(CurrUserData().userId, event.caption, imagesUrl);
 
-    
     emit(const CreateNewsState.pushSuccess());
   }
 }

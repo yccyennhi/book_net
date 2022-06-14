@@ -15,6 +15,7 @@ class AuthenticationRepository {
   String? _accessToken;
 
   set accessToken(String? val) => _accessToken = val;
+  String get accessToken => _accessToken!;
 
   Future<Response> logIn(String username, String password) async {
     Dio _dio = Dio();

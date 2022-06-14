@@ -10,17 +10,17 @@ abstract class CreateNewsEvent extends Equatable {
 }
 
 class PushNewsEvent extends CreateNewsEvent {
+  final String caption;
   final List<File> files;
-  // final BaseNewsDto news;
 
   const PushNewsEvent({
+    required this.caption,
     required this.files,
-    // required this.news,
   });
 
   @override
   List<Object> get props => [
+        caption,
         files,
-        // news,
       ];
 }

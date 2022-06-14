@@ -21,12 +21,13 @@ import 'news_image_widget.dart';
 
 class CreateNewsScreen extends StatelessWidget {
   static const id = 'CreateNewsScreen';
-  const CreateNewsScreen({Key? key, this.guild, this.book}) : super(key: key);
+  CreateNewsScreen({Key? key, this.guild, this.book}) : super(key: key);
   final GuildDto? guild;
   final BookDto? book;
+  final _captionController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
-    print(book?.name);
     return BlocListener<CreateNewsBloc, CreateNewsState>(
       listener: (context, state) {
         switch (state.status) {
@@ -61,9 +62,8 @@ class CreateNewsScreen extends StatelessWidget {
                 book != null ? _buildBookTextField() : _buildTextField(),
                 ImageAndPostWidget(
                   onPostTap: (images) => {
-                    context
-                        .read<CreateNewsBloc>()
-                        .add(PushNewsEvent(files: images))
+                    context.read<CreateNewsBloc>().add(PushNewsEvent(
+                        files: images, caption: _captionController.text))
                   },
                 ),
               ],
@@ -85,6 +85,7 @@ class CreateNewsScreen extends StatelessWidget {
                 height: 120.h,
                 width: double.infinity - 32.w,
                 child: TextFormField(
+                  controller: _captionController,
                   style: TextConfigs.regular16,
                   cursorColor: AppColors.green1Color,
                   maxLines: null,

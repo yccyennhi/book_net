@@ -11,6 +11,8 @@ class CurrUserData {
 
   UserDto? user;
 
+  String get userId => user!.id;
+
   setUser(UserDto userdto) => user = userdto;
 }
 

@@ -16,6 +16,7 @@ class AuthenticationProvider {
     final response = await AuthenticationRepository().logIn(username, password);
 
     final result = response.data["data"];
+    AuthenticationRepository().accessToken = result["token"];
 
     CurrUserData().user = UserDto.fromJson(result);
 
