@@ -8,11 +8,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 Future<void> showMyDialog(BuildContext context, String title, String imageUrl,
     String content, String buttonText, Function action) async {
-  onPressRemove() {
-    action();
-    Navigator.of(context).pop();
-  }
-
   return showDialog<void>(
     context: context,
     barrierDismissible: false, // user must tap button!
@@ -37,11 +32,13 @@ Future<void> showMyDialog(BuildContext context, String title, String imageUrl,
               SizedBox(
                 height: 8.h,
               ),
-              CustomImage(
-                imageUrl: imageUrl,
-                width: 112,
-                height: 160,
-              ),
+              imageUrl != ''
+                  ? CustomImage(
+                      imageUrl: imageUrl,
+                      width: 112,
+                      height: 160,
+                    )
+                  : const SizedBox.shrink(),
               SizedBox(
                 height: 24.h,
               ),

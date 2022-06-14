@@ -152,4 +152,8 @@ class TextConfigs {
     color: AppColors.oceanGreenColor,
     fontSize: textSizeXs.sp,
   );
+
+  static final bold14 = baseBold.copyWith(
+    fontSize: textSizeRg.sp,
+  );
 }

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class ListChip extends StatefulWidget {
   final List<String> list;
 
-  const ListChip(this.list);
+  const ListChip({super.key, required this.list});
 
   @override
   _ListChipState createState() => _ListChipState();

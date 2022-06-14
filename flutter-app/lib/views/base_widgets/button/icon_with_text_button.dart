@@ -6,10 +6,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class IconWithTextButton extends StatelessWidget {
   const IconWithTextButton(
-      {Key? key, this.icon, this.text, required this.onTap})
+      {Key? key,
+      this.icon = '',
+      this.text,
+      this.iconFlutter,
+      required this.onTap})
       : super(key: key);
   final String? text;
-  final String? icon;
+  final String icon;
+  final IconData? iconFlutter;
   final Function() onTap;
 
   @override
@@ -27,11 +32,20 @@ class IconWithTextButton extends StatelessWidget {
               padding: EdgeInsets.only(left: 16.h),
               child: Row(
                 children: [
-                  Image.asset(
-                    icon!,
-                    width: 20.w,
-                    height: 20.h,
-                  ),
+                  icon != ''
+                      ? Image.asset(
+                          icon,
+                          width: 20.w,
+                          height: 20.h,
+                        )
+                      : const SizedBox.shrink(),
+                  iconFlutter != null
+                      ? Icon(
+                          iconFlutter!,
+                          color: AppColors.darkGrayColor,
+                          size: 20.h,
+                        )
+                      : const SizedBox.shrink(),
                   SizedBox(
                     width: 16.w,
                   ),

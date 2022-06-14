@@ -59,6 +59,15 @@ final List<BaseNewsDto> newsListTest = [
   reviewNewsTestModel,
   guildNewsDto
 ];
+
+final List<BaseNewsDto> newsGuildTest = [
+  guildNewsDto,
+  guildNewsDto,
+  guildNewsDto,
+  guildNewsDto,
+  guildNewsDto
+];
+
 final UserDto userTestModel = UserDto(
     id: 'id',
     imageUrl:
@@ -183,4 +192,119 @@ final List<BookDto> listBook = [
     numberOfDownloads: 15,
     reviewList: [],
   )
+];
+
+final List<GuildDto> listGuild = [
+  const GuildDto(
+    id: 'guild-001',
+    imageUrl:
+        'https://i.pinimg.com/564x/d5/b2/31/d5b2314b8ef86b8a7949c3b209e0aaba.jpg',
+    name: 'This is Guild 001',
+    descrition: "This is desscription, this is desscription.",
+    memberList: [],
+  ),
+  const GuildDto(
+    id: 'guild-002',
+    imageUrl:
+        'https://i.pinimg.com/564x/94/3b/3e/943b3e7ff25ee56fa87a1bf8e62aaafe.jpg',
+    name: 'This is Guild 001',
+    descrition: "This is desscription, this is desscription.",
+    memberList: [],
+  ),
+  const GuildDto(
+    id: 'guild-003',
+    imageUrl:
+        'https://i.pinimg.com/564x/74/3c/13/743c13f3dd1bd7531c41526c14e4582b.jpg',
+    name: 'This is Guild 001',
+    descrition: "This is desscription, this is desscription.",
+    memberList: [],
+  ),
+  const GuildDto(
+    id: 'guild-004',
+    imageUrl:
+        'https://i.pinimg.com/564x/fb/2d/de/fb2ddecaf549827a2cbb8565d1102c60.jpg',
+    name: 'This is Guild 001',
+    descrition: "This is desscription, this is desscription.",
+    memberList: [],
+  ),
+  const GuildDto(
+    id: 'guild-005',
+    imageUrl:
+        'https://i.pinimg.com/564x/ee/8e/90/ee8e90420e2c5120ba63e81f419da1cb.jpg',
+    name: 'This is Guild 001',
+    descrition: "This is desscription, this is desscription.",
+    memberList: [],
+  ),
+  const GuildDto(
+    id: 'guild-003',
+    imageUrl:
+        'https://i.pinimg.com/564x/74/3c/13/743c13f3dd1bd7531c41526c14e4582b.jpg',
+    name: 'This is Guild 001',
+    descrition: "This is desscription, this is desscription.",
+    memberList: [],
+  ),
+  const GuildDto(
+    id: 'guild-004',
+    imageUrl:
+        'https://i.pinimg.com/564x/fb/2d/de/fb2ddecaf549827a2cbb8565d1102c60.jpg',
+    name: 'This is Guild 001',
+    descrition: "This is desscription, this is desscription.",
+    memberList: [],
+  ),
+  const GuildDto(
+    id: 'guild-005',
+    imageUrl:
+        'https://i.pinimg.com/564x/ee/8e/90/ee8e90420e2c5120ba63e81f419da1cb.jpg',
+    name: 'This is Guild 001',
+    descrition: "This is desscription, this is desscription.",
+    memberList: [],
+  ),
+  const GuildDto(
+    id: 'guild-003',
+    imageUrl:
+        'https://i.pinimg.com/564x/74/3c/13/743c13f3dd1bd7531c41526c14e4582b.jpg',
+    name: 'This is Guild 001',
+    descrition: "This is desscription, this is desscription.",
+    memberList: [],
+  ),
+  const GuildDto(
+    id: 'guild-004',
+    imageUrl:
+        'https://i.pinimg.com/564x/fb/2d/de/fb2ddecaf549827a2cbb8565d1102c60.jpg',
+    name: 'This is Guild 001',
+    descrition: "This is desscription, this is desscription.",
+    memberList: [],
+  ),
+  const GuildDto(
+    id: 'guild-005',
+    imageUrl:
+        'https://i.pinimg.com/564x/ee/8e/90/ee8e90420e2c5120ba63e81f419da1cb.jpg',
+    name: 'This is Guild 001',
+    descrition: "This is desscription, this is desscription.",
+    memberList: [],
+  ),
+  const GuildDto(
+    id: 'guild-003',
+    imageUrl:
+        'https://i.pinimg.com/564x/74/3c/13/743c13f3dd1bd7531c41526c14e4582b.jpg',
+    name: 'This is Guild 001',
+    descrition: "This is desscription, this is desscription.",
+    memberList: [],
+  ),
+  const GuildDto(
+    id: 'guild-004',
+    imageUrl:
+        'https://i.pinimg.com/564x/fb/2d/de/fb2ddecaf549827a2cbb8565d1102c60.jpg',
+    name: 'This is Guild 001',
+    descrition: "This is desscription, this is desscription.",
+    memberList: [],
+  ),
+  const GuildDto(
+    id: 'guild-005',
+    imageUrl:
+        'https://i.pinimg.com/564x/ee/8e/90/ee8e90420e2c5120ba63e81f419da1cb.jpg',
+    name: 'This is Guild 001',
+    descrition: "This is desscription, this is desscription.",
+    memberList: [],
+  ),
 ];

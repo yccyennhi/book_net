@@ -2,7 +2,6 @@ import 'package:book_net/configs/color_configs.dart';
 import 'package:book_net/configs/profile_configs.dart';
 import 'package:book_net/configs/style_configs.dart';
 import 'package:book_net/configs/text_configs.dart';
-import 'package:book_net/dto/news/base_news_dto.dart';
 import 'package:book_net/view_models/user/curr_user.dart';
 import 'package:book_net/views/base_widgets/bar/bar.dart';
 import 'package:book_net/views/base_widgets/button/field_button.dart';
@@ -140,8 +139,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
           Align(
             alignment: Alignment.center,
             child: DefaultCircleAvatar(
-                width: 40.w,
-                height: 40.h,
+                width: 64.w,
+                height: 64.h,
                 imageUrl: CurrUserData().user!.imageUrl),
           ),
           SizedBox(
@@ -244,7 +243,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 ),
                 Align(
                     alignment: Alignment.bottomLeft,
-                    child: ListChip(interested))
+                    child: ListChip(list: interested))
               ],
             ),
           )

@@ -1,6 +1,4 @@
-import 'package:book_net/configs/color_configs.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Utils {
   static Future showLoading(BuildContext context) async {

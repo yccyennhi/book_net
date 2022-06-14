@@ -12,9 +12,10 @@ import '../../../configs/text_configs.dart';
 import '../../base_widgets/button/raised_gradient_button.dart';
 
 class ImageAndPostWidget extends StatefulWidget {
-  ImageAndPostWidget({Key? key, required this.onPostTap}) : super(key: key);
+  const ImageAndPostWidget({Key? key, required this.onPostTap})
+      : super(key: key);
 
-  Function(List<File> images) onPostTap;
+  final Function(List<File> images) onPostTap;
 
   @override
   State<ImageAndPostWidget> createState() => _ImageAndPostWidgetState();
