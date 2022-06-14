@@ -45,7 +45,7 @@ class _SetupScreenState extends State<SetupScreen> {
   List<String> selectedTypeList = [];
   List<String> selectedGoalList = [];
   List<Widget> list = [];
-  @override
+  // @override
   Widget setUpType() {
     return SizedBox(
       child: Column(
@@ -134,7 +134,6 @@ class _SetupScreenState extends State<SetupScreen> {
     switch (value) {
       case 0:
         return setUpType();
-
       case 1:
         return setUpGoal();
       case 2:

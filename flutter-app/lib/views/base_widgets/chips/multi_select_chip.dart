@@ -5,7 +5,8 @@ class MultiSelectChip extends StatefulWidget {
   final List<String> reportList;
   final Function(List<String>) onSelectionChanged;
 
-  const MultiSelectChip(this.reportList, {required this.onSelectionChanged});
+  const MultiSelectChip(this.reportList,
+      {super.key, required this.onSelectionChanged});
 
   @override
   _MultiSelectChipState createState() => _MultiSelectChipState();

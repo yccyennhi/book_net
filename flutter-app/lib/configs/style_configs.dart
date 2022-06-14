@@ -7,6 +7,7 @@ class AppStyles {
   static final defaultMarginHorizontal = 16.w;
   static final defaultMarginVertical = 16.h;
   static final marginLg = 32.w;
+  static final paddingSm = 16.w;
 
   //bar
   static final appBarHeight = 48.h;

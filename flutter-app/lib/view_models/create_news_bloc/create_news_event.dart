@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:book_net/dto/news/base_news_dto.dart';
 import 'package:equatable/equatable.dart';
 
 abstract class CreateNewsEvent extends Equatable {
