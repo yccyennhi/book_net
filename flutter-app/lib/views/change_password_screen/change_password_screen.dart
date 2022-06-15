@@ -101,10 +101,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                       .copyWith(color: AppColors.oceanGreenColor),
                 ),
                 gradient: const LinearGradient(
-                  colors: <Color>[
-                    AppColors.teaGreenColor,
-                    AppColors.lightGrayColor,
-                  ],
+                  colors: AppColors.gradientSecondary,
                 ),
                 onPressed: onPressedLogin,
               ),

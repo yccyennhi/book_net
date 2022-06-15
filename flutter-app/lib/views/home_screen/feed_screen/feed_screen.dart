@@ -1,11 +1,8 @@
 import 'package:book_net/configs/text_configs.dart';
 import 'package:book_net/dto/news/base_news_dto.dart';
-import 'package:book_net/view_models/user/curr_user.dart';
-import 'package:book_net/views/base_widgets/image/default_circle_avatar.dart';
 import 'package:book_net/views/home_screen/create_news_screen/create_news_screen.dart';
 import 'package:book_net/views/home_screen/feed_screen/news.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../configs/color_configs.dart';
 import '../../../configs/style_configs.dart';
@@ -42,14 +39,14 @@ class FeedScreen extends StatelessWidget {
         icon: Image.asset('assets/icons/ic_search.png'),
         color: AppColors.whiteColor,
         onPressed: () => {}),
-    Padding(
-      padding: EdgeInsets.symmetric(vertical: 4.h),
-      child: DefaultCircleAvatar(
-        imageUrl: CurrUserData().user!.imageUrl,
-        height: 40.h,
-        width: 40.w,
-      ),
-    ),
+    // Padding(
+    //   padding: EdgeInsets.symmetric(vertical: 4.h),
+    //   child: DefaultCircleAvatar(
+    //     imageUrl: CurrUserData().user!.imageUrl,
+    //     height: 40.h,
+    //     width: 40.w,
+    //   ),
+    // ),
     SizedBox(
       width: AppStyles.defaultMarginHorizontal,
     )
@@ -79,10 +76,7 @@ class FeedScreen extends StatelessWidget {
                     TextConfigs.medium16.copyWith(color: AppColors.whiteColor),
               ),
               gradient: const LinearGradient(
-                colors: <Color>[
-                  AppColors.green1Color,
-                  AppColors.green2Color,
-                ],
+                colors: AppColors.gradientPrimary,
               ),
               onPressed: () => _navigateToCreateNewsScreen(context),
             ),

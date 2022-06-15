@@ -221,10 +221,7 @@ class ProfileScreen extends StatelessWidget {
                         .copyWith(color: AppColors.oceanGreenColor),
                   ),
                   gradient: const LinearGradient(
-                    colors: <Color>[
-                      AppColors.teaGreenColor,
-                      AppColors.lightGrayColor,
-                    ],
+                    colors: AppColors.gradientSecondary,
                   ),
                   onPressed: onPressedViewBookshelf,
                 ),
