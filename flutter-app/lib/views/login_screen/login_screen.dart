@@ -2,7 +2,9 @@ import 'package:book_net/configs/color_configs.dart';
 import 'package:book_net/configs/style_configs.dart';
 import 'package:book_net/configs/text_configs.dart';
 import 'package:book_net/utils/utils.dart';
-import 'package:book_net/view_models/authentication_bloc/login_bloc.dart';
+import 'package:book_net/view_models/authentication_bloc/login_bloc/login_bloc.dart';
+import 'package:book_net/view_models/authentication_bloc/login_bloc/login_event.dart';
+import 'package:book_net/view_models/authentication_bloc/login_bloc/login_state.dart';
 import 'package:book_net/views/base_widgets/bar/bar.dart';
 import 'package:book_net/views/base_widgets/button/raised_gradient_button.dart';
 import 'package:book_net/views/base_widgets/text_field/password_text_field.dart';
@@ -13,8 +15,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../view_models/authentication_bloc/login_state.dart';
-import '../../view_models/authentication_bloc/login_event.dart';
 import '../../view_models/status.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -162,7 +162,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
   _onPressedLogin(BuildContext context, bool isValidate) {
     if (isValidate) {
-      print('click');
       context.read<LogInBloc>().add(LogInViaUsernameEvent(
           username: userController.text, password: passController.text));
     }

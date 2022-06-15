@@ -22,4 +22,12 @@ class AuthenticationProvider {
 
     return CurrUserData().user;
   }
+
+  Future<void> signUp(String email, String username, String password) async {
+    await AuthenticationRepository().signUp(email, username, password);
+  }
+
+  Future<void> verifyEmail(String email, String token) async {
+    await AuthenticationRepository().verifyEmail(email, token);
+  }
 }

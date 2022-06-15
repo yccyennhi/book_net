@@ -296,7 +296,7 @@ class NewsCard extends StatelessWidget {
               ),
               SizedBox(width: 8.w),
               Text(
-                "${baseNewsDto.numberOfLikes}",
+                "${baseNewsDto.totalLike}",
                 style: TextConfigs.regular14OceanGreen,
               )
             ],
@@ -318,7 +318,7 @@ class NewsCard extends StatelessWidget {
                 ),
                 SizedBox(width: 8.w),
                 Text(
-                  "${baseNewsDto.commentList.length}",
+                  "${baseNewsDto.totalComment}",
                   style: TextConfigs.regular14OceanGreen,
                 )
               ],

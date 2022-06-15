@@ -10,15 +10,15 @@ class ValidateConfigs {
     EmailValidator(errorText: 'Invalid E-mail'),
   ]);
 
-  static final firstNameValidator = MultiValidator([
+  static final usernameValidator = MultiValidator([
     RequiredValidator(errorText: 'First name is required'),
     NameValidator(errorText: 'Invalid name')
   ]);
 
-  static final lastNameValidator = MultiValidator([
-    RequiredValidator(errorText: 'Last name is required'),
-    NameValidator(errorText: 'Invalid name')
-  ]);
+  // static final lastNameValidator = MultiValidator([
+  //   RequiredValidator(errorText: 'Last name is required'),
+  //   NameValidator(errorText: 'Invalid name')
+  // ]);
 
   static final passwordValidator = MultiValidator([
     RequiredValidator(errorText: 'Password is required'),

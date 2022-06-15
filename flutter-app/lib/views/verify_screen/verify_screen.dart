@@ -23,7 +23,7 @@ class _VerifyScreenState extends State<VerifyScreen> {
   TextEditingController text5Controller = TextEditingController();
   TextEditingController text6Controller = TextEditingController();
 
-  late FocusNode text1, text2, text3, text4, text5, text6;
+  late FocusNode text1, text2, text3, text4;
 
   final _key = GlobalKey<FormState>();
   @override
@@ -67,13 +67,16 @@ class _VerifyScreenState extends State<VerifyScreen> {
         ),
         body: SingleChildScrollView(
           child: Container(
+            height: MediaQuery.of(context).size.height -
+                AppStyles.appBarHeight -
+                48.h,
             padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 8.h),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Align(
-                  alignment: Alignment.bottomLeft,
+                  alignment: Alignment.topLeft,
                   child: Text('Enter authentication code.',
                       style: TextConfigs.bold24),
                 ),
@@ -165,48 +168,53 @@ class _VerifyScreenState extends State<VerifyScreen> {
                     ),
                   ],
                 ),
-                SizedBox(
-                  height: 112.h,
-                ),
-                RaisedGradientButton(
-                  child: Text(
-                    'Continue',
-                    style: TextConfigs.medium16
-                        .copyWith(color: AppColors.whiteColor),
-                  ),
-                  disable: (!number1Validate ||
-                      !number2Validate ||
-                      !number3Validate ||
-                      !number4Validate),
-                  gradient: const LinearGradient(
-                    colors: <Color>[
-                      AppColors.green1Color,
-                      AppColors.green2Color,
+                Flexible(
+                  flex: 1,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      RaisedGradientButton(
+                        child: Text(
+                          'Continue',
+                          style: TextConfigs.medium16
+                              .copyWith(color: AppColors.whiteColor),
+                        ),
+                        disable: (!number1Validate ||
+                            !number2Validate ||
+                            !number3Validate ||
+                            !number4Validate),
+                        gradient: const LinearGradient(
+                          colors: <Color>[
+                            AppColors.green1Color,
+                            AppColors.green2Color,
+                          ],
+                        ),
+                        onPressed: () => _onPressedContinue(
+                            context,
+                            text1Controller.text,
+                            text2Controller.text,
+                            text3Controller.text,
+                            text4Controller.text),
+                      ),
+                      SizedBox(
+                        height: 16.h,
+                      ),
+                      RaisedGradientButton(
+                        child: Text(
+                          'Resend code',
+                          style: TextConfigs.medium16
+                              .copyWith(color: AppColors.oceanGreenColor),
+                        ),
+                        gradient: const LinearGradient(
+                          colors: <Color>[
+                            AppColors.teaGreenColor,
+                            AppColors.lightGrayColor,
+                          ],
+                        ),
+                        onPressed: () => _onPressedResend(context),
+                      ),
                     ],
                   ),
-                  onPressed: () => _onPressedContinue(
-                      context,
-                      text1Controller.text,
-                      text2Controller.text,
-                      text3Controller.text,
-                      text4Controller.text),
-                ),
-                SizedBox(
-                  height: 16.h,
-                ),
-                RaisedGradientButton(
-                  child: Text(
-                    'Resend code',
-                    style: TextConfigs.medium16
-                        .copyWith(color: AppColors.oceanGreenColor),
-                  ),
-                  gradient: const LinearGradient(
-                    colors: <Color>[
-                      AppColors.teaGreenColor,
-                      AppColors.lightGrayColor,
-                    ],
-                  ),
-                  onPressed: () => _onPressedResend(context),
                 ),
               ],
             ),

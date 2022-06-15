@@ -2,6 +2,7 @@ import 'package:book_net/dto/news/base_news_dto.dart';
 import 'package:book_net/routes/app_routes.dart';
 import 'package:book_net/view_models/user/curr_user.dart';
 import 'package:book_net/views/launch_screen.dart/launch_screen.dart';
+import 'package:book_net/views/verify_screen/verify_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
@@ -51,7 +52,7 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return AnimatedSplashScreen(
       splash: Image.asset('assets/images/LOGO.png'),
-      nextScreen: const LaunchScreen(),
+      nextScreen: const VerifyScreen(),
       splashTransition: SplashTransition.fadeTransition,
     );
   }

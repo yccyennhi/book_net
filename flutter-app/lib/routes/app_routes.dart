@@ -2,7 +2,9 @@ import 'package:book_net/dto/book/book_dto.dart';
 import 'package:book_net/dto/guild/guild_dto.dart';
 import 'package:book_net/main.dart';
 import 'package:book_net/dto/news/base_news_dto.dart';
-import 'package:book_net/view_models/authentication_bloc/login_bloc.dart';
+import 'package:book_net/view_models/authentication_bloc/login_bloc/login_bloc.dart';
+import 'package:book_net/view_models/authentication_bloc/signup_bloc/signup_bloc.dart';
+
 import 'package:book_net/view_models/create_news_bloc/create_news_bloc.dart';
 import 'package:book_net/views/carousel_screen/carousel_screen.dart';
 import 'package:book_net/views/change_password_screen/change_password_screen.dart';
@@ -52,7 +54,8 @@ class AppRoutes {
       case SignUpScreen.id:
         return CupertinoPageRoute(
           settings: settings,
-          builder: (_) => const SignUpScreen(),
+          builder: (_) => BlocProvider(
+              create: ((context) => SignUpBloc()), child: const SignUpScreen()),
         );
       case LoginScreen.id:
         return CupertinoPageRoute(
@@ -118,7 +121,10 @@ class AppRoutes {
             settings: settings, builder: (_) => const BookShelfScreen());
       case VerifyScreen.id:
         return CupertinoPageRoute(
-            settings: settings, builder: (_) => const VerifyScreen());
+            settings: settings,
+            builder: (_) => BlocProvider(
+                create: ((context) => SignUpBloc()),
+                child: const VerifyScreen()));
       case SetupScreen.id:
         return CupertinoPageRoute(
             settings: settings, builder: (_) => const SetupScreen());

@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:book_net/configs/app_configs.dart';
 import 'package:book_net/constants/endpoints.dart';
 import 'package:dio/dio.dart';
@@ -22,5 +24,19 @@ class AuthenticationRepository {
     Response response = await _dio.post(AppEndpoints.signInEndPoint,
         data: {"username": username, "password": password});
     return response;
+  }
+
+  Future<void> signUp(String email, String username, String password) async {
+    Dio _dio = Dio();
+    await _dio.post(AppEndpoints.signUpEndPoint,
+        data: {"email": email, "username": username, "password": password});
+    return;
+  }
+
+  Future<void> verifyEmail(String email, String token) async {
+    Dio _dio = Dio();
+    await _dio.post(AppEndpoints.signUpEndPoint,
+        data: {"email": email, "token": token});
+    return;
   }
 }

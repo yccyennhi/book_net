@@ -6,7 +6,12 @@ class AppEndpoints {
 
   static const _authEndPoint = "$_baseUrl/auth";
   static const signInEndPoint = _authEndPoint + "/signin";
+  static const signUpEndPoint = _authEndPoint + "/signup";
+  static const verifyEmailEndPoint = signUpEndPoint + "/submit_verification";
 
   static const _feedEndPoint = "$_baseUrl/feed";
   static const createPostNewsEndPoint = _feedEndPoint + "/post_news";
+  static const reactEndPoint = _feedEndPoint + "/react";
+  static const createCommentEndPoint = _feedEndPoint + "/comment";
+  static const createReplyCommentEndPoint = _feedEndPoint + "/reply_comment";
 }

@@ -9,7 +9,7 @@ class PostNewsDto extends BaseNewsDto {
     required int type,
     required String caption,
     required this.imageUrl,
-    required int numberOfLikes,
+    required List<String> likeUserIdList,
     required List<CommentDto> commentList,
     required int createDate,
   }) : super(
@@ -17,7 +17,7 @@ class PostNewsDto extends BaseNewsDto {
             user: user,
             type: type,
             caption: caption,
-            numberOfLikes: numberOfLikes,
+            likeUserIdList: likeUserIdList,
             commentList: commentList,
             createDate: createDate);
 

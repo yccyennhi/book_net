@@ -1,3 +1,4 @@
+import 'package:book_net/services/http_header_option.dart';
 import 'package:dio/dio.dart';
 
 import '../../constants/endpoints.dart';
@@ -17,11 +18,7 @@ class FeedRepository {
     Dio _dio = Dio();
     Response response = await _dio.post(
       AppEndpoints.createPostNewsEndPoint,
-      options: Options(
-        headers: {
-          "Authorization": "Bearer ${AuthenticationRepository().accessToken}"
-        },
-      ),
+      options: HttpHeaderOption().options,
       data: {"userId": userId, "caption": caption, "imagesUrl": imagesUrl},
     );
     return response;

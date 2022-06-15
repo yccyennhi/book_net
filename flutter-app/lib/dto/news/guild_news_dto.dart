@@ -10,7 +10,7 @@ class GuildNewsDto extends BaseNewsDto {
       required UserDto user,
       required int type,
       required String caption,
-      required int numberOfLikes,
+      required List<String> likeUserIdList,
       required List<CommentDto> commentList,
       required int createDate,
       required this.guild, //TODO: Fix
@@ -20,7 +20,7 @@ class GuildNewsDto extends BaseNewsDto {
             user: user,
             type: type,
             caption: caption,
-            numberOfLikes: numberOfLikes,
+            likeUserIdList: likeUserIdList,
             commentList: commentList,
             createDate: createDate);
 

@@ -1,7 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-import '../status.dart';
-
+import '../../status.dart';
 
 class LogInState extends Equatable {
   const LogInState._({this.status = Status.initial});

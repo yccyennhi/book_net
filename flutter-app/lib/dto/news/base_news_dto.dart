@@ -13,7 +13,7 @@ class BaseNewsDto {
     required this.user,
     required this.type,
     required this.caption,
-    required this.numberOfLikes,
+    required this.likeUserIdList,
     required this.commentList,
     required this.createDate,
   });
@@ -22,15 +22,20 @@ class BaseNewsDto {
   UserDto user;
   int type;
   String caption;
-  int numberOfLikes;
+  List<String> likeUserIdList;
   List<CommentDto> commentList;
   int createDate;
 
+  int get totalComment => (commentList.isEmpty)
+      ? 0
+      : commentList.fold<int>(
+          0,
+          (previousValue, element) =>
+              previousValue += element.replyList.length + 1);
+
+  int get totalLike => likeUserIdList.length;
   String get userAlias => user.alias;
   String? get userImageUrl => user.imageUrl;
-  // factory BaseNewsDto.fromJson(Map<String, dynamic> json) {
-
-  // }
 }
 
 enum NewsType {
@@ -110,7 +115,7 @@ final PostNewsDto postNewsTestModel = PostNewsDto(
     user: userTestModel,
     type: NewsType.post.value,
     caption: 'Caption caption',
-    numberOfLikes: 1,
+    likeUserIdList: [],
     imageUrl:
         'https://scontent.fsgn2-5.fna.fbcdn.net/v/t1.6435-9/123682547_1587251551483025_7141545519838769160_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=e3f864&_nc_ohc=LH3Twa4Bp-UAX84OLUg&_nc_ht=scontent.fsgn2-5.fna&oh=00_AT_eFvjsRaLCX-tXHwYkg1rDDMCjKSrCP0hTMSg9z7Oe_w&oe=62BA406D',
     commentList: commentListTestModel,
@@ -122,7 +127,7 @@ final ReviewNewsDto reviewNewsTestModel = ReviewNewsDto(
     user: userTestModel,
     type: NewsType.review.value,
     caption: 'Caption caption',
-    numberOfLikes: 10,
+    likeUserIdList: [],
     commentList: commentListTestModel,
     createDate: 1653286844319,
     book: bookTestModel);
@@ -142,7 +147,7 @@ final GuildNewsDto guildNewsDto = GuildNewsDto(
     user: userTestModel,
     type: NewsType.guild.value,
     caption: 'Caption caption',
-    numberOfLikes: 60,
+    likeUserIdList: [],
     commentList: commentListTestModel,
     createDate: 1653286844319,
     guild: guildTestModel,
