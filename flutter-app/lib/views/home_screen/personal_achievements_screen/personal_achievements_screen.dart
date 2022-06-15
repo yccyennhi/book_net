@@ -6,6 +6,7 @@ import 'package:book_net/views/base_widgets/bar/bar.dart';
 import 'package:book_net/views/base_widgets/button/icon_button.dart';
 import 'package:book_net/views/base_widgets/image/default_circle_avatar.dart';
 import 'package:book_net/views/base_widgets/number_with_text/number_with_text.dart';
+import 'package:book_net/views/home_screen/personal_achievements_screen/widget/music_card/music_card.dart';
 import 'package:book_net/views/home_screen/personal_achievements_screen/widget/title_card/title_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -45,6 +46,28 @@ class PersonalAchievementsScreen extends StatelessWidget {
       false,
       false,
       false,
+    ];
+
+    List listMusic = [
+      'Play date',
+      'Dont break my heart',
+      'Lalisa',
+      'Love',
+      'Summer vibe',
+      '10 reasons',
+      'Impossible',
+      'Blackjack'
+    ];
+
+    List listMusicAuthor = [
+      'Nickki',
+      'Andie',
+      'Lisa BLACKPINK',
+      'Elysha',
+      'Tom Cruise',
+      'Jaykii',
+      'Demi Lovato',
+      'Soobin Hoang Son',
     ];
 
     final List<Widget> _barIcons = [
@@ -95,7 +118,7 @@ class PersonalAchievementsScreen extends StatelessWidget {
               height: 16.h,
             ),
             SizedBox(
-              height: 410.h,
+              height: 450.h,
               // decoration: const BoxDecoration(color: AppColors.amazonColor),
               child: DefaultTabController(
                 length: 2,
@@ -143,11 +166,29 @@ class PersonalAchievementsScreen extends StatelessWidget {
                                 ),
                               ),
                               SizedBox(
-                                height: 20.h,
+                                height: 40.h,
                               )
                             ]),
                           ),
-                          Container(),
+                          SingleChildScrollView(
+                            child: Column(children: [
+                              ListView.builder(
+                                shrinkWrap: true,
+                                keyboardDismissBehavior:
+                                    ScrollViewKeyboardDismissBehavior.manual,
+                                physics: const NeverScrollableScrollPhysics(),
+                                itemCount: listTitle.length,
+                                itemBuilder: (context, index) => MusicCard(
+                                  name: listMusic[index],
+                                  author: listMusicAuthor[index],
+                                  points: listPoint[index].toString(),
+                                ),
+                              ),
+                              SizedBox(
+                                height: 40.h,
+                              )
+                            ]),
+                          ),
                         ],
                       ),
                     ),

@@ -15,16 +15,18 @@ class TitleCard extends StatelessWidget {
   final int point;
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
       width: 328.w,
       height: 64.h,
+      margin: EdgeInsets.all(12.h),
+
       // decoration: const BoxDecoration(color: AppColors.amazonColor),
       child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24.w),
+              padding: EdgeInsets.symmetric(horizontal: 20.w),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
