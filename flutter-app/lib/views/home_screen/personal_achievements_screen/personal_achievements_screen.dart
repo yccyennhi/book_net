@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PersonalAchievementsScreen extends StatelessWidget {
+  static const id = "PersonalAchievementsScreen";
   const PersonalAchievementsScreen({super.key});
 
   @override
