@@ -47,12 +47,14 @@ class _SearchScreenState extends State<SearchScreen> {
                     icon: const Icon(
                       Icons.clear,
                       color: AppColors.amazonColor,
+                      size: 20,
                     ),
                   )
                 : const SizedBox.shrink(),
             prefixIcon: const Icon(
               Icons.search_rounded,
               color: AppColors.amazonColor,
+              size: 20,
             ),
             fillColor: AppColors.lightestSkyColor,
             border: InputBorder.none,
