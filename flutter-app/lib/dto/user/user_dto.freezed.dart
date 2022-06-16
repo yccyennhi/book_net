@@ -32,8 +32,8 @@ mixin _$UserDto {
   List<String> get bookShelf => throw _privateConstructorUsedError; //TODO: Fix
   @JsonKey(name: 'guilds')
   List<String> get guildList => throw _privateConstructorUsedError; //TODO: Fix
-  @JsonKey(name: 'friend')
-  List<String> get friendList => throw _privateConstructorUsedError; //TODO: Fix
+  List<UserSimplifiedDto> get following => throw _privateConstructorUsedError;
+  List<UserSimplifiedDto> get followers => throw _privateConstructorUsedError;
   int get currentPoint => throw _privateConstructorUsedError;
   int get highestPoint => throw _privateConstructorUsedError;
   @JsonKey(name: 'creationDate')
@@ -58,7 +58,8 @@ abstract class $UserDtoCopyWith<$Res> {
       String dob,
       List<String> bookShelf,
       @JsonKey(name: 'guilds') List<String> guildList,
-      @JsonKey(name: 'friend') List<String> friendList,
+      List<UserSimplifiedDto> following,
+      List<UserSimplifiedDto> followers,
       int currentPoint,
       int highestPoint,
       @JsonKey(name: 'creationDate') int createDate});
@@ -83,7 +84,8 @@ class _$UserDtoCopyWithImpl<$Res> implements $UserDtoCopyWith<$Res> {
     Object? dob = freezed,
     Object? bookShelf = freezed,
     Object? guildList = freezed,
-    Object? friendList = freezed,
+    Object? following = freezed,
+    Object? followers = freezed,
     Object? currentPoint = freezed,
     Object? highestPoint = freezed,
     Object? createDate = freezed,
@@ -125,10 +127,14 @@ class _$UserDtoCopyWithImpl<$Res> implements $UserDtoCopyWith<$Res> {
           ? _value.guildList
           : guildList // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      friendList: friendList == freezed
-          ? _value.friendList
-          : friendList // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+      following: following == freezed
+          ? _value.following
+          : following // ignore: cast_nullable_to_non_nullable
+              as List<UserSimplifiedDto>,
+      followers: followers == freezed
+          ? _value.followers
+          : followers // ignore: cast_nullable_to_non_nullable
+              as List<UserSimplifiedDto>,
       currentPoint: currentPoint == freezed
           ? _value.currentPoint
           : currentPoint // ignore: cast_nullable_to_non_nullable
@@ -161,7 +167,8 @@ abstract class _$$_UserDtoCopyWith<$Res> implements $UserDtoCopyWith<$Res> {
       String dob,
       List<String> bookShelf,
       @JsonKey(name: 'guilds') List<String> guildList,
-      @JsonKey(name: 'friend') List<String> friendList,
+      List<UserSimplifiedDto> following,
+      List<UserSimplifiedDto> followers,
       int currentPoint,
       int highestPoint,
       @JsonKey(name: 'creationDate') int createDate});
@@ -187,7 +194,8 @@ class __$$_UserDtoCopyWithImpl<$Res> extends _$UserDtoCopyWithImpl<$Res>
     Object? dob = freezed,
     Object? bookShelf = freezed,
     Object? guildList = freezed,
-    Object? friendList = freezed,
+    Object? following = freezed,
+    Object? followers = freezed,
     Object? currentPoint = freezed,
     Object? highestPoint = freezed,
     Object? createDate = freezed,
@@ -229,10 +237,14 @@ class __$$_UserDtoCopyWithImpl<$Res> extends _$UserDtoCopyWithImpl<$Res>
           ? _value._guildList
           : guildList // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      friendList: friendList == freezed
-          ? _value._friendList
-          : friendList // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+      following: following == freezed
+          ? _value._following
+          : following // ignore: cast_nullable_to_non_nullable
+              as List<UserSimplifiedDto>,
+      followers: followers == freezed
+          ? _value._followers
+          : followers // ignore: cast_nullable_to_non_nullable
+              as List<UserSimplifiedDto>,
       currentPoint: currentPoint == freezed
           ? _value.currentPoint
           : currentPoint // ignore: cast_nullable_to_non_nullable
@@ -262,13 +274,15 @@ class _$_UserDto implements _UserDto {
       required this.dob,
       required final List<String> bookShelf,
       @JsonKey(name: 'guilds') required final List<String> guildList,
-      @JsonKey(name: 'friend') required final List<String> friendList,
+      required final List<UserSimplifiedDto> following,
+      required final List<UserSimplifiedDto> followers,
       required this.currentPoint,
       required this.highestPoint,
       @JsonKey(name: 'creationDate') required this.createDate})
       : _bookShelf = bookShelf,
         _guildList = guildList,
-        _friendList = friendList;
+        _following = following,
+        _followers = followers;
 
   factory _$_UserDto.fromJson(Map<String, dynamic> json) =>
       _$$_UserDtoFromJson(json);
@@ -307,16 +321,21 @@ class _$_UserDto implements _UserDto {
   }
 
 //TODO: Fix
-  final List<String> _friendList;
+  final List<UserSimplifiedDto> _following;
 //TODO: Fix
   @override
-  @JsonKey(name: 'friend')
-  List<String> get friendList {
+  List<UserSimplifiedDto> get following {
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_friendList);
+    return EqualUnmodifiableListView(_following);
   }
 
-//TODO: Fix
+  final List<UserSimplifiedDto> _followers;
+  @override
+  List<UserSimplifiedDto> get followers {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_followers);
+  }
+
   @override
   final int currentPoint;
   @override
@@ -327,7 +346,7 @@ class _$_UserDto implements _UserDto {
 
   @override
   String toString() {
-    return 'UserDto(id: $id, alias: $alias, email: $email, imageUrl: $imageUrl, name: $name, gender: $gender, dob: $dob, bookShelf: $bookShelf, guildList: $guildList, friendList: $friendList, currentPoint: $currentPoint, highestPoint: $highestPoint, createDate: $createDate)';
+    return 'UserDto(id: $id, alias: $alias, email: $email, imageUrl: $imageUrl, name: $name, gender: $gender, dob: $dob, bookShelf: $bookShelf, guildList: $guildList, following: $following, followers: $followers, currentPoint: $currentPoint, highestPoint: $highestPoint, createDate: $createDate)';
   }
 
   @override
@@ -347,7 +366,9 @@ class _$_UserDto implements _UserDto {
             const DeepCollectionEquality()
                 .equals(other._guildList, _guildList) &&
             const DeepCollectionEquality()
-                .equals(other._friendList, _friendList) &&
+                .equals(other._following, _following) &&
+            const DeepCollectionEquality()
+                .equals(other._followers, _followers) &&
             const DeepCollectionEquality()
                 .equals(other.currentPoint, currentPoint) &&
             const DeepCollectionEquality()
@@ -369,7 +390,8 @@ class _$_UserDto implements _UserDto {
       const DeepCollectionEquality().hash(dob),
       const DeepCollectionEquality().hash(_bookShelf),
       const DeepCollectionEquality().hash(_guildList),
-      const DeepCollectionEquality().hash(_friendList),
+      const DeepCollectionEquality().hash(_following),
+      const DeepCollectionEquality().hash(_followers),
       const DeepCollectionEquality().hash(currentPoint),
       const DeepCollectionEquality().hash(highestPoint),
       const DeepCollectionEquality().hash(createDate));
@@ -396,7 +418,8 @@ abstract class _UserDto implements UserDto {
           required final String dob,
           required final List<String> bookShelf,
           @JsonKey(name: 'guilds') required final List<String> guildList,
-          @JsonKey(name: 'friend') required final List<String> friendList,
+          required final List<UserSimplifiedDto> following,
+          required final List<UserSimplifiedDto> followers,
           required final int currentPoint,
           required final int highestPoint,
           @JsonKey(name: 'creationDate') required final int createDate}) =
@@ -426,9 +449,10 @@ abstract class _UserDto implements UserDto {
   @JsonKey(name: 'guilds')
   List<String> get guildList => throw _privateConstructorUsedError;
   @override //TODO: Fix
-  @JsonKey(name: 'friend')
-  List<String> get friendList => throw _privateConstructorUsedError;
-  @override //TODO: Fix
+  List<UserSimplifiedDto> get following => throw _privateConstructorUsedError;
+  @override
+  List<UserSimplifiedDto> get followers => throw _privateConstructorUsedError;
+  @override
   int get currentPoint => throw _privateConstructorUsedError;
   @override
   int get highestPoint => throw _privateConstructorUsedError;

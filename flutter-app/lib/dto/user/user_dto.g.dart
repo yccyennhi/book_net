@@ -18,8 +18,12 @@ _$_UserDto _$$_UserDtoFromJson(Map<String, dynamic> json) => _$_UserDto(
           (json['bookShelf'] as List<dynamic>).map((e) => e as String).toList(),
       guildList:
           (json['guilds'] as List<dynamic>).map((e) => e as String).toList(),
-      friendList:
-          (json['friend'] as List<dynamic>).map((e) => e as String).toList(),
+      following: (json['following'] as List<dynamic>)
+          .map((e) => UserSimplifiedDto.fromJson(e as Map<String, dynamic>))
+          .toList(),
+      followers: (json['followers'] as List<dynamic>)
+          .map((e) => UserSimplifiedDto.fromJson(e as Map<String, dynamic>))
+          .toList(),
       currentPoint: json['currentPoint'] as int,
       highestPoint: json['highestPoint'] as int,
       createDate: json['creationDate'] as int,
@@ -36,7 +40,8 @@ Map<String, dynamic> _$$_UserDtoToJson(_$_UserDto instance) =>
       'dob': instance.dob,
       'bookShelf': instance.bookShelf,
       'guilds': instance.guildList,
-      'friend': instance.friendList,
+      'following': instance.following,
+      'followers': instance.followers,
       'currentPoint': instance.currentPoint,
       'highestPoint': instance.highestPoint,
       'creationDate': instance.createDate,
