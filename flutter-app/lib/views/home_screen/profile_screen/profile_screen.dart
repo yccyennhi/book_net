@@ -1,4 +1,5 @@
 import 'package:book_net/configs/color_configs.dart';
+import 'package:book_net/configs/profile_configs.dart';
 import 'package:book_net/configs/text_configs.dart';
 import 'package:book_net/configs/style_configs.dart';
 import 'package:book_net/dto/news/base_news_dto.dart';
@@ -16,6 +17,7 @@ import 'package:book_net/views/change_password_screen/change_password_screen.dar
 import 'package:book_net/views/home_screen/bookshelf_screen/bookshelf_screen.dart';
 import 'package:book_net/views/home_screen/edit_profile_screen/edit_profile_screen.dart';
 import 'package:book_net/views/home_screen/feed_screen/news.dart';
+import 'package:book_net/views/home_screen/follow_screen/follow_screen.dart';
 import 'package:book_net/views/home_screen/profile_screen/widgets/stf_btn_follow/stf_btn_follow.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -55,6 +57,12 @@ class ProfileScreen extends StatelessWidget {
 
     onPressedViewBookshelf() {
       Navigator.of(context).pushNamed(BookShelfScreen.id, arguments: _user);
+    }
+
+    onTapFollow(BuildContext context) {
+      print('object');
+      Navigator.of(context).popAndPushNamed(FollowScreen.id,
+          arguments: [_user, Profile.following]);
     }
 
     void onPressMenuButton() {
@@ -145,8 +153,8 @@ class ProfileScreen extends StatelessWidget {
                             20.w,
                         child: Row(
                           // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: const <Widget>[
-                            Flexible(
+                          children: <Widget>[
+                            const Flexible(
                               child: NumberWithText(
                                 number: 33,
                                 text: 'like',
@@ -157,6 +165,8 @@ class ProfileScreen extends StatelessWidget {
                               child: NumberWithText(
                                 number: 33,
                                 text: 'following',
+                                type: Profile.following,
+                                user: _user,
                               ),
                               flex: 1,
                             ),
@@ -164,6 +174,8 @@ class ProfileScreen extends StatelessWidget {
                               child: NumberWithText(
                                 number: 33,
                                 text: 'follower',
+                                type: Profile.follower,
+                                user: _user,
                               ),
                               flex: 1,
                             ),
