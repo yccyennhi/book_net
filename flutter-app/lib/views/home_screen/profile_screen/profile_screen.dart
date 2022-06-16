@@ -18,6 +18,7 @@ import 'package:book_net/views/change_password_screen/change_password_screen.dar
 import 'package:book_net/views/home_screen/bookshelf_screen/bookshelf_screen.dart';
 import 'package:book_net/views/home_screen/edit_profile_screen/edit_profile_screen.dart';
 import 'package:book_net/views/home_screen/feed_screen/news.dart';
+import 'package:book_net/views/home_screen/profile_screen/widgets/stf_btn_follow/stf_btn_follow.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:url_launcher/url_launcher_string.dart';
@@ -245,29 +246,8 @@ class ProfileScreen extends StatelessWidget {
                       height: 8.h,
                     ),
                     _user != CurrUserData().user
-                        ? RaisedGradientButton(
-                            child: Text(
-                              'Follow',
-                              style: TextConfigs.medium16
-                                  .copyWith(color: AppColors.oceanGreenColor),
-                            ),
-                            gradient: const LinearGradient(
-                              colors: AppColors.gradientSecondary,
-                            ),
-                            onPressed: () {},
-                          )
-                        : RaisedGradientButton(
-                            child: Text(
-                              'Unfollow',
-                              style: TextConfigs.medium16
-                                  .copyWith(color: AppColors.oceanGreenColor),
-                            ),
-                            outline: true,
-                            gradient: const LinearGradient(
-                              colors: AppColors.gradientOutline,
-                            ),
-                            onPressed: onPressedViewBookshelf,
-                          ),
+                        ? StatefulButtonFollow(user: _user)
+                        : const SizedBox.shrink(),
                   ],
                 ),
               ),
