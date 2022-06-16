@@ -21,7 +21,7 @@ Future<void> showMyDialog(BuildContext context, String title, String imageUrl,
                 BorderRadius.all(Radius.circular(AppStyles.radiusXss))),
         title: Text(
           title,
-          style: TextConfigs.bold24,
+          style: TextConfigs.bold24.copyWith(color: AppColors.oceanGreenColor),
           textAlign: TextAlign.center,
         ),
         content: SingleChildScrollView(

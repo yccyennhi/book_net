@@ -1,6 +1,7 @@
 import 'package:book_net/configs/color_configs.dart';
 import 'package:book_net/configs/style_configs.dart';
 import 'package:book_net/configs/text_configs.dart';
+import 'package:book_net/dto/news/base_news_dto.dart';
 import 'package:book_net/view_models/user/curr_user.dart';
 import 'package:book_net/views/base_widgets/bar/bar.dart';
 import 'package:book_net/views/base_widgets/button/icon_button.dart';
@@ -8,6 +9,7 @@ import 'package:book_net/views/base_widgets/image/default_circle_avatar.dart';
 import 'package:book_net/views/base_widgets/number_with_text/number_with_text.dart';
 import 'package:book_net/views/home_screen/personal_achievements_screen/widget/music_card/music_card.dart';
 import 'package:book_net/views/home_screen/personal_achievements_screen/widget/title_card/title_card.dart';
+import 'package:book_net/views/home_screen/shop_screen/shop_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -17,58 +19,9 @@ class PersonalAchievementsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List listTitle = [
-      'I am newbie',
-      'The explore',
-      'This is legend',
-      'The father of truth',
-      'Chicken book',
-      'Apolo in this book',
-      'Smart girl',
-      'Smart boy'
-    ];
-    List listPoint = [
-      100,
-      200,
-      500,
-      1000,
-      900,
-      800,
-      300,
-      300,
-    ];
-    List listSelect = [
-      false,
-      true,
-      false,
-      false,
-      false,
-      false,
-      false,
-      false,
-    ];
-
-    List listMusic = [
-      'Play date',
-      'Dont break my heart',
-      'Lalisa',
-      'Love',
-      'Summer vibe',
-      '10 reasons',
-      'Impossible',
-      'Blackjack'
-    ];
-
-    List listMusicAuthor = [
-      'Nickki',
-      'Andie',
-      'Lisa BLACKPINK',
-      'Elysha',
-      'Tom Cruise',
-      'Jaykii',
-      'Demi Lovato',
-      'Soobin Hoang Son',
-    ];
+    _onPressShopButton() {
+      Navigator.pushNamed(context, ShopScreen.id);
+    }
 
     final List<Widget> _barIcons = [
       CustomIconButton(
@@ -77,15 +30,7 @@ class PersonalAchievementsScreen extends StatelessWidget {
             color: AppColors.blackColor,
           ),
           color: AppColors.whiteColor,
-          onPressed: () => {}),
-      // Padding(
-      //   padding: EdgeInsets.symmetric(vertical: 4.h),
-      //   child: DefaultCircleAvatar(
-      //     imageUrl: CurrUserData().user!.imageUrl,
-      //     height: 40.h,
-      //     width: 40.w,
-      //   ),
-      // ),
+          onPressed: _onPressShopButton),
       SizedBox(
         width: AppStyles.defaultMarginHorizontal,
       )
