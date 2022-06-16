@@ -1,3 +1,4 @@
+import 'package:book_net/dto/user/user_simplified_dto.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'user_dto.freezed.dart';
@@ -15,7 +16,8 @@ class UserDto with _$UserDto {
       required String dob,
       required List<String> bookShelf, //TODO: Fix
       @JsonKey(name: 'guilds') required List<String> guildList, //TODO: Fix
-      @JsonKey(name: 'friend') required List<String> friendList, //TODO: Fix
+      required List<UserSimplifiedDto> following,
+      required List<UserSimplifiedDto> followers,
       required int currentPoint,
       required int highestPoint,
       @JsonKey(name: 'creationDate') required int createDate}) = _UserDto;
