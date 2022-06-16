@@ -1,5 +1,6 @@
 import 'package:book_net/dto/book/book_dto.dart';
 import 'package:book_net/dto/guild/guild_dto.dart';
+import 'package:book_net/dto/user/user_dto.dart';
 import 'package:book_net/main.dart';
 import 'package:book_net/dto/news/base_news_dto.dart';
 import 'package:book_net/view_models/authentication_bloc/login_bloc/login_bloc.dart';
@@ -119,8 +120,13 @@ class AppRoutes {
         return CupertinoPageRoute(
             settings: settings, builder: (_) => EditScreen(type: value));
       case BookShelfScreen.id:
+        final UserDto value = settings.arguments as UserDto;
+
         return CupertinoPageRoute(
-            settings: settings, builder: (_) => const BookShelfScreen());
+            settings: settings,
+            builder: (_) => BookShelfScreen(
+                  user: value,
+                ));
       case VerifyScreen.id:
         return CupertinoPageRoute(
             settings: settings,
@@ -151,6 +157,7 @@ class AppRoutes {
       case ShopScreen.id:
         return CupertinoPageRoute(
             settings: settings, builder: (_) => const ShopScreen());
+
       default:
         return _errorRoute();
     }

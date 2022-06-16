@@ -4,6 +4,7 @@ import 'package:book_net/configs/color_configs.dart';
 import 'package:book_net/configs/text_configs.dart';
 import 'package:book_net/configs/style_configs.dart';
 import 'package:book_net/dto/news/base_news_dto.dart';
+import 'package:book_net/dto/user/user_dto.dart';
 import 'package:book_net/view_models/user/curr_user.dart';
 import 'package:book_net/views/base_widgets/bar/bar.dart';
 import 'package:book_net/views/base_widgets/button/icon_button.dart';
@@ -23,8 +24,10 @@ import 'package:url_launcher/url_launcher_string.dart';
 
 class ProfileScreen extends StatelessWidget {
   static const id = "ProfileScreen";
-  const ProfileScreen({Key? key}) : super(key: key);
-
+  const ProfileScreen({Key? key, required UserDto user})
+      : _user = user,
+        super(key: key);
+  final UserDto _user;
   void launchEmailSubmission() async {
     final Uri params = Uri(
         scheme: 'mailto',
@@ -52,7 +55,7 @@ class ProfileScreen extends StatelessWidget {
     }
 
     onPressedViewBookshelf() {
-      Navigator.of(context).pushNamed(BookShelfScreen.id);
+      Navigator.of(context).pushNamed(BookShelfScreen.id, arguments: _user);
     }
 
     void onPressMenuButton() {
@@ -115,6 +118,95 @@ class ProfileScreen extends StatelessWidget {
           onPressed: onPressMenuButton)
     ];
 
+    Widget _buildHeader() {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: EdgeInsets.fromLTRB(24.w, 16.h, 24.w, 0.h),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                    // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      DefaultCircleAvatar(
+                          width: 64.w, height: 64.h, imageUrl: _user.imageUrl),
+                      SizedBox(
+                        width: 20.w,
+                      ),
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width -
+                            64.w -
+                            48.w -
+                            20.w,
+                        child: Row(
+                          // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: const <Widget>[
+                            Flexible(
+                              child: NumberWithText(
+                                number: 33,
+                                text: 'like',
+                              ),
+                              flex: 1,
+                            ),
+                            Flexible(
+                              child: NumberWithText(
+                                number: 33,
+                                text: 'following',
+                              ),
+                              flex: 1,
+                            ),
+                            Flexible(
+                              child: NumberWithText(
+                                number: 33,
+                                text: 'follower',
+                              ),
+                              flex: 1,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ]),
+                SizedBox(
+                  height: 8.h,
+                ),
+                Text(
+                  _user.alias,
+                  style: TextConfigs.bold16,
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.only(left: 16.w),
+            child: TextButton(
+              child: Text(_user.alias + '@gmail.com',
+                  style: TextConfigs.regular12OceanGreen),
+              onPressed: launchEmailSubmission,
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.fromLTRB(24.h, 4.h, 24.h, 8.h),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Bo cua su that',
+                  style: TextConfigs.regular12Gray,
+                ),
+              ],
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.fromLTRB(16.h, 4.h, 16.h, 16.h),
+            child: ListChip(list: interested),
+          ),
+        ],
+      );
+    }
+
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size(double.infinity, AppStyles.appBarHeight),
@@ -129,104 +221,56 @@ class ProfileScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              _buildHeader(),
               Padding(
-                padding: EdgeInsets.fromLTRB(24.w, 16.h, 24.w, 0.h),
+                padding: EdgeInsets.fromLTRB(24.w, 0.h, 24.w, 16.h),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Row(
-                        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          DefaultCircleAvatar(
-                              width: 64.w,
-                              height: 64.h,
-                              imageUrl: CurrUserData().user!.imageUrl),
-                          SizedBox(
-                            width: 20.w,
-                          ),
-                          SizedBox(
-                            width: MediaQuery.of(context).size.width -
-                                64.w -
-                                48.w -
-                                20.w,
-                            child: Row(
-                              // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: const <Widget>[
-                                Flexible(
-                                  child: NumberWithText(
-                                    number: 33,
-                                    text: 'review',
-                                  ),
-                                  flex: 1,
-                                ),
-                                Flexible(
-                                  child: NumberWithText(
-                                    number: 33,
-                                    text: 'follow',
-                                  ),
-                                  flex: 1,
-                                ),
-                                Flexible(
-                                  child: NumberWithText(
-                                    number: 33,
-                                    text: 'like',
-                                  ),
-                                  flex: 1,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ]),
+                    RaisedGradientButton(
+                      child: Text(
+                        'View ' + _user.alias + "'s bookshelf",
+                        style: TextConfigs.medium16
+                            .copyWith(color: AppColors.oceanGreenColor),
+                      ),
+                      gradient: const LinearGradient(
+                        colors: AppColors.gradientSecondary,
+                      ),
+                      onPressed: onPressedViewBookshelf,
+                    ),
                     SizedBox(
                       height: 8.h,
                     ),
-                    Text(
-                      userTestModel.alias,
-                      style: TextConfigs.bold16,
+                    const Divider(),
+                    SizedBox(
+                      height: 8.h,
                     ),
+                    _user != CurrUserData().user
+                        ? RaisedGradientButton(
+                            child: Text(
+                              'Follow',
+                              style: TextConfigs.medium16
+                                  .copyWith(color: AppColors.oceanGreenColor),
+                            ),
+                            gradient: const LinearGradient(
+                              colors: AppColors.gradientSecondary,
+                            ),
+                            onPressed: () {},
+                          )
+                        : RaisedGradientButton(
+                            child: Text(
+                              'Unfollow',
+                              style: TextConfigs.medium16
+                                  .copyWith(color: AppColors.oceanGreenColor),
+                            ),
+                            outline: true,
+                            gradient: const LinearGradient(
+                              colors: AppColors.gradientOutline,
+                            ),
+                            onPressed: onPressedViewBookshelf,
+                          ),
                   ],
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.only(left: 16.w),
-                child: TextButton(
-                  child: Text(userTestModel.alias + '@gmail.com',
-                      style: TextConfigs.regular12OceanGreen),
-                  onPressed: launchEmailSubmission,
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.fromLTRB(24.h, 4.h, 24.h, 8.h),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Bo cua su that',
-                      style: TextConfigs.regular12Gray,
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                padding: EdgeInsets.fromLTRB(16.h, 4.h, 16.h, 16.h),
-                child: ListChip(list: interested),
-              ),
-              Padding(
-                padding: EdgeInsets.fromLTRB(24.w, 0.h, 24.w, 16.h),
-                child: RaisedGradientButton(
-                  child: Text(
-                    'View ' + userTestModel.alias + ' bookshelf',
-                    style: TextConfigs.medium16
-                        .copyWith(color: AppColors.oceanGreenColor),
-                  ),
-                  gradient: const LinearGradient(
-                    colors: AppColors.gradientSecondary,
-                  ),
-                  onPressed: onPressedViewBookshelf,
-                ),
-              ),
-              const Divider(),
               ListView.builder(
                 primary: false,
                 shrinkWrap: true,
